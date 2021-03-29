@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @club.name
+%p
+  %b Postcode:
+  = @club.postcode
+%p
+  %b Contactnumber:
+  = @club.contactnumber
+%p
+  %b Paymentduedate:
+  = @club.paymentduedate
+
+= link_to 'Edit', edit_club_path(@club)
+\|
+= link_to 'Back', clubs_path

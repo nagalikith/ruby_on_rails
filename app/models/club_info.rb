@@ -1,0 +1,2 @@
+class ClubInfo < ApplicationRecord
+end

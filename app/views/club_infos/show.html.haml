@@ -1,0 +1,45 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @club_info.date
+%p
+  %b Males:
+  = @club_info.males
+%p
+  %b Females:
+  = @club_info.females
+%p
+  %b Lowerage:
+  = @club_info.lowerage
+%p
+  %b Upperage:
+  = @club_info.upperage
+%p
+  %b Disability:
+  = @club_info.disability
+%p
+  %b Ethnicity:
+  = @club_info.ethnicity
+%p
+  %b Depravation:
+  = @club_info.depravation
+%p
+  %b Drugsandabs:
+  = @club_info.drugsandabs
+%p
+  %b Neets:
+  = @club_info.neets
+%p
+  %b Volnum:
+  = @club_info.volnum
+%p
+  %b Volhours:
+  = @club_info.volhours
+%p
+  %b Volachievetraining:
+  = @club_info.volachievetraining
+
+= link_to 'Edit', edit_club_info_path(@club_info)
+\|
+= link_to 'Back', club_infos_path

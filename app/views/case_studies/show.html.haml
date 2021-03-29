@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @case_study.date
+%p
+  %b Participant:
+  = @case_study.participant
+
+= link_to 'Edit', edit_case_study_path(@case_study)
+\|
+= link_to 'Back', case_studies_path

@@ -1,0 +1,21 @@
+%h1 Listing consent_forms
+
+%table
+  %thead
+    %tr
+      %th Participantname
+      %th
+      %th
+      %th
+
+  %tbody
+    - @consent_forms.each do |consent_form|
+      %tr
+        %td= consent_form.participantname
+        %td= link_to 'Show', consent_form
+        %td= link_to 'Edit', edit_consent_form_path(consent_form)
+        %td= link_to 'Destroy', consent_form, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Consent form', new_consent_form_path

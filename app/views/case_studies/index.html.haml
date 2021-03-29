@@ -1,0 +1,23 @@
+%h1 Listing case_studies
+
+%table
+  %thead
+    %tr
+      %th Date
+      %th Participant
+      %th
+      %th
+      %th
+
+  %tbody
+    - @case_studies.each do |case_study|
+      %tr
+        %td= case_study.date
+        %td= case_study.participant
+        %td= link_to 'Show', case_study
+        %td= link_to 'Edit', edit_case_study_path(case_study)
+        %td= link_to 'Destroy', case_study, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Case study', new_case_study_path

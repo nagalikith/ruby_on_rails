@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @volunteer.name
+%p
+  %b Contactnumber:
+  = @volunteer.contactnumber
+%p
+  %b Addressone:
+  = @volunteer.addressone
+%p
+  %b Addresstwo:
+  = @volunteer.addresstwo
+%p
+  %b Email:
+  = @volunteer.email
+%p
+  %b Postcode:
+  = @volunteer.postcode
+%p
+  %b Hours:
+  = @volunteer.hours
+%p
+  %b Target:
+  = @volunteer.target
+
+= link_to 'Edit', edit_volunteer_path(@volunteer)
+\|
+= link_to 'Back', volunteers_path

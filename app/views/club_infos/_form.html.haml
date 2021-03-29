@@ -1,0 +1,22 @@
+-# frozen_string_literal: true
+= simple_form_for(@club_info) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :date
+    = f.input :males
+    = f.input :females
+    = f.input :lowerage
+    = f.input :upperage
+    = f.input :disability
+    = f.input :ethnicity
+    = f.input :depravation
+    = f.input :drugsandabs
+    = f.input :neets
+    = f.input :volnum
+    = f.input :volhours
+    = f.input :volachievetraining
+
+  .form-actions
+    = f.button :submit

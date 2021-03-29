@@ -1,0 +1,29 @@
+%h1 Listing donors
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Type
+      %th Contactnumber
+      %th Email
+      %th Totaldonation
+      %th
+      %th
+      %th
+
+  %tbody
+    - @donors.each do |donor|
+      %tr
+        %td= donor.name
+        %td= donor.type
+        %td= donor.contactnumber
+        %td= donor.email
+        %td= donor.totaldonation
+        %td= link_to 'Show', donor
+        %td= link_to 'Edit', edit_donor_path(donor)
+        %td= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Donor', new_donor_path

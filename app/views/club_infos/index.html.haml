@@ -1,0 +1,45 @@
+%h1 Listing club_infos
+
+%table
+  %thead
+    %tr
+      %th Date
+      %th Males
+      %th Females
+      %th Lowerage
+      %th Upperage
+      %th Disability
+      %th Ethnicity
+      %th Depravation
+      %th Drugsandabs
+      %th Neets
+      %th Volnum
+      %th Volhours
+      %th Volachievetraining
+      %th
+      %th
+      %th
+
+  %tbody
+    - @club_infos.each do |club_info|
+      %tr
+        %td= club_info.date
+        %td= club_info.males
+        %td= club_info.females
+        %td= club_info.lowerage
+        %td= club_info.upperage
+        %td= club_info.disability
+        %td= club_info.ethnicity
+        %td= club_info.depravation
+        %td= club_info.drugsandabs
+        %td= club_info.neets
+        %td= club_info.volnum
+        %td= club_info.volhours
+        %td= club_info.volachievetraining
+        %td= link_to 'Show', club_info
+        %td= link_to 'Edit', edit_club_info_path(club_info)
+        %td= link_to 'Destroy', club_info, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Club info', new_club_info_path

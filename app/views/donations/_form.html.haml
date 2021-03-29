@@ -1,0 +1,14 @@
+-# frozen_string_literal: true
+= simple_form_for(@donation) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :amount
+    = f.input :date
+    = f.input :method
+    = f.input :recurring
+    = f.input :restricted
+
+  .form-actions
+    = f.button :submit

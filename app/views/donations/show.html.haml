@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Amount:
+  = @donation.amount
+%p
+  %b Date:
+  = @donation.date
+%p
+  %b Method:
+  = @donation.method
+%p
+  %b Recurring:
+  = @donation.recurring
+%p
+  %b Restricted:
+  = @donation.restricted
+
+= link_to 'Edit', edit_donation_path(@donation)
+\|
+= link_to 'Back', donations_path
