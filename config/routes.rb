@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :event_feedbacks
+  resources :meeting_types
+  resources :prospective_donors
   resources :consent_forms
   resources :case_studies
   resources :events

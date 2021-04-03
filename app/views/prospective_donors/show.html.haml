@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @prospective_donor.name
+%p
+  %b Type:
+  = @prospective_donor.type
+%p
+  %b Contactnumber:
+  = @prospective_donor.contactnumber
+%p
+  %b Internalcontactlink:
+  = @prospective_donor.internalcontactlink
+%p
+  %b Email:
+  = @prospective_donor.email
+
+= link_to 'Edit', edit_prospective_donor_path(@prospective_donor)
+\|
+= link_to 'Back', prospective_donors_path

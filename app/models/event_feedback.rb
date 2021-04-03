@@ -1,0 +1,2 @@
+class EventFeedback < ApplicationRecord
+end

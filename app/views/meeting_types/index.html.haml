@@ -1,0 +1,25 @@
+%h1 Listing meeting_types
+
+%table
+  %thead
+    %tr
+      %th Day
+      %th Time
+      %th Sessiontype
+      %th
+      %th
+      %th
+
+  %tbody
+    - @meeting_types.each do |meeting_type|
+      %tr
+        %td= meeting_type.day
+        %td= meeting_type.time
+        %td= meeting_type.sessiontype
+        %td= link_to 'Show', meeting_type
+        %td= link_to 'Edit', edit_meeting_type_path(meeting_type)
+        %td= link_to 'Destroy', meeting_type, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Meeting type', new_meeting_type_path

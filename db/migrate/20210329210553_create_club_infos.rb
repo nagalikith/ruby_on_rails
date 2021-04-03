@@ -1,6 +1,6 @@
 class CreateClubInfos < ActiveRecord::Migration[6.0]
   def change
-    create_table :club_infos do |t|
+    create_table :club_infos, id: false, primary_key :clubinfo_id do |t|
       t.integer :date
       t.integer :males
       t.integer :females

@@ -1,6 +1,6 @@
 class CreateDonors < ActiveRecord::Migration[6.0]
   def change
-    create_table :donors do |t|
+    create_table :donors, id: false, primary_key :donor_id do |t|
       t.string :name
       t.text :type
       t.integer :contactnumber

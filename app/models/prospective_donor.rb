@@ -1,0 +1,2 @@
+class ProspectiveDonor < ApplicationRecord
+end

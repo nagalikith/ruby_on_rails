@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Comment:
+  = @event_feedback.comment
+
+= link_to 'Edit', edit_event_feedback_path(@event_feedback)
+\|
+= link_to 'Back', event_feedbacks_path

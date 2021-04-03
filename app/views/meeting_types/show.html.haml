@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Day:
+  = @meeting_type.day
+%p
+  %b Time:
+  = @meeting_type.time
+%p
+  %b Sessiontype:
+  = @meeting_type.sessiontype
+
+= link_to 'Edit', edit_meeting_type_path(@meeting_type)
+\|
+= link_to 'Back', meeting_types_path
