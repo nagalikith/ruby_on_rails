@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :event_feedbacks
   resources :meeting_types
   resources :prospective_donors
