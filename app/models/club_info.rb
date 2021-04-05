@@ -30,4 +30,6 @@
 #  fk_rails_...  (club_id => clubs.id)
 #
 class ClubInfo < ApplicationRecord
+    belongs_to :club
+    has_many :meeting_type
 end

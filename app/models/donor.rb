@@ -12,4 +12,5 @@
 #  updated_at    :datetime         not null
 #
 class Donor < ApplicationRecord
+    has_many :donations
 end

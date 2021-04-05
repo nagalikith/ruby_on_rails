@@ -19,4 +19,5 @@
 #  fk_rails_...  (club_infos_id => club_infos.id)
 #
 class MeetingType < ApplicationRecord
+    belong_to :club_info
 end

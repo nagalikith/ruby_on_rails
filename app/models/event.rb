@@ -19,4 +19,7 @@
 #  fk_rails_...  (club_id => clubs.id)
 #
 class Event < ApplicationRecord
+    has_one :event_feedback
+    has_many :consent_form
+    has_many :case_study
 end

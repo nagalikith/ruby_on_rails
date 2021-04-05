@@ -21,4 +21,5 @@
 #  fk_rails_...  (donor_id => donors.id)
 #
 class Donation < ApplicationRecord
+    belongs_to :donor
 end

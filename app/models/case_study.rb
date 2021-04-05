@@ -22,4 +22,6 @@
 #  fk_rails_...  (event_id => events.id)
 #
 class CaseStudy < ApplicationRecord
+    belongs_to :club
+    belongs_to :event
 end

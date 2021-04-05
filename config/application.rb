@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module BGCSY
   class Application < Rails::Application
+    
     # Send queued jobs to delayed_job
     config.active_job.queue_adapter = :delayed_job
 

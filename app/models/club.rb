@@ -11,4 +11,8 @@
 #  updated_at     :datetime         not null
 #
 class Club < ApplicationRecord
+    has_many :user
+    has_many :case_study
+    has_one :club_info
+
 end
