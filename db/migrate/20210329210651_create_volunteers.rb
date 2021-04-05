@@ -1,12 +1,12 @@
 class CreateVolunteers < ActiveRecord::Migration[6.0]
   def change
-    create_table :volunteers, id: false, primary_key :volunteer_id do |t|
+    create_table :volunteers do |t|
       t.string :name
       t.integer :contactnumber
-      t.text :addressone
-      t.text :addresstwo
-      t.text :email
-      t.text :postcode
+      t.string :addressone
+      t.string :addresstwo
+      t.string :email
+      t.string :postcode
       t.float :hours
       t.float :target
 
