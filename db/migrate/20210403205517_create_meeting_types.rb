@@ -1,7 +1,7 @@
 class CreateMeetingTypes < ActiveRecord::Migration[6.0]
   def change
-    create_table :meeting_types, id: false, primary_key :meeting_id do |t|
-      t.date :day
+    create_table :meeting_types, primary_key :meeting_id do |t|
+      t.string :day
       t.integer :time
       t.string :sessiontype
 

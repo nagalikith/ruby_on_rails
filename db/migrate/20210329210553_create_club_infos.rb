@@ -1,7 +1,7 @@
 class CreateClubInfos < ActiveRecord::Migration[6.0]
   def change
-    create_table :club_infos, id: false, primary_key :clubinfo_id do |t|
-      t.integer :date
+    create_table :club_infos, primary_key :clubinfo_id do |t|
+      t.date :date
       t.integer :males
       t.integer :females
       t.integer :lowerage
@@ -11,8 +11,9 @@ class CreateClubInfos < ActiveRecord::Migration[6.0]
       t.integer :depravation
       t.integer :drugsandabs
       t.integer :neets
+      t.integer :mentalhealth
       t.integer :volnum
-      t.integer :volhours
+      t.float :volhours
       t.integer :volachievetraining
 
       t.timestamps
