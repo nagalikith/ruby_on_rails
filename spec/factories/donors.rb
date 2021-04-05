@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: donors
+#
+#  id            :bigint           not null, primary key
+#  contactnumber :integer
+#  email         :text
+#  name          :string
+#  totaldonation :integer
+#  type          :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
 FactoryBot.define do
   factory :donor do
     name { "MyString" }
