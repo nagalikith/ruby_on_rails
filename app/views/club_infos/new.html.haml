@@ -1,5 +1,18 @@
-%h1 New club_info
+%h1 Enter Affiliation Data
 
 = render 'form'
 
-= link_to 'Back', club_infos_path
+= render 'meeting_types/form'
+
+
+
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Involved?
+
+  %tbody#volunteer-table
+    = render 'volunteers/select_table'
+

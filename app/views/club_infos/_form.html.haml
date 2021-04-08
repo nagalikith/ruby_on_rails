@@ -4,19 +4,23 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :date
-    = f.input :males
-    = f.input :females
-    = f.input :lowerage
-    = f.input :upperage
-    = f.input :disability
+    = f.input :date, label: "Date:"
+    = f.input :males, label: "Number of boys attending:"
+    = f.input :females, label: "Number of girls attending:"
+    = f.input :lowerage, label: "Number of children between the ages of 8 and 13:"
+    = f.input :upperage, label: "Number of children between the ages of 13 and 18:"
+    = f.input :disability, label: "Number of children with a disability:"
     = f.input :ethnicity
     = f.input :depravation
-    = f.input :drugsandabs
-    = f.input :neets
-    = f.input :volnum
-    = f.input :volhours
-    = f.input :volachievetraining
+    = f.input :drugsandabs, label: "Number of children involved with drugs and anti-social behaviour:"
+    = f.input :neets, label: "NEETS:"
+    = f.input :volnum, label: "Number of volunteers:"
+    = f.input :volhours, label: "Total hours volunteered:"
+    = f.input :volachievetraining, label: "Number of volunteers achieving training or employment:"
+
+  
 
   .form-actions
     = f.button :submit
+
+
