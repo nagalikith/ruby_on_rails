@@ -2,10 +2,9 @@
 
 = render 'form'
 
-= render 'meeting_types/form'
 
-
-
+%p= link_to "Add Volunteer", new_volunteer_path, class: 'ajax-modal btn btn-secondary'
+ 
 %table.table
   %thead
     %tr
@@ -15,4 +14,7 @@
 
   %tbody#volunteer-table
     = render 'volunteers/select_table'
+
+
+= render 'meeting_types/form'
 

@@ -4,5 +4,6 @@
 # Examples:
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Volunteer.delete_all
 Volunteer.create(name: "Alex", email: "alex@alex.gmail.com")
 Volunteer.create(name: "alex1", email: "alex1@alex.googlemail.com")

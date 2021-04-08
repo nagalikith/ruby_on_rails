@@ -1,5 +1,22 @@
-%h1 New volunteer
+.modal-dialog
+  .modal-content
+    = simple_form_for Volunteer.new, remote: true do |f|
+      .modal-header
+        %h4.modal-title New Volunteer
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :name
+        = f.input :contactnumber
+        = f.input :addressone
+        = f.input :addresstwo
+        = f.input :email
+        = f.input :postcode
+        = f.input :hours
+        = f.input :target
 
-= render 'form'
-
-= link_to 'Back', volunteers_path
+          
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

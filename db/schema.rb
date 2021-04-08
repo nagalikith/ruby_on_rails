@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
 
   create_table "volunteers", force: :cascade do |t|
     t.string "name"
-    t.integer "contactnumber"
+    t.bigint "contactnumber"
     t.string "addressone"
     t.string "addresstwo"
     t.string "email"
