@@ -3,6 +3,9 @@
 = render 'form'
 
 
+%h3 Volunteers
+
+
 %p= link_to "Add Volunteer", new_volunteer_path, class: 'ajax-modal btn btn-secondary'
  
 %table.table
@@ -15,6 +18,18 @@
   %tbody#volunteer-table
     = render 'volunteers/select_table'
 
+%h3 Weekly Meetings
+%p List all the weekly meetings that happen
 
-= render 'meeting_types/form'
+%p= link_to "Add Meeting", new_meeting_type_path, class: 'ajax-modal btn btn-secondary'
+ 
+%table.table
+  %thead
+    %tr
+      %th Day
+      %th Time
+      %th Meeting Type
+
+  %tbody#meeting-table
+    = render 'meeting_types/form'
 

@@ -7,13 +7,13 @@
           %span &times;
       .modal-body
         = f.input :name
-        = f.input :contactnumber
-        = f.input :addressone
-        = f.input :addresstwo
+        = f.input :contactnumber, label: "Contact number"
+        = f.input :addressone, label: "First line of address"
+        = f.input :addresstwo, label: "Second line of address"
         = f.input :email
         = f.input :postcode
-        = f.input :hours
-        = f.input :target
+        = f.input :hours, label: "Hours volunteered"
+        = f.input :target, label: "Target number of hours to volunteer"
 
           
       .modal-footer
