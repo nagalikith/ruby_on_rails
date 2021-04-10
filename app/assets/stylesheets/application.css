@@ -9,3 +9,67 @@
   *= require custom_flash
   *= require environment_notice
 */
+body {
+  font: helvetica;
+  font-size: 16px;
+}
+
+h1 {
+  font: Be Vietnam;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+h2 {
+  font: Be Vietnam;
+  font-weight: bold;
+  font-size: 1.75em;
+}
+
+.colquart {
+  width: 25%;
+  padding: 10px;
+}
+
+.colthreequart {
+  width: 75%;
+  padding: 10px;
+}
+
+.col.quart {
+  width: 25%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+thead {
+  background-color: lightgray;
+}
+
+th {
+  border: black 1px solid;
+  padding: 5px 10px;
+}
+
+.button {
+  border: black 1px solid;
+  color: white;
+  background-color: black;
+  max-width: max-content;
+  text-align: center;
+  padding: 2.5px 15px;
+}
+
+.button a {
+  color: inherit;
+}
+
+.button a:hover {
+  transition: 0.2s;
+  color: black;
+  background-color: white;
+}

@@ -1,18 +1,30 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @club.name
-%p
-  %b Postcode:
-  = @club.postcode
-%p
-  %b Contactnumber:
-  = @club.contactnumber
-%p
-  %b Paymentduedate:
-  = @club.paymentduedate
+.panel-header
+  %h1
+    = @club.name
+.row
+  .colquart
+    %p
+      %b Postcode:
+      = @club.postcode
+    %p
+      %b Contact Info:
+      = @club.contactnumber
 
-= link_to 'Edit', edit_club_path(@club)
-\|
-= link_to 'Back', clubs_path
+    .button
+      = link_to 'Edit', edit_club_path(@club)
+
+    <br>
+    .button
+      = link_to 'Back', clubs_path
+      
+  .colthreequart
+    %h2 Events Hosted
+    %table
+      %thead
+        %tr
+          %th Event Hosted
+          %th Date of Event
+          %th 
+          
