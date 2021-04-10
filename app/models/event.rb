@@ -22,4 +22,5 @@ class Event < ApplicationRecord
     has_one :event_feedback
     has_many :consent_form
     has_many :case_study
+    belongs_to :club
 end

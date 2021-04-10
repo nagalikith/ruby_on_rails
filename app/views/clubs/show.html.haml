@@ -1,8 +1,7 @@
 %p#notice= notice
 
 .panel-header
-  %h1
-    = @club.name
+  %h1= @club.name
 .row
   .colquart
     %p
@@ -13,12 +12,16 @@
       = @club.contactnumber
 
     .button
-      = link_to 'Edit', edit_club_path(@club)
+      = link_to 'Submit Weekly Hours', clubs_path
 
     <br>
     .button
       = link_to 'Back', clubs_path
-      
+
+    <br>
+    .button
+      = link_to 'Edit', edit_club_path(@club)
+  
   .colthreequart
     %h2 Events Hosted
     %table
@@ -27,4 +30,12 @@
           %th Event Hosted
           %th Date of Event
           %th 
-          
+
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td= event.name
+            %td= event.date
+            %td= link_to 'View', event
+
+              
