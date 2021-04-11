@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  before_action :authenticate_user!
   protect_from_forgery with: :exception
   before_action :update_headers_to_disable_caching
   before_action :ie_warning
@@ -38,6 +39,11 @@ class ApplicationController < ActionController::Base
     response.headers['Expires'] = '0'
     super(file, opts)
   end
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || event_feedbacks_path
+  end
+
 
   private
     def update_headers_to_disable_caching

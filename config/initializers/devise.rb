@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  config.secret_key = '2ca54b29fab1475d3a52f084a7e7585c79be2deccbce0dd0f6861b6ae18ddbc748e07f2698c2fe7d200b6d40f713b264e716b0ea317a4f5e427b94a8638a4368'
+  # config.secret_key = '16e10ebba2b46b0af794db87680d58d38874dff9cdbd00e8d0d157b40754df57fdcc36c77c678caa94e56fb104ce855710082e48f20ea0cec6165e1c5e19c658'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -48,7 +48,6 @@ Devise.setup do |config|
   # or not authentication should be aborted when the value is not present.
   config.authentication_keys = [:email]
 
-
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
@@ -59,12 +58,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [:username]
+  config.case_insensitive_keys = [:email]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [:username]
+  config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -80,7 +79,7 @@ Devise.setup do |config|
   # enable this with :database unless you are using a custom strategy.
   # The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
-  # config.http_authenticatable = false
+  #config.http_authenticatable = false
 
   # If 401 status code should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
@@ -127,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  config.pepper = 'a4eb70508365e77a1458226e43355f25519c22c7d0bb8afb49e9ffc23ce9cd8d299f7ca2ed482021978e5441a8d0e603dc21818e9835c882c6aa79fde4d10584'
+  # config.pepper = 'b9d28ca0daeef1cf49329270c00bf112310ad9d935e96575d299791f666690d70c0867b4efa19815970efc35588d63041190b0bc4466116f5fd4ee7aa47348c3'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
