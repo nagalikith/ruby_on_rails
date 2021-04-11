@@ -17,5 +17,5 @@
 #  fk_rails_...  (event_id => events.id)
 #
 class ConsentForm < ApplicationRecord
-    belong_to :event
+    belongs_to :event
 end

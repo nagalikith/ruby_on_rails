@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
   resources :event_feedbacks
   resources :meeting_types
   resources :prospective_donors
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
 
-  root to: "pages#home"
+  root to: "clubs#index"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
