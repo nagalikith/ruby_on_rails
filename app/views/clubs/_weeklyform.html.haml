@@ -1,20 +1,5 @@
--# frozen_string_literal: true
-= simple_form_for(@club) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-    
-  %table
-    %thead
-      %tr
-        %th Name of Volunteer
-        %th Hours Worked
-        %th 
-    %tbody
-      %tr
-        %td Name
-        .form-inputs
-          %td = f.input :hours
-          %td = f.input :name
-
-  .form-actions
-    = f.button :submit
+- Event.all.where(club_id: @club.id) do |event|
+  %tr
+    %td= event.name
+    %td test
+    %td= check_box_tag 'Present'

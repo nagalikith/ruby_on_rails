@@ -19,7 +19,7 @@
         %td= club.contactnumber
         %td= club.paymentduedate
         %td= link_to 'Show', club
-        %td= link_to 'Edit', edit_club_path(club)
+        %td= link_to 'Edit', edit_club_path(club), class: 'ajax-modal'
         %td= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br

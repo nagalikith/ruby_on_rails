@@ -8,8 +8,7 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1
   def show
-    @events = Event.all
-    @events = @events.where(club_id: @club.id)
+    @events = Event.all.where(club_id: @club.id)
   end
 
   # GET /clubs/new
@@ -19,6 +18,7 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1/edit
   def edit
+    render layout: false
   end
 
   # POST /clubs
