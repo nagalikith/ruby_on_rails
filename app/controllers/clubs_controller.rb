@@ -14,6 +14,7 @@ class ClubsController < ApplicationController
   # GET /clubs/new
   def new
     @club = Club.new
+    render layout: false
   end
 
   # GET /clubs/1/edit
