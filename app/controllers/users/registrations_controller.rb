@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_permitted_parameters
   before_action :configure_account_update_params, only: [:update]
+  before_action :is_admin?, only: [:new, :create]
 
   protected
 
@@ -20,6 +21,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
   end
+
+  private
+
+    def is_admin?
+    if user_signed_in?
+     if current_user.manager?
+       true
+     else
+          '/clubs' #temp pages
+     end
+    else
+          'users/sign_up' #temp pages
+    end
+  end
+
 
   # GET /resource/edit
   # def edit

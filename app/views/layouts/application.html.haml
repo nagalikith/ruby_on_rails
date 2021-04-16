@@ -39,9 +39,21 @@
                 = navbar_link_to :root, title: "Go to the home page", identifier: :home do
                   = icon 'fas', 'home'
                   Home
-                = navbar_link_to '#', title: "Go to an unavailable page", class: 'disabled', identifier: :unavailable_page do
-                  = icon 'fas', 'ban'
-                  Unavailable Page
+                = navbar_link_to 'club_infos', title: "Go to club_infos", identifier: :clubs do
+                  = icon 'fas', 'clubs'
+                  Club Data
+                = navbar_link_to 'case_studies', title: "Go to case_studies", identifier: :clubs do
+                  = icon 'fas', 'clubs'
+                  Case Studies
+                = navbar_link_to 'donations', title: "Go to donations", identifier: :clubs do
+                  = icon 'fas', 'clubs'
+                  Donations
+                = navbar_link_to 'event_calandars', title: "Go to event_calandars", identifier: :clubs do
+                  = icon 'fas', 'clubs'
+                  Calendar
+                = navbar_link_to 'users/sign_up', title: "Go to user_sign_up", identifier: :clubs do
+                  = icon 'fas', 'clubs'
+                  User Management
               - if user_signed_in?
                 %ul.nav.navbar-nav.ml-auto
                   %li.nav-item.dropdown

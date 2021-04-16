@@ -1,5 +1,8 @@
 class ClubsController < ApplicationController
   before_action :set_club, only: [:show, :edit, :update, :destroy]
+  
+  
+  # authorize_resource
 
   # GET /clubs
   def index
