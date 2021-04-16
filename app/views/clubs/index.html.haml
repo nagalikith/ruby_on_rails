@@ -1,6 +1,9 @@
 %h1 Listing clubs
 
-%table
+%input{:id => "searchInput", :onkeyup => "searchFunc()", :placeholder => "Enter club name..."}
+%p
+
+%table{:id => "clubTable"}
   %thead
     %tr
       %th Name
@@ -21,6 +24,24 @@
         %td= link_to 'Show', club
         %td= link_to 'Edit', edit_club_path(club), class: 'ajax-modal'
         %td= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' }
+
+:javascript
+  function searchFunc() {
+    input = document.getElementById("searchInput").value.toUpperCase();
+    table = document.getElementById("clubTable");
+    row = table.getElementsByTagName("tr");
+    for (i = 0; i < row.length; i++) {
+      clubName = row[i].getElementsByTagName("td")[0];
+      if (clubName) {
+        text = clubName.textContent || clubName.innerText;
+        if (text.toUpperCase().indexOf(input) > -1) {
+          row[i].style.display = "";
+        } else {
+          row[i].style.display = "none";
+        }
+      }
+    }
+  }
 
 %br
 
