@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { registrations: 'users/registrations' }
+  devise_for :users, :conrollers => { registrations: 'users/registrations', sessions: 'users/sessions'}
   resources :event_feedbacks
   resources :meeting_types
   resources :prospective_donors
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :donors
   resources :club_infos
   resources :clubs
+  resources :users
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all

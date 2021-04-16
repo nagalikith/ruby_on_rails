@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :update_headers_to_disable_caching
   before_action :ie_warning
+  # before_action :configure_permitted_parameters, if: :devise_controller?
 
   ## The following are used by our Responder service classes so we can access
   ## the instance variable for the current resource easily via a standard method
@@ -22,6 +23,14 @@ class ApplicationController < ActionController::Base
 
   def current_resource=(val)
     instance_variable_set(:"@#{resource_name}", val)
+  end
+
+  protected
+ 
+  def configure_permitted_parameters
+    #  devise_parameter_sanitizer.permit(:sign_up).push(:email, :club_id)
+    #  devise_parameter_sanitizer.permit(:account_update).push(:email, :club_id)
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:club_id])
   end
 
   # Catch NotFound exceptions and handle them neatly, when URLs are mistyped or mislinked
