@@ -45,6 +45,12 @@ class EventsController < ApplicationController
     redirect_to events_url, notice: 'Event was successfully destroyed.'
   end
 
+  # POST /events/search
+  def search
+    @events = Event.where(name: params[:search][:clubname])
+  render :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event

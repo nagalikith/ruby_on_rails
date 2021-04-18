@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :prospective_donors
   resources :consent_forms
   resources :case_studies
-  resources :events
+  resources :events do
+    post :search, on: :collection
+  end
   resources :volunteers
   resources :donations
   resources :donors
