@@ -15,4 +15,5 @@
 #  updated_at    :datetime         not null
 #
 class Volunteer < ApplicationRecord
+    belongs_to :club
 end

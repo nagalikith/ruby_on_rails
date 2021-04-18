@@ -1,6 +1,6 @@
 .modal-dialog
   .modal-content
-    = simple_form_for @club do |f|
+    = simple_form_for @club, remote: true do |f|
       .modal-header
         %h4.modal-title Create club
         %button.close{ type: :button, data: { dismiss: :modal } }

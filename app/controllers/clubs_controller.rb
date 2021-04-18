@@ -36,9 +36,10 @@ class ClubsController < ApplicationController
   # PATCH/PUT /clubs/1
   def update
     if @club.update(club_params)
-      redirect_to @club, notice: 'Club was successfully updated.'
+      @clubs = Club.all
+      render 'update_success'
     else
-      render :edit
+      render 'update_failure'
     end
   end
 
