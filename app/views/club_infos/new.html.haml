@@ -21,15 +21,27 @@
 %h3 Weekly Meetings
 %p List all the weekly meetings that happen
 
-%p= link_to "Add Meeting", new_meeting_type_path, class: 'ajax-modal btn btn-secondary'
- 
-%table.table
+%p= link_to "Add Meeting", new_meeting_type_path, class: 'btn btn-secondary'
+%p= button_tag "Add Row", class: 'btn btn-secondary', id: 'addMeeting' 
+
+
+
+%table.table.blank-table
   %thead
     %tr
-      %th Day
-      %th Time
-      %th Meeting Type
-
+      %th
+      %th
+      %th 
+      %th 
   %tbody#meeting-table
-    = render 'meeting_types/form'
+    %tr
+      %td= select_tag "days", options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
+      %td= time_select "time", ignore_date: true
+      %td= select_tag "type", options_for_select(["Boys only", "Girls only"])
+      %td= button_tag "Delete Row", class: 'btn btn-secondary deleteRow'
+      
+
+
+
+
 
