@@ -9,6 +9,12 @@
 %p
   %b Comment:
   = @event.comment
+%p
+  %b Club Name:
+  = @event.clubname
+%p
+  %b Club ID:
+  = @event.club_id
 
 = link_to 'Edit', edit_event_path(@event)
 \|

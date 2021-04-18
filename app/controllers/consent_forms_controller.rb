@@ -17,6 +17,7 @@ class ConsentFormsController < ApplicationController
 
   # GET /consent_forms/1/edit
   def edit
+    render layout: false
   end
 
   # POST /consent_forms
@@ -33,9 +34,10 @@ class ConsentFormsController < ApplicationController
   # PATCH/PUT /consent_forms/1
   def update
     if @consent_form.update(consent_form_params)
-      redirect_to @consent_form, notice: 'Consent form was successfully updated.'
+      @consent_forms = ConsentForm.all
+      render 'update_success'
     else
-      render :edit
+      render 'update_failure'
     end
   end
 
@@ -53,6 +55,6 @@ class ConsentFormsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def consent_form_params
-      params.require(:consent_form).permit(:participantname)
+      params.require(:consent_form).permit(:participantname, :event_id)
     end
 end

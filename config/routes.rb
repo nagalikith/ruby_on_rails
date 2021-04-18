@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :club_infos
   resources :clubs
   resources :users
+  
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
-
+  get '/events/:event_individual', to: 'pages#event_id_page', as: :event_id_page
   root to: "clubs#index"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

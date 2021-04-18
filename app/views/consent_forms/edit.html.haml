@@ -1,7 +1,22 @@
-%h1 Editing consent_form
+-# %h1 Editing consent_form
 
-= render 'form'
+-# = render 'form'
 
-= link_to 'Show', @consent_form
-\|
-= link_to 'Back', consent_forms_path
+-# = link_to 'Show', @consent_form
+-# \|
+-# = link_to 'Back', consent_forms_path
+.modal-dialog
+    .modal-content
+        = simple_form_for @consent_form, remote: true do |f|
+            .modal-header
+                %h4.modal-title Editing product
+                %button.close{ type: :button, data: { dismiss: :modal } }
+                    %span &times;
+            .modal-body
+                = f.input :participantname
+                = f.association :event
+
+            .modal-footer
+                .pull-left
+                    = dismiss_modal_button
+                = f.button :submit, class: 'btn btn-outline-dark'

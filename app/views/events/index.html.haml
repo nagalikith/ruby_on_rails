@@ -6,8 +6,8 @@
       %th Name
       %th Date
       %th Comment
-      %th
-      %th
+      %th Club Name
+      %th Club ID
       %th
 
   %tbody
@@ -16,6 +16,9 @@
         %td= event.name
         %td= event.date
         %td= event.comment
+        %td= event.clubname
+        %td= event.club_id
+        %td= link_to event.id, event_id_page_path(event_individual: event.id)
         %td= link_to 'Show', event
         %td= link_to 'Edit', edit_event_path(event)
         %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }

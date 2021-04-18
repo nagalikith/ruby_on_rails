@@ -28,11 +28,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if user_signed_in?
      if current_user.manager?
        true
+       puts 'MANAGER'
      else
           '/clubs' #temp pages
+          puts 'NOT MANAGER'
      end
     else
           'users/sign_up' #temp pages
+          puts 'NOT SIGNED IN'
     end
   end
 
