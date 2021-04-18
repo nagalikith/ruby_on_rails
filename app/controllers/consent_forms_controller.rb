@@ -55,6 +55,6 @@ class ConsentFormsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def consent_form_params
-      params.require(:consent_form).permit(:participantname, :event_id)
+      params.require(:consent_form).permit(:participantname, :event_id, :image)
     end
 end
