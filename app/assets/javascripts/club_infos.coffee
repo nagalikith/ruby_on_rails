@@ -4,13 +4,13 @@
 
 $ ->
     $('.deleteRow').click -> 
-        $(this).closest('tr').remove()
-
-
+        if $("#meeting-table tr").length > 1
+            $(this).closest('tr').remove()
     
     $('#addMeeting').click -> 
-        lastRow = $("#meeting-table tr:last")
-        lastRow.clone(true).insertAfter(lastRow)
+        if $("#meeting-table tr").length < 14
+            lastRow = $("#meeting-table tr:last")
+            lastRow.clone(true).insertAfter(lastRow)
         
         
         

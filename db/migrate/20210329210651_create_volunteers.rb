@@ -3,10 +3,8 @@ class CreateVolunteers < ActiveRecord::Migration[6.0]
     create_table :volunteers do |t|
       t.string :name
       t.bigint :contactnumber
-      t.string :addressone
-      t.string :addresstwo
       t.string :email
-      t.string :postcode
+      t.boolean :youngPerson
       t.float :hours
       t.float :target
 

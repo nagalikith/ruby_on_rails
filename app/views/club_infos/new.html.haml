@@ -21,24 +21,26 @@
 %h3 Weekly Meetings
 %p List all the weekly meetings that happen
 
-%p= link_to "Add Meeting", new_meeting_type_path, class: 'btn btn-secondary'
-%p= button_tag "Add Row", class: 'btn btn-secondary', id: 'addMeeting' 
+
+%p= button_tag "Add Meeting", class: 'btn btn-secondary', id: 'addMeeting' 
 
 
 
 %table.table.blank-table
   %thead
     %tr
-      %th
-      %th
-      %th 
+      %th Day
+      %th Time
+      %th Meeting Type
       %th 
   %tbody#meeting-table
     %tr
-      %td= select_tag "days", options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
+      %td= select_tag "days", options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]), class: 'btn btn-outline-secondary dropdown-toggle'
       %td= time_select "time", ignore_date: true
-      %td= select_tag "type", options_for_select(["Boys only", "Girls only"])
-      %td= button_tag "Delete Row", class: 'btn btn-secondary deleteRow'
+      %td= select_tag "type", options_for_select(["Boys only", "Girls only"]), class: 'btn btn-outline-secondary dropdown-toggle'
+      %td= button_tag "X Remove", class: 'btn btn-secondary deleteRow'
+        
+
       
 
 
