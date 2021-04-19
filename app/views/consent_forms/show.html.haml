@@ -1,28 +1,16 @@
--# %p#notice= notice
+%p#notice= notice
 
--# %p
--#   %b Participantname:
--#   = @consent_form.participantname
+%p
+  %b Participant Name:
+  = @consent_form.participantname
+  %b Consent form for Participant:
+  - if @consent_form.image.attached?
+    = image_tag(url_for(@consent_form.image), width: 900)
 
--# = link_to 'Edit', edit_consent_form_path(@consent_form)
--# \|
--# = link_to 'Back', consent_forms_path
+= link_to 'Edit', edit_consent_form_path(@consent_form)
+\|
+= link_to 'Back', consent_forms_path
 
-.panel.panel-default
-  .panel-heading
-    %h3.panel-title= @consent_form.participantname
-  .panel-body
-    %p
-      %b EventID:
-      = @consent_form.event_id
-    - if @consent_form.image.attached?
-      %b Consent Form for:
-      = @consent_form.participantname
-      = image_tag(url_for(@consent_form.image), width: 900)
-  .panel-footer
-    = link_to 'Edit', edit_consent_form_path(@consent_form)
-    \|
-    = link_to 'Back', consent_forms_path
 
 
     

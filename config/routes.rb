@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :consent_forms
   resources :case_studies
   resources :events do
+    resources :consent_forms
     post :search, on: :collection
   end
   resources :volunteers
