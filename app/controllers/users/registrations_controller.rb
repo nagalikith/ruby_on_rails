@@ -24,11 +24,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
-    def is_admin?
+  def is_admin?
     if user_signed_in?
      if current_user.manager?
        true
-       puts 'MANAGER'
+       puts "I am manager"
+       'users/sign_up'
      else
           '/clubs' #temp pages
           puts 'NOT MANAGER'

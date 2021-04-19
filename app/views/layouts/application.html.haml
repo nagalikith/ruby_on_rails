@@ -54,9 +54,9 @@
                 -# = navbar_link_to event_calandars_path, title: "Go to event_calandars", identifier: :event_calandars do
                 -#   = icon 'fas', 'event_calandars'
                 -#   Calendar
-                -# = navbar_link_to 'users/sign_up', title: "Go to user_sign_up", identifier: :users/sign_up do
-                -#   = icon 'fas', 'users/sign_up'
-                -#   User Management
+                = navbar_link_to new_user_registration_path, title: "Go to user_sign_up", identifier: :new_user_registration do
+                  = icon 'fas', 'users/sign_up'
+                  User Management
               - if user_signed_in?
                 %ul.nav.navbar-nav.ml-auto
                   %li.nav-item.dropdown
