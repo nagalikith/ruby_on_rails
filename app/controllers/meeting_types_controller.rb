@@ -1,5 +1,5 @@
 class MeetingTypesController < ApplicationController
-  before_action :set_meeting_type, only: [:show, :edit, :update, :destroy]
+  before_action :set_meeting_type, only: [:show, :edit, :update, :destroy, :search]
 
   # GET /meeting_types
   def index
@@ -10,6 +10,14 @@ class MeetingTypesController < ApplicationController
   def show
   end
 
+  # POST /meeting_types/search
+  def search
+    @meeting_types = Product.all
+    @meeting_types = @meeting_types.where(club_infos_id: params[:search][:club_infos_id])   if params[:search][:club_infos_id].present?
+
+    render :index
+  end
+
   # GET /meeting_types/new
   def new
     @meeting_type = MeetingType.new
@@ -18,6 +26,8 @@ class MeetingTypesController < ApplicationController
   # GET /meeting_types/1/edit
   def edit
   end
+
+  
 
   # POST /meeting_types
   def create
@@ -53,6 +63,6 @@ class MeetingTypesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def meeting_type_params
-      params.require(:meeting_type).permit(:day, :time, :sessiontype)
+      params.require(:meeting_type).permit(:day, :time, :sessiontype, :club_infos_id)
     end
 end

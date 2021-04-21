@@ -11,6 +11,10 @@ $ ->
         if $("#meeting-table tr").length < 14
             lastRow = $("#meeting-table tr:last")
             lastRow.clone(true).insertAfter(lastRow)
+    
+
+
+
         
         
         

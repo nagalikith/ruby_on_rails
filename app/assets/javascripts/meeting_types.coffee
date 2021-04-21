@@ -2,3 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+$ ->
+    $('#addMeeting').click -> 
+        $('#modalWindow').modal('hide')
+
+
+    $('select').on('change') ->
+        if $("option:selected", this) == "Other"
+            $('#newMeetingType').show()
+        else
+            $('#newMeetingType').hide()

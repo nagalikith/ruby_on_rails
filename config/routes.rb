@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :event_feedbacks
-  resources :meeting_types
+  resources :meeting_types do
+    post :search, on: :collection
+  end
   resources :prospective_donors
   resources :consent_forms
   resources :case_studies

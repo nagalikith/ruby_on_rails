@@ -1,6 +1,31 @@
 %h1 Enter Affiliation Data
 
+
+
+
+
+%h3 Club Info
+
 = render 'form'
+
+%h3 Weekly Meetings
+%p List all the weekly meetings that happen
+
+%p= button_tag "Add Meeting", class: 'btn btn-secondary', id: 'addMeeting' 
+
+%table.table.blank-table
+  %thead
+    %tr
+      %th Day
+      %th Time
+      %th Meeting Type
+      %th 
+  %tbody#meeting-table
+    %tr
+      %td= select_tag "days", options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]), class: 'btn btn-outline-secondary dropdown-toggle'
+      %td= time_select "time", ignore_date: true
+      %td= select_tag "type", options_for_select(["Boys only", "Girls only"]), class: 'btn btn-outline-secondary dropdown-toggle'
+      %td= button_tag "X Remove", class: 'btn btn-secondary deleteRow'
 
 
 %h3 Volunteers
@@ -18,27 +43,7 @@
   %tbody#volunteer-table
     = render 'volunteers/select_table'
 
-%h3 Weekly Meetings
-%p List all the weekly meetings that happen
 
-
-%p= button_tag "Add Meeting", class: 'btn btn-secondary', id: 'addMeeting' 
-
-
-
-%table.table.blank-table
-  %thead
-    %tr
-      %th Day
-      %th Time
-      %th Meeting Type
-      %th 
-  %tbody#meeting-table
-    %tr
-      %td= select_tag "days", options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]), class: 'btn btn-outline-secondary dropdown-toggle'
-      %td= time_select "time", ignore_date: true
-      %td= select_tag "type", options_for_select(["Boys only", "Girls only"]), class: 'btn btn-outline-secondary dropdown-toggle'
-      %td= button_tag "X Remove", class: 'btn btn-secondary deleteRow'
         
 
       
