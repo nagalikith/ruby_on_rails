@@ -10,12 +10,15 @@ class MeetingTypesController < ApplicationController
   def show
   end
 
-  # POST /meeting_types/search
+  # GET /meeting_types/search
   def search
-    @meeting_types = Product.all
-    @meeting_types = @meeting_types.where(club_infos_id: params[:search][:club_infos_id])   if params[:search][:club_infos_id].present?
-
+    @meeting_types = MeetingType.all
+    
+    alert 'yes'
+    @meeting_types = @meeting_types.where(club_infos_id: params[:club_infos_id]) if params[:club_infos_id].present?
     render :index
+
+    
   end
 
   # GET /meeting_types/new
@@ -34,11 +37,15 @@ class MeetingTypesController < ApplicationController
     @meeting_type = MeetingType.new(meeting_type_params)
 
     if @meeting_type.save
-      redirect_to @meeting_type, notice: 'Meeting type was successfully created.'
+      @meeting_types = MeetingType.all.where(club_infos_id: params[:search][:club_infos_id])
+      render 'new_meeting_success'
+      #redirect_to @meeting_type, notice: 'Meeting type was successfully created.'
     else
-      render :new
+      render 'new_meeting_failure'
+      #render :new
     end
   end
+
 
   # PATCH/PUT /meeting_types/1
   def update

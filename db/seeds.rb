@@ -3,10 +3,15 @@
 #
 # Examples:
 
-User.create(email:
-'bgsyc@sheffield.ac.uk', password:
-'southyork', password_confirmation: 'southyork', club_id: '1', manager: true)
-Club.where(name: 'test club')
+#User.create(email:
+#'bgsyc@sheffield.ac.uk', password:
+#'southyork', password_confirmation: 'southyork', club_id: '1', manager: true)
+#Club.where(name: 'test club')
+User.delete_all
+Club.delete_all
+Club.where(name: 'new club').first_or_create(id: '2')
+User.where(email:'testclub@sheffield.ac.uk').first_or_create(password:'clubpass', password_confirmation: 'clubpass', club_id: '2', manager: false)
+
 #User.where(email:
 #'bgsyc@sheffield.ac.uk').first_or_create(password:
 #'southyork', password_confirmation: 'southyork', club_id: '1', manager: true)

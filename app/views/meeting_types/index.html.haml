@@ -1,4 +1,6 @@
-%h1 Listing meeting_types
+%h1 What types of meetings happen each week?
+
+%p= link_to "Add Meeting", new_meeting_type_path, class: 'ajax-modal btn btn-secondary'
 
 %table
   %thead
@@ -6,15 +8,10 @@
       %th Day
       %th Time
       %th Session Type
+      %th 
 
-  %tbody
-    - @meeting_types.each do |meeting_type|
-      %tr
-        %td= meeting_type.day
-        %td= meeting_type.time
-        %td= meeting_type.sessiontype
-        %td= link_to 'Destroy', meeting_type, method: :delete, data: { confirm: 'Are you sure?' }
+  %tbody#meetingTable
+    = render 'meeting_table'
 
 %br
 
-= link_to 'Add Meeting', new_meeting_type_path
