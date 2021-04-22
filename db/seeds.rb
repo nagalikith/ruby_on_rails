@@ -3,13 +3,14 @@
 #
 # Examples:
 
-# User.create(email:
-# 'bgsyc@sheffield.ac.uk', password:
-# 'southyork', password_confirmation: 'southyork', club_id: '1')
-# Club.where(name: 'test club')
-User.where(email:
-'bgsyc@sheffield.ac.uk').first_or_create(password:
-'southyork', password_confirmation: 'southyork', club_id: '1', manager: TRUE)
+User.create(email:
+'bgsyc@sheffield.ac.uk', password:
+'southyork', password_confirmation: 'southyork', club_id: '1', manager: true)
+Club.where(name: 'test club')
+#User.where(email:
+#'bgsyc@sheffield.ac.uk').first_or_create(password:
+#'southyork', password_confirmation: 'southyork', club_id: '1', manager: true)
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 

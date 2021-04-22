@@ -204,11 +204,9 @@ ActiveRecord::Schema.define(version: 2021_04_22_215035) do
 
   create_table "volunteers", force: :cascade do |t|
     t.string "name"
-    t.integer "contactnumber"
-    t.string "addressone"
-    t.string "addresstwo"
+    t.bigint "contactnumber"
     t.string "email"
-    t.string "postcode"
+    t.boolean "youngPerson"
     t.float "hours"
     t.float "target"
     t.datetime "created_at", precision: 6, null: false

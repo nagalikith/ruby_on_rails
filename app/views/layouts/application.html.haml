@@ -46,6 +46,10 @@
                 = navbar_link_to club_infos_path, title: "Go to club_infos", identifier: :clubdata do
                   = icon 'fas', 'globe'
                   Club Data
+                /- if can?(:read, rails_admin)
+                = navbar_link_to volunteers_path, title: "See donors and volunteers", identifier: :volunteers do
+                  = icon 'fas', 'users'
+                  Donors and Volunteers
                 = navbar_link_to events_path, title: "Go to events", identifier: :events do
                   = icon 'fas', 'map-marker'
                   Events
