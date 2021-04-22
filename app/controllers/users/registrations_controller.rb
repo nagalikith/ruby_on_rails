@@ -2,15 +2,15 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_permitted_parameters
+  # before_action :configure_permitted_parameters
   before_action :configure_account_update_params, only: [:update]
   before_action :is_admin?, only: [:new, :create]
 
   protected
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up).push(:club_id)
-  end
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up).push(:club_id)
+  # end
 
   # GET /resource/sign_up
   def new
@@ -25,19 +25,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def is_admin?
-    if user_signed_in?
      if current_user.manager?
        true
-       puts "I am manager"
-       'users/sign_up'
+       puts "I AM A MANAGER"
+      #  'users/sign_up'
      else
-          '/clubs' #temp pages
-          puts 'NOT MANAGER'
+        false
+          # '/clubs' #temp pages
+          # puts 'NOT MANAGER'
      end
-    else
-          'users/sign_up' #temp pages
-          puts 'NOT SIGNED IN'
-    end
+    # else
+    #       'users/sign_up' #temp pages
+    #       puts 'NOT SIGNED IN'
+    # end
   end
 
 
@@ -72,10 +72,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:sign_up, keys: [:club_id])
   end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  #If you have extra params to permit, append them to the sanitizer.
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:club_id])
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
