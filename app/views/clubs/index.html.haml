@@ -6,21 +6,12 @@
       %th Name
       %th Postcode
       %th Contactnumber
-      %th Paymentduedate
       %th
       %th
       %th
 
-  %tbody
-    - @clubs.each do |club|
-      %tr
-        %td= club.name
-        %td= club.postcode
-        %td= club.contactnumber
-        %td= club.paymentduedate
-        %td= link_to 'Show', club
-        %td= link_to 'Edit', edit_club_path(club), class: 'ajax-modal'
-        %td= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' }
+  %tbody#clubs-table
+  = render 'clubs_table'
 
 %br
 

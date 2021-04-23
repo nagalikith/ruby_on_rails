@@ -36,7 +36,6 @@ class ClubsController < ApplicationController
   # PATCH/PUT /clubs/1
   def update
     if @club.update(club_params)
-      @clubs = Club.all
       render 'update_success'
     else
       render 'update_failure'

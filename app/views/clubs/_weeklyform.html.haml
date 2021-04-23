@@ -1,5 +1,5 @@
-- Event.all.where(club_id: @club.id) do |event|
+- Volunteer.all.where(club_id: @club.id) do |volunteer|
   %tr
-    %td= event.name
+    %td= volunteer.name
     %td test
     %td= check_box_tag 'Present'
