@@ -45,6 +45,12 @@ class EventsController < ApplicationController
     redirect_to events_url, notice: 'Event was successfully destroyed.'
   end
 
+  # POST /events/search
+  def search
+    @events = Event.where(name: params[:search][:clubname])
+  render :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -53,6 +59,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:name, :date, :comment)
+      params.require(:event).permit(:name, :date, :comment, :clubname, :club_id)
     end
 end
