@@ -3,7 +3,7 @@ class CreateClubs < ActiveRecord::Migration[6.0]
     create_table :clubs do |t|
       t.string :name
       t.string :postcode
-      t.bigint :contactnumber
+      t.string :contactnumber
       t.date :paymentduedate
 
       t.timestamps
