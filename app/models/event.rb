@@ -22,7 +22,7 @@
 #  fk_rails_...  (club_id => clubs.id)
 #
 class Event < ApplicationRecord
-    has_one :event_feedback
+    has_many :event_feedback
     belongs_to :club
     has_many :consent_form , dependent: :destroy
     has_many :case_study
