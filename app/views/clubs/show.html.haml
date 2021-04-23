@@ -12,9 +12,12 @@
       = @club.contactnumber
 
     %br
+
     %b Weekly Meetings:
     - MeetingType.new.mostRecentMeetings(@club.id).each do |meeting|
       %p #{meeting.day} at #{meeting.time.to_s(:time)} | #{meeting.sessiontype}
+    
+    %br
 
     -# .button
     -#   = link_to 'Submit Weekly Hours', hours_clubs_path(@club), method: :post
