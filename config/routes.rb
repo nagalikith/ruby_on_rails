@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # get 'users/index'
   devise_for :users, :conrollers => { registrations: 'users/registrations', sessions: 'users/sessions'}
   resources :event_feedbacks
-  resources :meeting_types
+  resources :meeting_types do
+    post :search, on: :collection
+  end
   resources :prospective_donors
   resources :consent_forms
   resources :devise

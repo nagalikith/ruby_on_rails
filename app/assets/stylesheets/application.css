@@ -8,4 +8,7 @@
   *= require warning_page
   *= require custom_flash
   *= require environment_notice
+  *= require volunteers
+  *= require club_infos
+  *= require meeting_types
 */
