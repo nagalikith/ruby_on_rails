@@ -1,0 +1,23 @@
+- if @prospective_donors.length > 0
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Contact Number
+        %th Internalcontactlink
+        %th Email
+
+    %tbody
+      - @prospective_donors.each do |prospective_donor|
+        %tr
+          %td= prospective_donor.name
+          %td= prospective_donor.contactnumber
+          %td= prospective_donor.internalcontactlink
+          %td= prospective_donor.email
+          %td= link_to 'Edit', edit_prospective_donor_path(prospective_donor)
+          %td= link_to 'Delete', prospective_donor, method: :delete, data: { confirm: 'Are you sure?' }
+
+- else
+  .error-message
+    %h5 No prospective donors available
