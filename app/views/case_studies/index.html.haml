@@ -2,7 +2,7 @@
 
 - if @case_studies.length > 0
 
-  %p There are #{@case_studies.size} events to search through.
+  %p There are #{@case_studies.size} case studies to search through.
 
   %table
     %thead
@@ -14,20 +14,13 @@
         %th
         %th
 
-    %tbody
-      - @case_studies.each do |case_study|
-        %tr
-          %td= case_study.date
-          %td= case_study.participant
-          %td= Club.find(case_study.club_id).name
-          %td= case_study.comment
-          %td= link_to 'Show', case_study
-          %td= link_to 'Delete', case_study, method: :delete, data: { confirm: 'Are you sure?' }
+    %tbody#case-study-table
+      = render 'casestudy_table'
 
 - else
   .error-message
     %h5 No case studies exist
 
 %br
-.button
-  = link_to 'New Case study', new_case_study_path
+.button.btn.btn-secondary
+  = link_to 'New Case study', new_case_study_path, class: 'ajax-modal'

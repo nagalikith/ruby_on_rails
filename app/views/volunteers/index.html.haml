@@ -12,8 +12,31 @@
 %br
 %br
 
+%p= link_to "Add Volunteer", new_volunteer_path, class: 'ajax-modal btn btn-secondary'
 
-= render 'volunteers_table'
+- if @volunteers.length > 0
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Contact Number
+        %th Young Person?
+        %th Email
+        %th Hours
+        %th Target
+        %th
+        %th
+
+    %tbody#volunteerTable
+      = render 'volunteers_table'
+
+
+
+- else
+  .error-message
+    %h5 No volunteers available
+
 
 
 
