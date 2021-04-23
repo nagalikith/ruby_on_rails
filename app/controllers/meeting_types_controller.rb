@@ -18,7 +18,6 @@ class MeetingTypesController < ApplicationController
     @meeting_types = @meeting_types.where(club_infos_id: params[:club_infos_id]) if params[:club_infos_id].present?
     render :index
 
-    
   end
 
   # GET /meeting_types/new

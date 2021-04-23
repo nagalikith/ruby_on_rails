@@ -1,15 +1,5 @@
-%h1 Donors and Volunteers
+%h1 Volunteers
 
-
-.btn-group.btn-group-toggle{"data-toggle" => "buttons"}
-  %label.btn.btn-primary.active
-    %input{:type => "radio", :name => "options", :id => "option1", :autocomplete => "off", :checked => true}  Volunteers
-  %label.btn.btn-primary
-    %input{:type => "radio", :name => "options", :id => "option2", :autocomplete => "off"} Donors
-  %label.btn.btn-primary
-    %input{:type => "radio", :name => "options", :id => "option3", :autocomplete => "off"} Prostective Donors
-
-%br
 %br
 
 %p= link_to "Add Volunteer", new_volunteer_path, class: 'ajax-modal btn btn-secondary'

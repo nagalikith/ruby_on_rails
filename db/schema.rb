@@ -168,12 +168,12 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
 
   create_table "meeting_types", force: :cascade do |t|
     t.string "day"
-    t.integer "time"
+    t.time "time"
     t.string "sessiontype"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "club_infos_id", null: false
-    t.index ["club_infos_id"], name: "index_meeting_types_on_club_infos_id"
+    t.bigint "club_info_id", null: false
+    t.index ["club_info_id"], name: "index_meeting_types_on_club_info_id"
   end
 
   create_table "prospective_donors", force: :cascade do |t|
@@ -237,6 +237,6 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
   add_foreign_key "event_calendars", "events"
   add_foreign_key "event_feedbacks", "events"
   add_foreign_key "events", "clubs"
-  add_foreign_key "meeting_types", "club_infos", column: "club_infos_id"
+  add_foreign_key "meeting_types", "club_infos"
   add_foreign_key "users", "clubs"
 end
