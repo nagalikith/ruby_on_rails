@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_215035) do
   create_table "clubs", force: :cascade do |t|
     t.string "name"
     t.string "postcode"
-    t.integer "contactnumber"
+    t.bigint "contactnumber"
     t.date "paymentduedate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_215035) do
   create_table "donors", force: :cascade do |t|
     t.string "name"
     t.text "type"
-    t.integer "contactnumber"
+    t.bigint "contactnumber"
     t.text "email"
     t.integer "totaldonation"
     t.datetime "created_at", precision: 6, null: false
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_215035) do
   create_table "prospective_donors", force: :cascade do |t|
     t.string "name"
     t.string "type"
-    t.integer "contactnumber"
+    t.bigint "contactnumber"
     t.string "internalcontactlink"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false

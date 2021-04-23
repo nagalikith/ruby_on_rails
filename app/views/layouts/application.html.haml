@@ -43,7 +43,7 @@
                   = navbar_link_to clubs_path, title: "Go to the List all clubs page", identifier: :clubs do
                     = icon 'fas', 'book'
                     Clubs
-                - if !can?(:read, rails_admin)
+                - if !can?(:read, rails_admin) and user_signed_in?
                   = navbar_link_to club_path(id: current_user[:club_id]), title: "Go to club_infos", identifier: :clubdata do
                     = icon 'fas', 'globe'
                     My Club
