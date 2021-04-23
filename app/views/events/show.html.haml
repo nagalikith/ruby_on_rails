@@ -4,11 +4,14 @@
   %b Name:
   = @event.name
 %p
-  %b Date:
-  = @event.date
-%p
   %b Comment:
   = @event.comment
+%p
+  %b Start Time:
+  = @event.start_time
+%p
+  %b End Time:
+  = @event.end_time
 
 = link_to 'Edit', edit_event_path(@event)
 \|

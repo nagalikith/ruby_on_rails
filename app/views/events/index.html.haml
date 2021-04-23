@@ -4,18 +4,20 @@
   %thead
     %tr
       %th Name
-      %th Date
+      -# %th Date
       %th Comment
-      %th
-      %th
+      %th Start Time
+      %th End Time
       %th
 
   %tbody
     - @events.each do |event|
       %tr
         %td= event.name
-        %td= event.date
+        -# %td= event.date
         %td= event.comment
+        %td= event.start_time
+        %td= event.end_time
         %td= link_to 'Show', event
         %td= link_to 'Edit', edit_event_path(event)
         %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }

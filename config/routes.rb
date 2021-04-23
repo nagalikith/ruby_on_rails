@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  resources :event_calendars
   resources :event_feedbacks
   resources :meeting_types
   resources :prospective_donors
@@ -19,8 +20,10 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
-
-  root to: "pages#home"
+  get '/events/:event_individual', to: 'pages#event_id_page', as: :event_id_page
+  
+  #root to: "pages#home"
+  root to: "event_calendars#index"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

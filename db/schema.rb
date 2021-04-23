@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_103033) do
+ActiveRecord::Schema.define(version: 2021_04_22_215035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,13 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "event_calendars", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_event_calendars_on_event_id"
+  end
+
   create_table "event_feedbacks", force: :cascade do |t|
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
@@ -117,6 +124,8 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "club_id", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.index ["club_id"], name: "index_events_on_club_id"
   end
 
@@ -163,6 +172,8 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "club_id", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.index ["club_id"], name: "index_users_on_club_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -186,6 +197,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
   add_foreign_key "club_infos", "clubs"
   add_foreign_key "consent_forms", "events"
   add_foreign_key "donations", "donors"
+  add_foreign_key "event_calendars", "events"
   add_foreign_key "event_feedbacks", "events"
   add_foreign_key "events", "clubs"
   add_foreign_key "meeting_types", "club_infos", column: "club_infos_id"
