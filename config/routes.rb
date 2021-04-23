@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   resources :event_calendars
   resources :event_feedbacks
   resources :meeting_types do
-    collection do
-      get 'search'
-    end
+    get 'meeting_types/search'
   end
   resources :prospective_donors
   resources :consent_forms

@@ -43,16 +43,14 @@
                   = navbar_link_to clubs_path, title: "Go to the List all clubs page", identifier: :clubs do
                     = icon 'fas', 'book'
                     Clubs
-                = navbar_link_to club_infos_path, title: "Go to club_infos", identifier: :clubdata do
-                  = icon 'fas', 'globe'
-                  Club Data
+                - if !can?(:read, rails_admin)
+                  = navbar_link_to club_path(id: current_user[:club_id]), title: "Go to club_infos", identifier: :clubdata do
+                    = icon 'fas', 'globe'
+                    My Club
                 - if can?(:read, rails_admin)
                   = navbar_link_to volunteers_path, title: "See donors and volunteers", identifier: :volunteers do
                     = icon 'fas', 'users'
                     Donors and Volunteers
-                = navbar_link_to events_path, title: "Go to events", identifier: :events do
-                  = icon 'fas', 'map-marker'
-                  Events
                 = navbar_link_to case_studies_path, title: "Go to case_studies", identifier: :case_studies do
                   = icon 'fas', 'camera'
                   Case Studies
