@@ -30,7 +30,12 @@ class CaseStudiesController < ApplicationController
     @case_study = CaseStudy.new(case_study_params)
 
     if @case_study.save
-      @case_study = CaseStudy.all
+      if current_user.manager
+        @case_studies = CaseStudy.all
+      else
+        @case_studies = CaseStudy.all.where(club_id: current_user.club_id)
+        #Ensures only the case studies that are matching the current users Club ID is shown.
+      end
       render 'new_case_success'
     else
       render 'new_case_failure'
