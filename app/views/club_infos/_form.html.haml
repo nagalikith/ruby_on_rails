@@ -4,8 +4,11 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
+    /Assigns the foreign key as the club_id of the club that's logged in
     = f.hidden_field :club_id, :value => Club.find(current_user[:club_id]).id
     = f.input :date, label: "Date:"
+    %br
+    %h3 Some data about the participants in the club
     = f.input :males, label: "Number of boys attending:"
     = f.input :females, label: "Number of girls attending:"
     = f.input :lowerage, label: "Number of children between the ages of 8 and 13:"
@@ -16,6 +19,8 @@
     = f.input :drugsandabs, label: "Number of children involved with drugs and anti-social behaviour:"
     = f.input :mentalhealth, label: "Number of children with mental health difficulties:"
     = f.input :neets, label: "NEETS:"
+    %br
+    %h3 Some data about the volunteers in the club
     = f.input :volnum, label: "Number of volunteers:"
     = f.input :volhours, label: "Total hours volunteered:"
     = f.input :volachievetraining, label: "Number of volunteers achieving training or employment:"
