@@ -1,9 +1,7 @@
 - @donations.each do |donation|
     %tr
-        %td= donation.amount
         %td= donation.date
+        %td= Donor.find(donation.donor_id).name
+        %td= donation.amount
         %td= donation.recurring
         %td= donation.restricted
-        %td= link_to 'Show', donation
-        %td= link_to 'Edit', edit_donation_path(donation)
-        %td= link_to 'Destroy', donation, method: :delete, data: { confirm: 'Are you sure?' }
