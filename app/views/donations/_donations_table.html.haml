@@ -1,6 +1,6 @@
 - @donations.each do |donation|
     %tr
-        %td= donation.date
+        %td= donation.date.strftime("%d/%m/%Y") 
         /Get the name of the donor using the foreign key
         %td= Donor.find(donation.donor_id).name
         %td= donation.amount

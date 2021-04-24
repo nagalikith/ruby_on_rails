@@ -33,11 +33,19 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to @event, notice: 'Event was successfully created.'
+      if current_user.manager
+        @events = Event.all
+      else
+        @events = Event.where(club_id: current_user.club_id)
+      end
+      @volunteers = Volunteer.all
+      
+      render 'new_event_success'
     else
-      render :new
+      render 'new_event_failure'
     end
   end
+  
 
   # PATCH/PUT /events/1
   def update
