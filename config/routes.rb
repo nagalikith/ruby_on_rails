@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, :conrollers => { registrations: 'users/registrations', sessions: 'users/sessions'}
   resources :event_calendars
   resources :event_feedbacks
-  resources :meeting_types do
-    get 'meeting_types/search'
-  end
+  resources :meeting_types
   resources :prospective_donors
   resources :event_volunteers
   resources :consent_forms

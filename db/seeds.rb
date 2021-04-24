@@ -44,12 +44,46 @@ CaseStudy.where(id: "1").first_or_create(participant: "Molly", date: "2021/03/02
 CaseStudy.where(id: "2").first_or_create(participant: "Ben", date: "2021/01/20", comment: "Organised a game", club_id: "2")
 CaseStudy.where(id: "3").first_or_create(participant: "Chris", date: "2021/02/16", comment: "Tried very hard, put in 110%", club_id: "4")
 
+<<<<<<< Updated upstream
 ClubInfo.where(id: "1").first_or_create(date: "2020/10/16", club_id: "2")
 
 MeetingType.where(id: "1").first_or_create(club_info_id: "1", day: "Monday", sessiontype: "Boys Only", time: "16:00")
 MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", sessiontype: "Over 13s only", time: "20:30")
 MeetingType.where(id: "3").first_or_create(club_info_id: "1", day: "Friday", sessiontype: "Girls Only", time: "17:00")
 
+=======
+ClubInfo.where(id: "1").first_or_create(date: "2020/10/16", club_id: "2", males: "20", females: "15",
+                                        upperage: "35", lowerage: "0", depravation: "0", drugsandabs: "0",
+                                        ethnicity: "0", mentalhealth: "4", neets: "2", disability: "0",
+                                        volnum: "7", volhours: "120", volachievetraining: "1")
+
+ClubInfo.where(id: "2").first_or_create(date: "2020/11/21", club_id: "3", males: "4", females: "20",
+                                        upperage: "12", lowerage: "12", depravation: "0", drugsandabs: "0",
+                                        ethnicity: "3", mentalhealth: "0", neets: "0", disability: "0",
+                                        volnum: "12", volhours: "62", volachievetraining: "2")
+
+ClubInfo.where(id: "3").first_or_create(date: "2020/05/01", club_id: "4", males: "10", females: "30",
+                                        upperage: "25", lowerage: "15", depravation: "3", drugsandabs: "2",
+                                        ethnicity: "12", mentalhealth: "4", neets: "9", disability: "0",
+                                        volnum: "2", volhours: "33", volachievetraining: "0")
+
+
+                                         
+ClubInfo.where(id: "2").first_or_create(date: "2020/11/21", club_id: "3")
+ClubInfo.where(id: "3").first_or_create(date: "2020/05/01", club_id: "4")
+ClubInfo.where(id: "4").first_or_create(date: "2021/01/07", club_id: "5")
+
+MeetingType.where(id: "1").first_or_create(club_info_id: "1", day: "Monday", sessiontype: "Boys Only", time: "16:00")
+MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", sessiontype: "Girls Only", time: "20:30")
+MeetingType.where(id: "3").first_or_create(club_info_id: "1", day: "Friday", sessiontype: "13 to 18 Years", time: "17:00")
+
+MeetingType.where(id: "4").first_or_create(club_info_id: "2", day: "Wednesday", sessiontype: "Boxing Drills", time: "18:30")
+MeetingType.where(id: "5").first_or_create(club_info_id: "2", day: "Saturday", sessiontype: "Cardio", time: "18:30")
+
+MeetingType.where(id: "6").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "8 to 13 Years", time: "15:30")
+MeetingType.where(id: "7").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "Games", time: "18:00")
+
+>>>>>>> Stashed changes
 
 Donor.where(id: "1").first_or_create(contactnumber: "07437465782", email: "amy@gmail.com", name: "Amy", totaldonation: "0")
 Donor.where(id: "2").first_or_create(contactnumber: "07592084598", email: "joe@talktalk.net", name: "Joe", totaldonation: "0")

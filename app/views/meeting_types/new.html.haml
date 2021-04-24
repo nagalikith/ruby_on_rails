@@ -8,10 +8,14 @@
       .modal-body
         = f.input :day, collection: ['Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday', 'Sunday']
         = f.input :time
+<<<<<<< Updated upstream
         = f.input :sessiontype, collection: MeetingType.distinct.pluck(:sessiontype).push("Other"), id: "sessionTypesCombo"
         = f.input :sessiontype, id: "sessionTypeTxt", input_html: { disabled: true }
       %br
       %br
+=======
+        = f.input :sessiontype, collection: MeetingType.distinct.pluck(:sessiontype)
+>>>>>>> Stashed changes
 
           
       .modal-footer
