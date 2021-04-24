@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
+  # changing the events shown based on the user logged in
   def index
     if current_user.manager
       @events = Event.all
@@ -18,10 +19,13 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    render layout: false
   end
 
   # GET /events/1/edit
   def edit
+    @club = Club.where(club_id: current_user.club_id)
+    render layout: false
   end
 
   # POST /events

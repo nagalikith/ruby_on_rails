@@ -20,12 +20,12 @@ Club.where(name: 'Affinity Youth Club').first_or_create(id: '3', postcode: 'S6 4
 Club.where(name: 'Barnsley Y.M.C.A').first_or_create(id: '4', postcode: 'S70 1AP', contactnumber: '07671839489', paymentduedate: '2021/12/20')
 Club.where(name: 'Hickleton Youth Project GR8 M8’s').first_or_create(id: '5', postcode: 'S63 0BL', contactnumber: '07514627487', paymentduedate: '2022/01/22')
 
-User.where(email:'admin@admin.co.uk').first_or_create(password:'Admin1', password_confirmation: 'Admin1', club_id: '1', manager: true)
+User.where(email:'admin@admin.co.uk').first_or_create(password:'Admin1#', password_confirmation: 'Admin1#', club_id: '1', manager: true)
 
-User.where(email:'393club@test.co.uk').first_or_create(password:'393Club', password_confirmation: '393Club', club_id: '2', manager: false)
-User.where(email:'affinity@test.co.uk').first_or_create(password:'Affinity1', password_confirmation: 'Affinity1', club_id: '3', manager: false)
-User.where(email:'barnsley@test.co.uk').first_or_create(password:'Ymca1', password_confirmation: 'Ymca1', club_id: '4', manager: false)
-User.where(email:'hickletonyouth@test.co.uk').first_or_create(password:'Hickleton1', password_confirmation: 'Hickleton1', club_id: '5', manager: false)
+User.where(email:'393club@test.co.uk').first_or_create(password:'393Club#', password_confirmation: '393Club#', club_id: '2', manager: false)
+User.where(email:'affinity@test.co.uk').first_or_create(password:'Affinity1#', password_confirmation: 'Affinity1#', club_id: '3', manager: false)
+User.where(email:'barnsley@test.co.uk').first_or_create(password:'Ymca1#', password_confirmation: 'Ymca1#', club_id: '4', manager: false)
+User.where(email:'hickletonyouth@test.co.uk').first_or_create(password:'Hickleton1#', password_confirmation: 'Hickleton1#', club_id: '5', manager: false)
 
 
 Volunteer.where(name: "Josh").first_or_create(contactnumber: '07264893487', email: 'josh@email.com', hours: '4', target: '100', youngPerson: true)
@@ -46,11 +46,15 @@ CaseStudy.where(id: "3").first_or_create(participant: "Chris", date: "2021/02/16
 
 <<<<<<< Updated upstream
 ClubInfo.where(id: "1").first_or_create(date: "2020/10/16", club_id: "2")
+ClubInfo.where(id: "2").first_or_create(date: "2020/11/21", club_id: "3")
+ClubInfo.where(id: "3").first_or_create(date: "2020/05/01", club_id: "4")
+ClubInfo.where(id: "4").first_or_create(date: "2021/01/07", club_id: "5")
 
 MeetingType.where(id: "1").first_or_create(club_info_id: "1", day: "Monday", sessiontype: "Boys Only", time: "16:00")
-MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", sessiontype: "Over 13s only", time: "20:30")
+MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", sessiontype: "13 to 18 Years", time: "20:30")
 MeetingType.where(id: "3").first_or_create(club_info_id: "1", day: "Friday", sessiontype: "Girls Only", time: "17:00")
 
+<<<<<<< HEAD
 =======
 ClubInfo.where(id: "1").first_or_create(date: "2020/10/16", club_id: "2", males: "20", females: "15",
                                         upperage: "35", lowerage: "0", depravation: "0", drugsandabs: "0",
@@ -84,6 +88,14 @@ MeetingType.where(id: "6").first_or_create(club_info_id: "3", day: "Friday", ses
 MeetingType.where(id: "7").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "Games", time: "18:00")
 
 >>>>>>> Stashed changes
+=======
+MeetingType.where(id: "4").first_or_create(club_info_id: "2", day: "Wednesday", sessiontype: "Girls Only", time: "18:30")
+MeetingType.where(id: "5").first_or_create(club_info_id: "2", day: "Saturday", sessiontype: "8 to 13 Years", time: "18:30")
+
+MeetingType.where(id: "6").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "8 to 13 Years", time: "15:30")
+MeetingType.where(id: "7").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "Girls Only", time: "18:00")
+
+>>>>>>> 0cbc5fff0d2de36485f893825e06677ff8e7036a
 
 Donor.where(id: "1").first_or_create(contactnumber: "07437465782", email: "amy@gmail.com", name: "Amy", totaldonation: "0")
 Donor.where(id: "2").first_or_create(contactnumber: "07592084598", email: "joe@talktalk.net", name: "Joe", totaldonation: "0")

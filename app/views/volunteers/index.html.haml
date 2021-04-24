@@ -2,11 +2,15 @@
 
 %p There are #{@volunteers.size} volunteers to search through.
 
-%p= link_to "Add Volunteer", new_volunteer_path, class: 'ajax-modal btn btn-secondary'
-
 - if @volunteers.length > 0
 
-  %table
+  %input{:id => "searchInput", :onkeyup => "searchFunc()", :placeholder => "Enter volunteer name..."}
+
+  %br
+  %br
+
+  <!--Table to display the current volunteers -->
+  %table{:id => "volunteerTable"}
     %thead
       %tr
         %th Name
@@ -15,19 +19,38 @@
         %th Email
         %th Hours
         %th Target
-        %th
-        %th
 
     %tbody#volunteerTable
       = render 'volunteers_table'
 
-
-
 - else
+  <!--error message if no volunteers available-->
   .error-message
     %h5 No volunteers available
 
+%br
 
+%p= link_to "Add Volunteer", new_volunteer_path, class: 'ajax-modal btn btn-secondary'
+
+<!--auto updating search function for the volunteers-->
+
+:javascript
+  function searchFunc() {
+  input = document.getElementById("searchInput").value.toUpperCase();
+  table = document.getElementById("volunteerTable");
+    row = table.getElementsByTagName("tr");
+    for (i = 0; i < row.length; i++) {
+      clubName = row[i].getElementsByTagName("td")[0];
+      if (clubName) {
+        text = clubName.textContent || clubName.innerText;
+        if (text.toUpperCase().indexOf(input) > -1) {
+          row[i].style.display = "";
+        } else {
+          row[i].style.display = "none";
+        }
+      }
+    }
+  }
 
 
 

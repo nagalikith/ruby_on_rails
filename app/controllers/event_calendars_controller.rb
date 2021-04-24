@@ -6,9 +6,11 @@ class EventCalendarsController < ApplicationController
     if current_user.manager
       @event_calendars = EventCalendar.all
       @events = Event.all
+      #Ensures the manager can see all the events on the events calander
     else
       @event_calendars = EventCalendar.all
       @events = Event.where(club_id: current_user.club_id)
+      #Normal users can see the event calandar, but only the events linked to their club ID.
     end
   end
 

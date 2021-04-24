@@ -3,7 +3,13 @@ class CaseStudiesController < ApplicationController
 
   # GET /case_studies
   def index
-    @case_studies = CaseStudy.all
+    #changing content if the user is a manager
+    if current_user.manager
+      @case_studies = CaseStudy.all
+    else
+      @case_studies = CaseStudy.all.where(club_id: current_user.club_id)
+      #Ensures only the case studies that are matching the current users Club ID is shown.
+    end
   end
 
   # GET /case_studies/1

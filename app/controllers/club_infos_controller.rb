@@ -24,8 +24,8 @@ class ClubInfosController < ApplicationController
     @club_info = ClubInfo.new(club_info_params)
 
     if @club_info.save
-      @meeting_types = MeetingType.where(club_infos_id: @club_info.id)
-      print(@meeting_types.length)
+      @meeting_types = MeetingType.where(club_info_id: @club_info.id)
+      
       render 'meeting_types/index'
     else
       render :new

@@ -18,14 +18,19 @@
           %td= link_to 'Show Event for Consent Form', [@event]
           %td= link_to 'Edit Consent Form', edit_event_consent_form_path(@event,consent_form)
           %td= link_to 'Destroy Consent Form', [@event, consent_form], method: :delete, data: { confirm: 'Are you sure?' }
-  %br
 
 - else
   .error-message
     %h5 No consent forms exist
 
-= link_to 'back', (@event)
-= link_to 'New Consent form', new_event_consent_form_path(@event)
+%br
+= link_to 'New Consent form', new_event_consent_form_path(@event), class: 'btn btn-secondary'
+
+%br
+%br
+= link_to 'Back', (@event), class: 'btn btn-secondary'
+
+
 
 -#  - if consent_form.image.attached?
 -#           - consent_form.image.each do |each_image|

@@ -27,8 +27,9 @@
           %td= event.end_time
           %td= event.club.name
           %td= link_to event.club_id, club_id_page_path(club_individual: event.club_id)
+          -# Links to the Club that the event is involved with.
           %td= link_to 'Show', event
-          %td= link_to 'Edit', edit_event_path(event)
+          %td= link_to 'Edit', edit_event_path(event), class: 'ajax-modal'
           %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
 
 - else
@@ -37,8 +38,7 @@
 
 %br
 
-.button
-  = link_to 'New Event', new_event_path
+= link_to 'New Event', new_event_path, class: 'ajax-modal btn btn-secondary'
 
 :javascript
   function searchFunc(searchId, searchTable) {

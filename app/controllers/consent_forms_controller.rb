@@ -1,9 +1,8 @@
 class ConsentFormsController < ApplicationController
   before_action :get_event
   before_action :set_consent_form, only: [:show, :edit, :update, :destroy]
-  # GET /consent_forms
+
   def index
-    # @consent_forms = ConsentForm.all
     @consent_forms = @event.consent_form
   end
 
@@ -13,7 +12,6 @@ class ConsentFormsController < ApplicationController
 
   # GET /consent_forms/new
   def new
-    # @consent_form = ConsentForm.new
     @consent_forms = @event.consent_form.build
   end
 
@@ -28,7 +26,9 @@ class ConsentFormsController < ApplicationController
     respond_to do |format|
     if @consent_form.save
       format.html { redirect_to event_consent_forms_path, notice: 'Consent form was successfully created.'}
+      #This allows the path to be followed when a consent form is being created.
       format.json { render :show, status: :created, location: @consent_form }
+      #Ensures an image can be uploaded
     else
       format.html { render :new }
       format.json { render json: @consent_form.errors, status: :unprocessable_entity }

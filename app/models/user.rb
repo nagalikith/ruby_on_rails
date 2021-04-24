@@ -35,6 +35,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :secure_validatable
+  #secure_validatable ensures passwords are able to have more strength
   
   belongs_to :club
 

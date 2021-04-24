@@ -1,0 +1,5 @@
+/* line 5, app/assets/stylesheets/volunteers.scss */
+#volunteer-table {
+  overflow-y: scroll;
+  height: 10px;
+}

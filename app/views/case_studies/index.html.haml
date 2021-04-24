@@ -11,11 +11,16 @@
         %th Participant
         %th Club
         %th Comment 
-        %th
-        %th
 
-    %tbody#case-study-table
-      = render 'casestudy_table'
+    %tbody
+      - @case_studies.each do |case_study|
+        %tr
+          %td= case_study.date
+          %td= case_study.participant
+          %td= Club.find(case_study.club_id).name
+          %td= case_study.comment
+          %td= link_to 'Show', case_study
+          %td= link_to 'Delete', case_study, method: :delete, data: { confirm: 'Are you sure?' }
 
 - else
   .error-message
