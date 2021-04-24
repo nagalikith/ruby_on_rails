@@ -14,6 +14,7 @@
 #  index_event_volunteers_on_volunteer_id  (volunteer_id)
 #
 class EventVolunteer < ApplicationRecord
+    #Associations
     belongs_to :event
     belongs_to :volunteer
 end

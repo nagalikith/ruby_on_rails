@@ -21,8 +21,10 @@
 class MeetingType < ApplicationRecord
     belongs_to :club_info
 
+    #Returns an array containing all the most recent meetings associated with the given club
     def mostRecentMeetings(club_id)
         most_recent_club_info_id_array = ClubInfo.select(:id).where(club_id: club_id).order("date DESC")
+
         if most_recent_club_info_id_array.length > 0
             most_recent_club_info_id = most_recent_club_info_id_array.first.id
             meeting_array = MeetingType.where(club_info_id: most_recent_club_info_id)

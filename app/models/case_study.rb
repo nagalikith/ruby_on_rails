@@ -19,6 +19,7 @@
 #  fk_rails_...  (club_id => clubs.id)
 #
 class CaseStudy < ApplicationRecord
+    #Associations
     belongs_to :club
     validates :date, :comment, presence: true
 
