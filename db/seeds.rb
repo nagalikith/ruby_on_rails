@@ -9,6 +9,8 @@ EventFeedback.delete_all
 Event.delete_all
 Volunteer.delete_all
 Club.delete_all
+Donation.delete_all
+Donor.delete_all
 
 
 Club.where(name: 'admin').first_or_create(id:'1')
@@ -49,3 +51,9 @@ MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", se
 MeetingType.where(id: "3").first_or_create(club_info_id: "1", day: "Friday", sessiontype: "Girls Only", time: "17:00")
 
 
+Donor.where(id: "1").first_or_create(contactnumber: "07437465782", email: "amy@gmail.com", name: "Amy", totaldonation: "0")
+Donor.where(id: "2").first_or_create(contactnumber: "07592084598", email: "joe@talktalk.net", name: "Joe", totaldonation: "0")
+Donor.where(id: "3").first_or_create(contactnumber: "07329322764", email: "amanda@googlemail.com", name: "Amanda", totaldonation: "0")
+
+Donation.new.submitDonation("1", 20, "Monthly", "", "2021/04/29")
+Donation.new.submitDonation("2", 10, "", "393 Club", "2021/04/29")
