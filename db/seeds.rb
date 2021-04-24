@@ -1,6 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
+
+#Clearing all the database tables so the seed starts from clean
 MeetingType.delete_all
 ClubInfo.delete_all
 User.delete_all
@@ -13,6 +15,7 @@ Donation.delete_all
 Donor.delete_all
 
 
+#Populating database
 Club.where(name: 'admin').first_or_create(id:'1')
 
 Club.where(name: '393 Club').first_or_create(id: '2', postcode: 'S6 2LJ', contactnumber: '07561827309', paymentduedate: '2021/10/12')
@@ -78,5 +81,5 @@ Donor.where(id: "1").first_or_create(contactnumber: "07437465782", email: "amy@g
 Donor.where(id: "2").first_or_create(contactnumber: "07592084598", email: "joe@talktalk.net", name: "Joe", totaldonation: "0")
 Donor.where(id: "3").first_or_create(contactnumber: "07329322764", email: "amanda@googlemail.com", name: "Amanda", totaldonation: "0")
 
-Donation.new.submitDonation("1", 20, "Monthly", "", "2021/04/29")
-Donation.new.submitDonation("2", 10, "", "393 Club", "2021/04/29")
+Donation.new.submitDonation("1", 20, "Monthly", "None", "2021/04/29")
+Donation.new.submitDonation("2", 10, "One Off", "393 Club", "2021/04/29")

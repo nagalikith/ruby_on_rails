@@ -7,6 +7,7 @@
           %span &times;
       .modal-body
         = f.input :date
+        /Choose donor from all the available donors in the system
         = f.input :donor_id, :collection => Donor.all.collect {|c| [c.name, c.id]}
         = f.input :amount
         = f.input :recurring, collection: ['Yearly','Quarterly','Monthly','Weekly', 'One Off']

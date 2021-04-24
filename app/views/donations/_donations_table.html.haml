@@ -1,6 +1,7 @@
 - @donations.each do |donation|
     %tr
         %td= donation.date
+        /Get the name of the donor using the foreign key
         %td= Donor.find(donation.donor_id).name
         %td= donation.amount
         %td= donation.recurring
