@@ -1,5 +1,7 @@
-%h1 What types of meetings happen each week?
-
+%h1 Enter Affiliation Data For #{Club.find(current_user[:club_id]).name}
+%br
+%h3 What types of meetings happen each week?
+%br
 %p= link_to "Add Meeting", new_meeting_type_path, class: 'ajax-modal btn btn-secondary'
 
 %table
@@ -13,6 +15,7 @@
   %tbody#meetingTable
     = render 'meeting_types/meeting_table'
 
+%br
 %br
 
 /Button to Finish and link back to the club view page
