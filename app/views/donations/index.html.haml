@@ -1,4 +1,4 @@
-%h1 Listing donations
+%h1 Donations
 
 - if @donations.length > 0
   %table
@@ -9,16 +9,8 @@
         %th Recurring
         %th Restricted
 
-    %tbody
-      - @donations.each do |donation|
-        %tr
-          %td= donation.amount
-          %td= donation.date
-          %td= donation.recurring
-          %td= donation.restricted
-          %td= link_to 'Show', donation
-          %td= link_to 'Edit', edit_donation_path(donation)
-          %td= link_to 'Destroy', donation, method: :delete, data: { confirm: 'Are you sure?' }
+    %tbody#donations-table
+      = render "donations_table"
 
 - else
   .error-message
@@ -26,5 +18,5 @@
 
 %br
 
-.button
-  = link_to 'New Donation', new_donation_path
+
+= link_to 'New Donation', new_donation_path, class: "btn btn-secondary ajax-modal"
