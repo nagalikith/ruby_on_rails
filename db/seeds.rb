@@ -45,10 +45,19 @@ CaseStudy.where(id: "2").first_or_create(participant: "Ben", date: "2021/01/20",
 CaseStudy.where(id: "3").first_or_create(participant: "Chris", date: "2021/02/16", comment: "Tried very hard, put in 110%", club_id: "4")
 
 ClubInfo.where(id: "1").first_or_create(date: "2020/10/16", club_id: "2")
+ClubInfo.where(id: "2").first_or_create(date: "2020/11/21", club_id: "3")
+ClubInfo.where(id: "3").first_or_create(date: "2020/05/01", club_id: "4")
+ClubInfo.where(id: "4").first_or_create(date: "2021/01/07", club_id: "5")
 
 MeetingType.where(id: "1").first_or_create(club_info_id: "1", day: "Monday", sessiontype: "Boys Only", time: "16:00")
-MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", sessiontype: "Over 13s only", time: "20:30")
+MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", sessiontype: "13 to 18 Years", time: "20:30")
 MeetingType.where(id: "3").first_or_create(club_info_id: "1", day: "Friday", sessiontype: "Girls Only", time: "17:00")
+
+MeetingType.where(id: "4").first_or_create(club_info_id: "2", day: "Wednesday", sessiontype: "Girls Only", time: "18:30")
+MeetingType.where(id: "5").first_or_create(club_info_id: "2", day: "Saturday", sessiontype: "8 to 13 Years", time: "18:30")
+
+MeetingType.where(id: "6").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "8 to 13 Years", time: "15:30")
+MeetingType.where(id: "7").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "Girls Only", time: "18:00")
 
 
 Donor.where(id: "1").first_or_create(contactnumber: "07437465782", email: "amy@gmail.com", name: "Amy", totaldonation: "0")
