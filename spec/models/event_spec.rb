@@ -6,7 +6,9 @@
 #  clubname   :string
 #  comment    :text
 #  date       :date
+#  end_time   :datetime
 #  name       :string
+#  start_time :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  club_id    :bigint           not null
