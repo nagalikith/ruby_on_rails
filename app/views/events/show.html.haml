@@ -9,6 +9,18 @@
 %p
   %b Comment:
   = @event.comment
+%p
+  %b Club Name:
+  = @event.club.name
+%p
+  %b Club ID:
+  = @event.club_id
+%p
+  %b Consent Forms:
+  = link_to event_consent_forms_path(@event) do
+    click here
+
+
 
 = link_to 'Edit', edit_event_path(@event)
 \|

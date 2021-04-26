@@ -1,7 +1,7 @@
-%h1 Editing consent_form
+%h1 Editing Consent Form
 
 = render 'form'
 
-= link_to 'Show', @consent_form
+= link_to 'Show', [@event, @consent_form]
 \|
-= link_to 'Back', consent_forms_path
+= link_to 'Back', event_consent_forms_path(@event)

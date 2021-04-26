@@ -1,9 +1,10 @@
 class ConsentFormsController < ApplicationController
+  before_action :get_event
   before_action :set_consent_form, only: [:show, :edit, :update, :destroy]
-
   # GET /consent_forms
   def index
-    @consent_forms = ConsentForm.all
+    # @consent_forms = ConsentForm.all
+    @consent_forms = @event.consent_form
   end
 
   # GET /consent_forms/1
@@ -12,7 +13,8 @@ class ConsentFormsController < ApplicationController
 
   # GET /consent_forms/new
   def new
-    @consent_form = ConsentForm.new
+    # @consent_form = ConsentForm.new
+    @consent_forms = @event.consent_form.build
   end
 
   # GET /consent_forms/1/edit
@@ -21,28 +23,39 @@ class ConsentFormsController < ApplicationController
 
   # POST /consent_forms
   def create
-    @consent_form = ConsentForm.new(consent_form_params)
+    @consent_form = @event.consent_form.build(consent_form_params)
 
+    respond_to do |format|
     if @consent_form.save
-      redirect_to @consent_form, notice: 'Consent form was successfully created.'
+      format.html { redirect_to event_consent_forms_path, notice: 'Consent form was successfully created.'}
+      format.json { render :show, status: :created, location: @consent_form }
     else
-      render :new
+      format.html { render :new }
+      format.json { render json: @consent_form.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # PATCH/PUT /consent_forms/1
   def update
+    respond_to do |format|
     if @consent_form.update(consent_form_params)
-      redirect_to @consent_form, notice: 'Consent form was successfully updated.'
+      format.html { redirect_to event_consent_forms_path(@event), notice: 'Consent form was successfully updated.' }
+      format.json { render :'update_success', status: :ok, location: @consent_form }
     else
-      render :edit
+      format.html { render :'update_failure'}
+      format.json { render json: @consent_form.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # DELETE /consent_forms/1
   def destroy
     @consent_form.destroy
-    redirect_to consent_forms_url, notice: 'Consent form was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to event_consent_forms_path(@event), notice: 'Consent form was successfully destroyed.'}
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -53,6 +66,16 @@ class ConsentFormsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def consent_form_params
-      params.require(:consent_form).permit(:participantname)
+      params.require(:consent_form).permit(:participantname, :event_id, :image)
+    end
+
+  private
+    def get_event
+      @event = Event.find(params[:event_id])
+    end
+  
+  private
+    def set_consent_form
+      @consent_form = @event.consent_form.find(params[:id])
     end
 end

@@ -5,7 +5,7 @@
 #  id            :bigint           not null, primary key
 #  addressone    :string
 #  addresstwo    :string
-#  contactnumber :integer
+#  contactnumber :bigint
 #  email         :string
 #  hours         :float
 #  name          :string
@@ -16,5 +16,5 @@
 #  club_id       :integer
 #
 class Volunteer < ApplicationRecord
-    belongs_to :club
+    validates :name, :addressone, :contactnumber, :email, :postcode, presence: true
 end
