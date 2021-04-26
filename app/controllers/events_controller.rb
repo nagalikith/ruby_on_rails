@@ -4,6 +4,10 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
+    # @currentUser = current_user.club.name
+    # puts @currentUser
+    # # puts @currentUser
+    # @events = Event.where(@event.club.name: "test club")
   end
 
   # GET /events/1
