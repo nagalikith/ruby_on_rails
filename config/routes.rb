@@ -22,6 +22,12 @@ Rails.application.routes.draw do
   resources :club_infos
   resources :clubs
   resources :users
+
+  # devise_for :users, :skip => [:registrations]                                          
+  # as :user do
+  #   get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
+  #   put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  # end          
   
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all

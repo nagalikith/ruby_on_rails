@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :update_headers_to_disable_caching
   before_action :ie_warning
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   ## The following are used by our Responder service classes so we can access
   ## the instance variable for the current resource easily via a standard method
@@ -28,8 +28,7 @@ class ApplicationController < ActionController::Base
   protected
  
   def configure_permitted_parameters
-    #  devise_parameter_sanitizer.permit(:sign_up).push(:email, :club_id)
-    #  devise_parameter_sanitizer.permit(:account_update).push(:email, :club_id)
+    # devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password)}
     devise_parameter_sanitizer.permit(:sign_up, keys: [:club_id])
   end
 

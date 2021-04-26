@@ -40,24 +40,25 @@
                   = icon 'fas', 'home'
                   Home
                 = navbar_link_to club_infos_path, title: "Go to club_infos", identifier: :clubs do
-                  = icon 'fas', 'clubs'
+                  = icon 'fas', 'globe'
                   Club Data
                 = navbar_link_to events_path, title: "Go to events", identifier: :events do
-                  = icon 'fas', 'events'
+                  = icon 'fas', 'map-marker'
                   Events
                 = navbar_link_to case_studies_path, title: "Go to case_studies", identifier: :case_studies do
-                  = icon 'fas', 'case_studies'
+                  = icon 'fas', 'camera'
                   Case Studies
                 = navbar_link_to donations_path, title: "Go to donations", identifier: :donations do
-                  = icon 'fas', 'donations'
+                  = icon 'fas', 'credit-card'
                   Donations
+                - if can?(:read, rails_admin)
+                  = navbar_link_to rails_admin_path, title: "Go to Management Dash", identifier: :rails_admin do
+                    = icon 'fas', 'edit'
+                    User Management
                 -# = navbar_link_to event_calandars_path, title: "Go to event_calandars", identifier: :event_calandars do
-                -#   = icon 'fas', 'event_calandars'
+                -#   = icon 'fas', 'calendar'
                 -#   Calendar
-              - if can?(:read, rails_admin)
-                = navbar_link_to rails_admin_path, title: "Go to Management Dash", identifier: :admin_path do
-                  = icon 'fas', 'admin'
-                  User Management
+
               - if user_signed_in?
                 %ul.nav.navbar-nav.ml-auto
                   %li.nav-item.dropdown
@@ -67,7 +68,7 @@
                     .dropdown-menu{ aria: { labelledby: '#navbar-user-link' } }
                       = link_to destroy_user_session_path, class: 'dropdown-item', method: :delete, title: "Log out of the system" do
                         = icon 'fas', 'sign-out-alt', 'Log out'
-                      = link_to edit_user_password_path, class: 'dropdown-item', method: :delete, title: "Change Password" do
+                      = link_to edit_user_registration_path, class: 'dropdown-item', title: "Change Password" do
                         = icon 'fas', 'cog', 'Change Password'
       %main
         #main-container.container
