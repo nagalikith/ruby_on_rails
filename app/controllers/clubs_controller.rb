@@ -9,6 +9,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1
   def show
     @events = Event.all.where(club_id: @club.id)
+    @volunteers = Volunteer.all.where(club_id: @club.id)
   end
 
   # GET /clubs/new
@@ -31,6 +32,10 @@ class ClubsController < ApplicationController
     else
       render :new
     end
+  end
+
+  # GET /clubs/1/hours
+  def hours
   end
 
   # PATCH/PUT /clubs/1

@@ -12,7 +12,7 @@
       = @club.contactnumber
 
     .button
-      = link_to 'Submit Weekly Hours', clubs_path
+      = link_to 'Submit Weekly Hours', hours_clubs_path(@club), method: :post
 
     <br>
     .button
@@ -24,7 +24,11 @@
   
   .colthreequart
     %h2 Events Hosted
-    %table
+
+    %input{:id => "eventInput", :onkeyup => "searchFunc('eventInput', 'eventTable')", :placeholder => "Enter event name..."}
+    %p
+
+    %table{:input => "eventTable"}
       %thead
         %tr
           %th Event Hosted
@@ -37,5 +41,61 @@
             %td= event.name
             %td= event.date
             %td= link_to 'View', event
+    <br>
+    %h2 Volunteers
 
-              
+    %input{:id => "volunteerInput", :onkeyup => "searchFunc('volunteerInput', 'volunteerTable')", :placeholder => "Enter volunteer name..."}
+    %p
+
+    %table{:id => "volunteerTable"}
+      %thead
+        %tr
+          %th Volunteer Name
+          %th Contact Info
+          %th Hours Worked
+          %th Target Hours
+          %th 
+
+      %tbody
+        - @volunteers.each do |volunteer|
+          %tr
+            %td= volunteer.name
+            %td= volunteer.contactnumber
+            %td= volunteer.hours
+            %td= volunteer.target
+            %td= link_to 'View', volunteer
+
+    <br>
+
+    %h2 Add Weekly Hours
+    %table
+      %thead
+        %tr
+          %th Volunteer Name
+          %th Hours Worked
+          %th Involved?
+      %tbody
+        - @volunteers.each do |volunteer| 
+          = simple_form_for(volunteer) do |f| 
+            %tr
+              %td= volunteer.name
+              %td= f.input :hours
+              %td= f.button :submit
+
+:javascript
+  function searchFunc(searchId, searchTable) {
+    input = document.getElementById(searchId).value.toUpperCase();
+    table = document.getElementById(searchTable);
+    row = table.getElementsByTagName("tr");
+    for (i = 0; i < row.length; i++) {
+      clubName = row[i].getElementsByTagName("td")[0];
+      if (clubName) {
+        text = clubName.textContent || clubName.innerText;
+        if (text.toUpperCase().indexOf(input) > -1) {
+          row[i].style.display = "";
+        } else {
+          row[i].style.display = "none";
+        }
+      }
+    }
+  }
