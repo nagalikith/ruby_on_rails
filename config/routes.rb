@@ -22,6 +22,12 @@ Rails.application.routes.draw do
   resources :club_infos
   resources :clubs
   resources :users
+
+  # devise_for :users, :skip => [:registrations]                                          
+  # as :user do
+  #   get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
+  #   put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  # end          
   
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
@@ -30,7 +36,8 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
-  get '/events/:event_individual', to: 'pages#event_id_page', as: :event_id_page
+  # get '/events/:event_individual', to: 'pages#event_id_page', as: :event_id_page
+  get '/clubs/:club_individual', to: 'pages#club_id_page', as: :club_id_page
   match '/users',   to: 'users#index',   via: 'get'
   root to: "clubs#index"
 
