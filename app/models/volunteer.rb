@@ -5,7 +5,7 @@
 #  id            :bigint           not null, primary key
 #  addressone    :string
 #  addresstwo    :string
-#  contactnumber :bigint
+#  contactnumber :integer
 #  email         :string
 #  hours         :float
 #  name          :string
