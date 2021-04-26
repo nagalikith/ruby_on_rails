@@ -8,7 +8,9 @@
   *= require warning_page
   *= require custom_flash
   *= require environment_notice
-  *= require event_calendar
+  *= require volunteers
+  *= require club_infos
+  *= require meeting_types
 */
 body {
   font: helvetica;

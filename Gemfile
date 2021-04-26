@@ -44,9 +44,6 @@ gem 'delayed_job_active_record'
 gem 'delayed-plugins-airbrake'
 gem 'daemons', '1.1.9'
 
-gem "simple_calendar", "~> 2.0"
-gem 'icalendar'
-
 group :development, :test do
   gem 'rspec-rails'
   gem 'byebug'
