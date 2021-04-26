@@ -13,6 +13,7 @@
 #  target        :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  club_id       :integer
 #
 require 'rails_helper'
 

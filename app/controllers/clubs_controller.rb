@@ -12,15 +12,19 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1
   def show
+    @events = Event.all.where(club_id: @club.id)
+    @volunteers = Volunteer.all.where(club_id: @club.id)
   end
 
   # GET /clubs/new
   def new
     @club = Club.new
+    render layout: false
   end
 
   # GET /clubs/1/edit
   def edit
+    render layout: false
   end
 
   # POST /clubs
@@ -34,12 +38,16 @@ class ClubsController < ApplicationController
     end
   end
 
+  # GET /clubs/1/hours
+  def hours
+  end
+
   # PATCH/PUT /clubs/1
   def update
     if @club.update(club_params)
-      redirect_to @club, notice: 'Club was successfully updated.'
+      render 'update_success'
     else
-      render :edit
+      render 'update_failure'
     end
   end
 
