@@ -1,18 +1,101 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @club.name
-%p
-  %b Postcode:
-  = @club.postcode
-%p
-  %b Contactnumber:
-  = @club.contactnumber
-%p
-  %b Paymentduedate:
-  = @club.paymentduedate
+.panel-header
+  %h1= @club.name
+.row
+  .colquart
+    %p
+      %b Postcode:
+      = @club.postcode
+    %p
+      %b Contact Info:
+      = @club.contactnumber
 
-= link_to 'Edit', edit_club_path(@club)
-\|
-= link_to 'Back', clubs_path
+    .button
+      = link_to 'Submit Weekly Hours', hours_clubs_path(@club), method: :post
+
+    <br>
+    .button
+      = link_to 'Back', clubs_path
+
+    <br>
+    .button
+      = link_to 'Edit', edit_club_path(@club), class: 'ajax-modal' 
+  
+  .colthreequart
+    %h2 Events Hosted
+
+    %input{:id => "eventInput", :onkeyup => "searchFunc('eventInput', 'eventTable')", :placeholder => "Enter event name..."}
+    %p
+
+    %table{:input => "eventTable"}
+      %thead
+        %tr
+          %th Event Hosted
+          %th Date of Event
+          %th 
+
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td= event.name
+            %td= event.date
+            %td= link_to 'View', event
+    <br>
+    %h2 Volunteers
+
+    %input{:id => "volunteerInput", :onkeyup => "searchFunc('volunteerInput', 'volunteerTable')", :placeholder => "Enter volunteer name..."}
+    %p
+
+    %table{:id => "volunteerTable"}
+      %thead
+        %tr
+          %th Volunteer Name
+          %th Contact Info
+          %th Hours Worked
+          %th Target Hours
+          %th 
+
+      %tbody
+        - @volunteers.each do |volunteer|
+          %tr
+            %td= volunteer.name
+            %td= volunteer.contactnumber
+            %td= volunteer.hours
+            %td= volunteer.target
+            %td= link_to 'View', volunteer
+
+    <br>
+
+    %h2 Add Weekly Hours
+    %table
+      %thead
+        %tr
+          %th Volunteer Name
+          %th Hours Worked
+          %th Involved?
+      %tbody
+        - @volunteers.each do |volunteer| 
+          = simple_form_for(volunteer) do |f| 
+            %tr
+              %td= volunteer.name
+              %td= f.input :hours
+              %td= f.button :submit
+
+:javascript
+  function searchFunc(searchId, searchTable) {
+    input = document.getElementById(searchId).value.toUpperCase();
+    table = document.getElementById(searchTable);
+    row = table.getElementsByTagName("tr");
+    for (i = 0; i < row.length; i++) {
+      clubName = row[i].getElementsByTagName("td")[0];
+      if (clubName) {
+        text = clubName.textContent || clubName.innerText;
+        if (text.toUpperCase().indexOf(input) > -1) {
+          row[i].style.display = "";
+        } else {
+          row[i].style.display = "none";
+        }
+      }
+    }
+  }

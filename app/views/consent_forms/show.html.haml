@@ -1,9 +1,16 @@
 %p#notice= notice
 
 %p
-  %b Participantname:
+  %b Participant Name:
   = @consent_form.participantname
+  %b Consent form for Participant:
+  - if @consent_form.image.attached?
+    = image_tag(url_for(@consent_form.image), width: 900)
 
 = link_to 'Edit', edit_consent_form_path(@consent_form)
 \|
 = link_to 'Back', consent_forms_path
+
+
+
+    

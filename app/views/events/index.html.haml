@@ -1,5 +1,15 @@
 %h1 Listing events
 
+%p There are #{@events.size} events to search through.
+
+= simple_form_for :search, url: search_events_path, method: :post do |f|
+  = f.input :clubname
+
+
+  = f.submit 'Search'
+  = link_to 'Reset', events_path
+
+%br
 %table
   %thead
     %tr

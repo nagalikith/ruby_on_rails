@@ -12,7 +12,7 @@ gem 'activerecord-session_store'
 gem 'bootsnap'
 gem 'responders'
 gem 'puma'
-
+gem 'rails_admin', '~> 2.0'
 gem 'pg'
 
 gem 'haml-rails'
@@ -30,8 +30,8 @@ gem 'simple_form'
 gem 'draper'
 gem 'ransack'
 
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+# gem 'will_paginate'
+# gem 'bootstrap-will_paginate'
 
 gem 'devise'
 gem 'devise_ldap_authenticatable'

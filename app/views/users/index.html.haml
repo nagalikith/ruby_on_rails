@@ -1,0 +1,28 @@
+
+%h1 Listing Users
+%table
+  %thead
+    %tr
+      %th Email
+      %th Encrypted Password
+      %th Club ID
+      %th Manager
+      %th 
+      %th
+      %th
+      %th
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.encrypted_password
+        %td= user.club_id
+        %td= user.manager
+        %td= link_to 'Show', user
+        %td= link_to 'Edit', edit_user_path(user)
+        %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Donation', new_user_registration_path

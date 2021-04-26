@@ -1,7 +1,16 @@
-%h1 Editing club
-
-= render 'form'
-
-= link_to 'Show', @club
-\|
-= link_to 'Back', clubs_path
+.modal-dialog
+  .modal-content
+    = simple_form_for @club, remote: true do |f|
+      .modal-header
+        %h4.modal-title Editing club
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :name
+        = f.input :postcode
+        = f.input :contactnumber
+        = f.input :paymentduedate
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'
