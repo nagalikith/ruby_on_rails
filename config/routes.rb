@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, :conrollers => { registrations: 'users/registrations', sessions: 'users/sessions'}
   resources :event_calendars
   resources :event_feedbacks
   resources :meeting_types do
