@@ -4,10 +4,9 @@ class EventsController < ApplicationController
   # GET /events
   def index
     # @events2 = Event.all
-    # @currentUser = current_user.club.name
-    # puts @currentUser
     # # puts @currentUser
-    @events = Event.where(club_id: "test club")
+    # @currentUser = current_user.club.name
+    @events = Event.where(club_id: current_user.club_id)
   end
 
   # GET /events/1
