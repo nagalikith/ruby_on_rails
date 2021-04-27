@@ -3,7 +3,11 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.all
+    if current_user.manager
+      @events = Event.all
+    else
+      @events = Event.where(club_id: current_user.club_id)
+    end
   end
 
   # GET /events/1

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, :conrollers => { registrations: 'users/registrations', sessions: 'users/sessions'}
   resources :event_calendars
   resources :event_feedbacks
   resources :meeting_types do
@@ -35,9 +36,11 @@ Rails.application.routes.draw do
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
   get '/events/:event_individual', to: 'pages#event_id_page', as: :event_id_page
+  get '/clubs/:club_individual', to: 'pages#club_id_page', as: :club_id_page
+  match '/users',   to: 'users#index',   via: 'get'
+  root to: "clubs#index"
   
   #root to: "pages#home"
-  root to: "event_calendars#index"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
