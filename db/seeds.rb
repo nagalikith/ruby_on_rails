@@ -6,7 +6,7 @@
 # User.create(email:
 # 'bgsyc@sheffield.ac.uk', password:
 # 'southyork', password_confirmation: 'southyork', club_id: '1')
-# Club.where(name: 'test club')
+Club.where(name: 'test club')
 User.where(email:
 'bgsyc@sheffield.ac.uk').first_or_create(password:
 'southyork', password_confirmation: 'southyork', club_id: '1', manager: TRUE)
