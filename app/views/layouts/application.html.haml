@@ -36,9 +36,10 @@
 
             .collapse.navbar-collapse#navbar-content
               %ul.nav.navbar-nav
-                = navbar_link_to :root, title: "Go to the home page", identifier: :home do
-                  = icon 'fas', 'home'
-                  Home
+                - if can?(:read, rails_admin)
+                  = navbar_link_to :root, title: "Go to the List all clubs page", identifier: :home do
+                    = icon 'fas', 'home'
+                    Clubs
                 = navbar_link_to club_infos_path, title: "Go to club_infos", identifier: :clubs do
                   = icon 'fas', 'globe'
                   Club Data
