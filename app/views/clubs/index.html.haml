@@ -1,35 +1,41 @@
 %h1 Listing clubs
 
-%input{:id => "searchInput", :onkeyup => "searchFunc()", :placeholder => "Enter club name..."}
-%p
+- if @clubs.length > 0
 
-%table{:id => "clubTable"}
-  %thead
-    %tr
-      %th Name
-      %th Postcode
-      %th Contactnumber
+  %input{:id => "searchInput", :onkeyup => "searchFunc()", :placeholder => "Enter club name..."}
+  %p
 
-  %tbody#clubs-table
-  = render 'clubs_table'
+  %table{:id => "clubTable"}
+    %thead
+      %tr
+        %th Name
+        %th Postcode
+        %th Contactnumber
 
-:javascript
-  function searchFunc() {
-    input = document.getElementById("searchInput").value.toUpperCase();
-    table = document.getElementById("clubTable");
-    row = table.getElementsByTagName("tr");
-    for (i = 0; i < row.length; i++) {
-      clubName = row[i].getElementsByTagName("td")[0];
-      if (clubName) {
-        text = clubName.textContent || clubName.innerText;
-        if (text.toUpperCase().indexOf(input) > -1) {
-          row[i].style.display = "";
-        } else {
-          row[i].style.display = "none";
+    %tbody#clubs-table
+    = render 'clubs_table'
+
+  :javascript
+    function searchFunc() {
+      input = document.getElementById("searchInput").value.toUpperCase();
+      table = document.getElementById("clubTable");
+      row = table.getElementsByTagName("tr");
+      for (i = 0; i < row.length; i++) {
+        clubName = row[i].getElementsByTagName("td")[0];
+        if (clubName) {
+          text = clubName.textContent || clubName.innerText;
+          if (text.toUpperCase().indexOf(input) > -1) {
+            row[i].style.display = "";
+          } else {
+            row[i].style.display = "none";
+          }
         }
       }
     }
-  }
+
+- else
+  .error-message
+    %h5 No clubs exist
 
 %br
 

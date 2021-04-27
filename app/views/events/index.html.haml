@@ -1,37 +1,43 @@
 %h1 Listing events
 
-%p There are #{@events.size} events to search through.
+- if @events.length > 0
 
-= simple_form_for :search, url: search_events_path, method: :post do |f|
-  = f.input :clubname
+  %p There are #{@events.size} events to search through.
+
+  = simple_form_for :search, url: search_events_path, method: :post do |f|
+    = f.input :clubname
 
 
-  = f.submit 'Search'
-  = link_to 'Reset', events_path
+    = f.submit 'Search'
+    = link_to 'Reset', events_path
 
-%br
-%table
-  %thead
-    %tr
-      %th Name
-      %th Comment
-      %th Start Time
-      %th End Time
-      %th Club Name
-      %th Link to CLUB with ID
-
-  %tbody
-    - @events.each do |event|
+  %br
+  %table
+    %thead
       %tr
-        %td= event.name
-        %td= event.comment
-        %td= event.start_time
-        %td= event.end_time
-        %td= event.club.name
-        %td= link_to event.club_id, club_id_page_path(club_individual: event.club_id)
-        %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Comment
+        %th Start Time
+        %th End Time
+        %th Club Name
+        %th Link to CLUB with ID
+
+    %tbody
+      - @events.each do |event|
+        %tr
+          %td= event.name
+          %td= event.comment
+          %td= event.start_time
+          %td= event.end_time
+          %td= event.club.name
+          %td= link_to event.club_id, club_id_page_path(club_individual: event.club_id)
+          %td= link_to 'Show', event
+          %td= link_to 'Edit', edit_event_path(event)
+          %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+
+- else
+  .error-message
+    %h5 No events exist
 
 %br
 

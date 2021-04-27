@@ -79,3 +79,7 @@ td {
   color: white;
   background-color: #00c8f8;
 }
+
+.error-message {
+  color: red;
+}
