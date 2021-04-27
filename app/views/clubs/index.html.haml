@@ -2,6 +2,8 @@
 
 - if @clubs.length > 0
 
+  %p There are #{@clubs.size} events to search through.
+
   %input{:id => "searchInput", :onkeyup => "searchFunc()", :placeholder => "Enter club name..."}
   %p
 
@@ -39,4 +41,5 @@
 
 %br
 
-= link_to 'New Club', new_club_path, class: 'ajax-modal'
+.button
+  = link_to 'New Club', new_club_path, class: 'ajax-modal'

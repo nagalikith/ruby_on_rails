@@ -83,3 +83,9 @@ td {
 .error-message {
   color: red;
 }
+
+ul.nav.navbar-nav a:hover {
+  color: white;
+  transition: 0.5s;
+}
+
