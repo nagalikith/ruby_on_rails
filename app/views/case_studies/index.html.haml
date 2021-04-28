@@ -2,6 +2,8 @@
 
 - if @case_studies.length > 0
 
+  %p There are #{@case_studies.size} events to search through.
+
   %table
     %thead
       %tr
@@ -22,4 +24,5 @@
     %h5 No case studies exist
 
 %br
-= link_to 'New Case study', new_case_study_path
+.button
+  = link_to 'New Case study', new_case_study_path

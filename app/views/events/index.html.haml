@@ -4,15 +4,11 @@
 
   %p There are #{@events.size} events to search through.
 
-  = simple_form_for :search, url: search_events_path, method: :post do |f|
-    = f.input :clubname
-
-
-    = f.submit 'Search'
-    = link_to 'Reset', events_path
+  %input{:id => "eventInput", :onkeyup => "searchFunc('eventInput', 'eventTable')", :placeholder => "Enter event name..."}
+  %p
 
   %br
-  %table
+  %table{:id => "eventTable"}
     %thead
       %tr
         %th Name
@@ -41,4 +37,23 @@
 
 %br
 
-= link_to 'New Event', new_event_path
+.button
+  = link_to 'New Event', new_event_path
+
+:javascript
+  function searchFunc(searchId, searchTable) {
+    input = document.getElementById(searchId).value.toUpperCase();
+    table = document.getElementById(searchTable);
+    row = table.getElementsByTagName("tr");
+    for (i = 0; i < row.length; i++) {
+      clubName = row[i].getElementsByTagName("td")[0];
+      if (clubName) {
+        text = clubName.textContent || clubName.innerText;
+        if (text.toUpperCase().indexOf(input) > -1) {
+          row[i].style.display = "";
+        } else {
+          row[i].style.display = "none";
+        }
+      }
+    }
+  }
