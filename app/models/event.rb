@@ -22,12 +22,12 @@
 #  fk_rails_...  (club_id => clubs.id)
 #
 class Event < ApplicationRecord
-    has_many :event_feedback
+    has_many :event_feedback , dependent: :destroy
     belongs_to :club
     has_many :consent_form , dependent: :destroy
-    has_many :case_study
+    has_many :case_study , dependent: :destroy
     belongs_to :club
-    belongs_to :event_calendars
+    #belongs_to :event_calendars
     
 
     # attr_accessible :name, :date
