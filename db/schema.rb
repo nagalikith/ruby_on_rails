@@ -43,9 +43,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_175346) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "club_id", null: false
-    t.bigint "event_id", null: false
     t.index ["club_id"], name: "index_case_studies_on_club_id"
-    t.index ["event_id"], name: "index_case_studies_on_event_id"
   end
 
   create_table "club_infos", force: :cascade do |t|
@@ -204,7 +202,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_175346) do
 
   create_table "volunteers", force: :cascade do |t|
     t.string "name"
-    t.bigint "contactnumber"
+    t.string "contactnumber"
     t.string "email"
     t.boolean "youngPerson"
     t.float "hours"
@@ -216,7 +214,6 @@ ActiveRecord::Schema.define(version: 2021_04_27_175346) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "case_studies", "clubs"
-  add_foreign_key "case_studies", "events"
   add_foreign_key "club_infos", "clubs"
   add_foreign_key "consent_forms", "events"
   add_foreign_key "donations", "donors"

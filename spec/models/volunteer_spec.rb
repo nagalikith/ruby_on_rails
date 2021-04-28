@@ -3,7 +3,7 @@
 # Table name: volunteers
 #
 #  id            :bigint           not null, primary key
-#  contactnumber :bigint
+#  contactnumber :string
 #  email         :string
 #  hours         :float
 #  name          :string
