@@ -21,19 +21,20 @@ Club.where(name: 'Hickleton Youth Project GR8 M8’s').first_or_create(id: '5', 
 
 User.where(email:'admin@admin.co.uk').first_or_create(password:'Admin1', password_confirmation: 'Admin1', club_id: '1', manager: true)
 
-User.where(email:'393club@club.co.uk').first_or_create(password:'393Club', password_confirmation: '393Club', club_id: '2', manager: false)
-User.where(email:'affinity@club.co.uk').first_or_create(password:'Affinity1', password_confirmation: 'Affinity1', club_id: '3', manager: false)
-User.where(email:'barnsley@ymca.co.uk').first_or_create(password:'Ymca1', password_confirmation: 'Ymca1', club_id: '4', manager: false)
-User.where(email:'hickletonyouth@club.co.uk').first_or_create(password:'Hickleton1', password_confirmation: 'Hickleton1', club_id: '5', manager: false)
+User.where(email:'393club@test.co.uk').first_or_create(password:'393Club', password_confirmation: '393Club', club_id: '2', manager: false)
+User.where(email:'affinity@test.co.uk').first_or_create(password:'Affinity1', password_confirmation: 'Affinity1', club_id: '3', manager: false)
+User.where(email:'barnsley@test.co.uk').first_or_create(password:'Ymca1', password_confirmation: 'Ymca1', club_id: '4', manager: false)
+User.where(email:'hickletonyouth@test.co.uk').first_or_create(password:'Hickleton1', password_confirmation: 'Hickleton1', club_id: '5', manager: false)
 
 
 Volunteer.where(name: "Josh").first_or_create(contactnumber: '07264893487', email: 'josh@email.com', hours: '4', target: '100', youngPerson: true)
 Volunteer.where(name: "Ellie").first_or_create(contactnumber: '07125648376', email: 'ellie@email.com', hours: '32', target: '20', youngPerson: false)
 Volunteer.where(name: "Adam").first_or_create(contactnumber: '07898562736', email: 'adam@email.com', hours: '0', target: '10', youngPerson: false)
 
-Event.where(name: "Bike Ride").first_or_create(club_id: "5", date:"2021/05/01", start_time:"2001,2,3,4,5,6", end_time:"2002,2,3,4,5,6", comment: "Bring your own bike")
-Event.where(name: "Walk").first_or_create(club_id: "3", date:"2021/05/01", start_time:"March 30, 2021 23:11", end_time:"April 30, 2021 23:11", comment: "A 4 mile walk")
-Event.where(name: "Swimming Trip").first_or_create(club_id: "4", date:"2021/05/12", start_time:"March 30, 2021 23:11", end_time:"April 30, 2021 23:11", comment: "A trip to a local swimming pool")
+
+Event.where(name: 'Bike Ride').first_or_create(comment: 'Bring your own bike', club_id: '1', start_time: DateTime.strptime("04/28/2021 8:00", "%m/%d/%Y %H:%M") , end_time: DateTime.strptime("04/28/2021 8:00", "%m/%d/%Y %H:%M"))
+Event.where(name: "Walk").first_or_create(club_id: "2", date:"2021/02/01", comment: "A 4 mile walk", start_time: DateTime.strptime("09/12/2021 8:00", "%m/%d/%Y %H:%M") , end_time: DateTime.strptime("09/12/2021 8:00", "%m/%d/%Y %H:%M"))
+
 
 EventFeedback.where(id: '1').first_or_create(comment: "Was an amazing event. Well organised", event_id: '1')
 EventFeedback.where(id: '2').first_or_create(comment: "Very fun", event_id: '1')
