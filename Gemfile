@@ -14,6 +14,11 @@ gem 'responders'
 gem 'puma'
 gem 'rails_admin', '~> 2.0'
 gem 'pg'
+gem 'devise_security_extension'
+# gem 'easy_captcha'
+# gem 'rmagick'
+gem 'rails_email_validator'
+
 
 gem 'haml-rails'
 gem 'sassc-rails'
