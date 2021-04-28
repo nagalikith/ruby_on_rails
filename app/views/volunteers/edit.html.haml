@@ -1,7 +1,20 @@
-%h1 Editing volunteer
+.modal-dialog
+  .modal-content
+    = simple_form_for @volunteer, remote: true do |f|
+      .modal-header
+        %h4.modal-title New Volunteer
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :name
+        = f.input :contactnumber, label: "Contact number"
+        = f.input :youngPerson, label: "Are they a young person?"
+        = f.input :email
+        = f.input :hours, label: "Hours volunteered"
+        = f.input :target, label: "Target number of hours to volunteer"
 
-= render 'form'
-
-= link_to 'Show', @volunteer
-\|
-= link_to 'Back', volunteers_path
+          
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

@@ -12,7 +12,6 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/new
   def new
-
     render layout: false
   end
 
@@ -59,6 +58,6 @@ class VolunteersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def volunteer_params
-      params.require(:volunteer).permit(:name, :contactnumber, :addressone, :addresstwo, :email, :postcode, :hours, :target, :club_id)
+      params.require(:volunteer).permit(:name, :contactnumber, :youngPerson, :email, :hours, :target, :club_id)
     end
 end
