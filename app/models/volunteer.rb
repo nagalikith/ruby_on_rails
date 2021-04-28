@@ -17,4 +17,6 @@
 #
 class Volunteer < ApplicationRecord
     validates :name, :addressone, :contactnumber, :email, :postcode, presence: true
+    has_many :events, through: :event_volunteers
+    has_many :event_volunteers
 end

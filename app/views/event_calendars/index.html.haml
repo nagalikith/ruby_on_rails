@@ -1,11 +1,6 @@
 %h1 Event Calendar
 
 %table
-  %thead
-    %tr
-      %th @events
-      %th
-      %th
 
   %tbody
     = month_calendar(events: @events) do |date, events|

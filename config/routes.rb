@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     post :search, on: :collection
   end
   resources :prospective_donors
+  resources :event_volunteers
   resources :consent_forms
   resources :devise
   resources :case_studies
   resources :events do
+    resources :event_volunteers
     resources :consent_forms
     post :search, on: :collection
   end

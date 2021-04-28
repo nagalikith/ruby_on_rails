@@ -27,7 +27,8 @@ class Event < ApplicationRecord
     has_many :consent_form , dependent: :destroy
     has_many :case_study
     belongs_to :club
-    belongs_to :event_calendars
+    has_many :volunteers, through: :event_volunteers
+    has_many :event_volunteers
     
 
     # attr_accessible :name, :date

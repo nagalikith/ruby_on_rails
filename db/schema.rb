@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_213858) do
+ActiveRecord::Schema.define(version: 2021_04_27_192621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,15 @@ ActiveRecord::Schema.define(version: 2021_04_18_213858) do
     t.index ["event_id"], name: "index_event_feedbacks_on_event_id"
   end
 
+  create_table "event_volunteers", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "volunteer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_volunteers_on_event_id"
+    t.index ["volunteer_id"], name: "index_event_volunteers_on_volunteer_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.date "date"
@@ -147,7 +156,15 @@ ActiveRecord::Schema.define(version: 2021_04_18_213858) do
     t.bigint "club_id", null: false
     t.datetime "start_time"
     t.datetime "end_time"
+    t.string "clubname"
     t.index ["club_id"], name: "index_events_on_club_id"
+  end
+
+  create_table "events_and_volunteers", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "volunteer_id"
+    t.index ["event_id"], name: "index_events_and_volunteers_on_event_id"
+    t.index ["volunteer_id"], name: "index_events_and_volunteers_on_volunteer_id"
   end
 
   create_table "meeting_types", force: :cascade do |t|
@@ -195,6 +212,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_213858) do
     t.bigint "club_id", null: false
     t.datetime "start_time"
     t.datetime "end_time"
+    t.boolean "manager"
     t.index ["club_id"], name: "index_users_on_club_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
