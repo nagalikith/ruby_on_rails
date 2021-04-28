@@ -19,10 +19,10 @@ Club.where(name: 'Hickleton Youth Project GR8 M8’s').first_or_create(id: '5', 
 
 User.where(email:'admin@admin.co.uk').first_or_create(password:'Admin1', password_confirmation: 'Admin1', club_id: '1', manager: true)
 
-User.where(email:'393club@club.co.uk').first_or_create(password:'393Club', password_confirmation: '393Club', club_id: '2', manager: false)
-User.where(email:'affinity@club.co.uk').first_or_create(password:'Affinity1', password_confirmation: 'Affinity1', club_id: '3', manager: false)
+User.where(email:'393club@test.co.uk').first_or_create(password:'393Club', password_confirmation: '393Club', club_id: '2', manager: false)
+User.where(email:'affinity@test.co.uk').first_or_create(password:'Affinity1', password_confirmation: 'Affinity1', club_id: '3', manager: false)
 User.where(email:'barnsley@ymca.co.uk').first_or_create(password:'Ymca1', password_confirmation: 'Ymca1', club_id: '4', manager: false)
-User.where(email:'hickletonyouth@club.co.uk').first_or_create(password:'Hickleton1', password_confirmation: 'Hickleton1', club_id: '5', manager: false)
+User.where(email:'hickletonyouth@test.co.uk').first_or_create(password:'Hickleton1', password_confirmation: 'Hickleton1', club_id: '5', manager: false)
 
 
 Volunteer.where(name: "Josh").first_or_create(contactnumber: '07264893487', email: 'josh@email.com', hours: '4', target: '100', youngPerson: true)

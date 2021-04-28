@@ -3,7 +3,7 @@
 # Table name: prospective_donors
 #
 #  id                  :bigint           not null, primary key
-#  contactnumber       :string
+#  contactnumber       :bigint
 #  email               :string
 #  internalcontactlink :string
 #  name                :string
