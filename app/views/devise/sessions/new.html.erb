@@ -16,12 +16,16 @@
     <%= f.button :submit, "Log in" %>
   </div>
 <% end %>
-<br> </br>
 
 
-<h2>Password Forgotten?</h2>
+
+<%= render "devise/shared/links" %>
+
+<br></br>
+<br></br>
+<h2>Email never recieved when forgotten password link is clicked?</h2>
 <p1> What to do next?</p1>
 <ul>
   <li> Email: bgcsy@email.com</li>
-  <li> Specify your Club Name in the email </li>
-
+  <li> Specify your Club Name as the subject </li>
+</ul>
