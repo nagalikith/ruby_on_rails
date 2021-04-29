@@ -32,6 +32,7 @@ h2 {
   padding: 10px;
 }
 
+/* layouts of the pages */
 .colthreequart {
   width: 75%;
   padding: 10px;
@@ -47,6 +48,7 @@ h2 {
   clear: both;
 }
 
+/* tables */
 thead {
   background-color: lightgray;
 }
@@ -61,6 +63,7 @@ td {
   padding: 5px 10px;
 }
 
+/* buttons */
 .button {
   border: black 1px solid;
   color: white;
@@ -80,6 +83,7 @@ td {
   background-color: gray;
 }
 
+/* error messages */
 .error-message {
   color: red;
 }
