@@ -1,5 +1,13 @@
 %p#notice= notice
 
+%p
+  %b Volunteer ID:
+  = @event_volunteer.volunteer_id
+   
+%p
+  %b Name:
+  = @event_feedback.volunteer_name
+
 
 = link_to 'Edit', edit_event_volunteer_path(@event_volunteer)
 \|
