@@ -25,7 +25,7 @@ class Event < ApplicationRecord
     has_many :event_feedback , dependent: :destroy
     belongs_to :club
     has_many :consent_form , dependent: :destroy
-    has_many :case_study , dependent: :destroy
+    # has_many :case_study , dependent: :destroy
     belongs_to :club
     #belongs_to :event_calendars
     
