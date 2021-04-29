@@ -7,7 +7,7 @@ class ClubsController < ApplicationController
   # GET /clubs
   def index
     @clubs = Club.all
-    
+
   end
 
   # GET /clubs/1
