@@ -24,8 +24,8 @@
   .error-message
     %h5 No consent forms exist
 
+= link_to 'back', (@event)
 = link_to 'New Consent form', new_event_consent_form_path(@event)
-
 
 -#  - if consent_form.image.attached?
 -#           - consent_form.image.each do |each_image|

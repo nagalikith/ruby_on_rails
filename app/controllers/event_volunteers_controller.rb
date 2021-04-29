@@ -21,13 +21,13 @@ class EventVolunteersController < ApplicationController
   # GET /event_volunteers/1/edit
   def edit
   end
-
+  
   # POST /event_volunteers
   def create
     @event_volunteer = EventVolunteer.new(event_volunteer_params)
 
     if @event_volunteer.save
-      redirect_to @event_volunteer, notice: 'Event volunteer was successfully created.'
+      redirect_to event_event_volunteers_path, notice: 'Event volunteer was successfully created.'
     else
       render :new
     end
