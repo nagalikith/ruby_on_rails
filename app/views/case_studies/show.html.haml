@@ -1,18 +1,20 @@
 %p#notice= notice
 
-%p
-  %b Date:
-  = @case_study.date
-%p
-  %b Participant:
+%h1
   = @case_study.participant
 %p
   %b Club:
   = Club.find(@case_study.club_id).name
 %p
+  %b Date:
+  = @case_study.date
+%p
   %b Comment:
   = @case_study.comment
 
-= link_to 'Edit', edit_case_study_path(@case_study)
-\|
-= link_to 'Back', case_studies_path
+= link_to 'Edit', edit_case_study_path(@case_study), class: 'btn btn-secondary'
+
+%br
+%br
+
+= link_to 'Back', case_studies_path, class: 'btn btn-secondary'

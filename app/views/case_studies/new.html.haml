@@ -2,15 +2,17 @@
   .modal-content
     = simple_form_for CaseStudy.new, remote: true do |f|
       .modal-header
-        %h4.modal-title New Meeting
+        %h4.modal-title New Case Study
         %button.close{ type: :button, data: { dismiss: :modal } }
           %span &times;
       .modal-body
         = f.input :date
         = f.input :participant
-        = f.input :club_id, :collection => Club.all.collect {|c| [c.name, c.id]}
+        - if can?(:read, rails_admin)
+          = f.association :club, collection: Club.where.not(id: current_user.club_id)
+        - else
+          = f.association :club, collection: Club.where(id: current_user.club_id)
         = f.input :comment
-
           
       .modal-footer
         .pull-left

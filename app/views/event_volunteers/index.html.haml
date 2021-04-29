@@ -21,9 +21,9 @@
 
 %br
 
-.button
-  = link_to 'New Event volunteer', new_event_event_volunteer_path(@event)
+= link_to 'New Event volunteer', new_event_event_volunteer_path(@event), class: 'btn btn-secondary'
 
 %br
-.button
-  = link_to 'Back', @event
+%br
+
+= link_to 'Back', @event, class: 'btn btn-secondary'
