@@ -1,7 +1,6 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h1
   = @event.name
 %p
   %b Comment:
@@ -29,7 +28,7 @@
 
 
 .button
-  = link_to 'Edit', edit_event_path(@event)
+  = link_to 'Edit', edit_event_path(@event), class: 'ajax-modal'
 <br>
 .button
   = link_to 'Back', events_path

@@ -53,6 +53,7 @@
               %td= event.name
               %td= event.date
               %td= link_to 'View', event
+              %td= link_to 'Edit', edit_event_path(event), class: 'ajax-modal'
     - else
       .error-message
         %p No events for this club
