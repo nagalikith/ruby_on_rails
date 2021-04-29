@@ -20,12 +20,12 @@ Club.where(name: 'Affinity Youth Club').first_or_create(id: '3', postcode: 'S6 4
 Club.where(name: 'Barnsley Y.M.C.A').first_or_create(id: '4', postcode: 'S70 1AP', contactnumber: '07671839489', paymentduedate: '2021/12/20')
 Club.where(name: 'Hickleton Youth Project GR8 M8’s').first_or_create(id: '5', postcode: 'S63 0BL', contactnumber: '07514627487', paymentduedate: '2022/01/22')
 
-User.where(email:'admin@admin.co.uk').first_or_create(password:'Admin1', password_confirmation: 'Admin1', club_id: '1', manager: true)
+User.where(email:'admin@admin.co.uk').first_or_create(password:'Admin1#', password_confirmation: 'Admin1#', club_id: '1', manager: true)
 
-User.where(email:'393club@test.co.uk').first_or_create(password:'393Club', password_confirmation: '393Club', club_id: '2', manager: false)
-User.where(email:'affinity@test.co.uk').first_or_create(password:'Affinity1', password_confirmation: 'Affinity1', club_id: '3', manager: false)
-User.where(email:'barnsley@test.co.uk').first_or_create(password:'Ymca1', password_confirmation: 'Ymca1', club_id: '4', manager: false)
-User.where(email:'hickletonyouth@test.co.uk').first_or_create(password:'Hickleton1', password_confirmation: 'Hickleton1', club_id: '5', manager: false)
+User.where(email:'393club@test.co.uk').first_or_create(password:'393Club#', password_confirmation: '393Club#', club_id: '2', manager: false)
+User.where(email:'affinity@test.co.uk').first_or_create(password:'Affinity1#', password_confirmation: 'Affinity1#', club_id: '3', manager: false)
+User.where(email:'barnsley@test.co.uk').first_or_create(password:'Ymca1#', password_confirmation: 'Ymca1#', club_id: '4', manager: false)
+User.where(email:'hickletonyouth@test.co.uk').first_or_create(password:'Hickleton1#', password_confirmation: 'Hickleton1#', club_id: '5', manager: false)
 
 
 Volunteer.where(name: "Josh").first_or_create(contactnumber: '07264893487', email: 'josh@email.com', hours: '4', target: '100', youngPerson: true)
