@@ -74,10 +74,10 @@ td {
   color: inherit;
 }
 
-.button a:hover {
+.button:hover {
   transition: 0.2s;
   color: white;
-  background-color: #00c8f8;
+  background-color: gray;
 }
 
 .error-message {
