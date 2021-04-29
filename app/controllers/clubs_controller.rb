@@ -6,8 +6,7 @@ class ClubsController < ApplicationController
 
   # GET /clubs
   def index
-    @clubs = Club.all
-
+    @clubs = Club.all.where.not(id: '1')
   end
 
   # GET /clubs/1
