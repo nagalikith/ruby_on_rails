@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     else
       @events = Event.where(club_id: current_user.club_id)
     end
+    @volunteers = Volunteer.all
   end
 
   # GET /events/1
@@ -53,6 +54,11 @@ class EventsController < ApplicationController
   def search
     @events = Event.where(name: params[:search][:clubname])
   render :index
+  end
+  
+  def add
+    @event_volunteers = EventVolunteer.new
+    @volunteers = Volunteer.all
   end
 
   private

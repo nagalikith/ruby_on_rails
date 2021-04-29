@@ -3,7 +3,7 @@
 # Table name: clubs
 #
 #  id             :bigint           not null, primary key
-#  contactnumber  :string
+#  contactnumber  :integer
 #  name           :string
 #  paymentduedate :date
 #  postcode       :string
