@@ -3,7 +3,6 @@
 # Table name: events
 #
 #  id         :bigint           not null, primary key
-#  clubname   :string
 #  comment    :text
 #  date       :date
 #  end_time   :datetime

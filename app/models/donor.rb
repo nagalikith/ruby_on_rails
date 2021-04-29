@@ -3,7 +3,7 @@
 # Table name: donors
 #
 #  id            :bigint           not null, primary key
-#  contactnumber :integer
+#  contactnumber :string
 #  email         :text
 #  name          :string
 #  totaldonation :integer
