@@ -17,10 +17,14 @@
 #  fk_rails_...  (event_id => events.id)
 #
 class ConsentForm < ApplicationRecord
+<<<<<<< HEAD
+    belongs_to :event
+=======
     has_one_attached :image
     belongs_to :event
 
     validates :participantname, presence: true
     scope :active, -> { where(active: true) }
     
+>>>>>>> 04d85356a0cb73bb030fd76d9c5948ab11d3829b
 end

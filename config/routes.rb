@@ -37,12 +37,17 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
+<<<<<<< HEAD
+
+  root to: "clubs#index"
+=======
   get '/events/:event_individual', to: 'pages#event_id_page', as: :event_id_page
   get '/clubs/:club_individual', to: 'pages#club_id_page', as: :club_id_page
   match '/users',   to: 'users#index',   via: 'get'
   root to: "pages#home"
   
   #root to: "pages#home"
+>>>>>>> 04d85356a0cb73bb030fd76d9c5948ab11d3829b
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

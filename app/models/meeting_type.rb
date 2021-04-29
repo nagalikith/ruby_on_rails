@@ -20,6 +20,8 @@
 #
 class MeetingType < ApplicationRecord
     belongs_to :club_info
+<<<<<<< HEAD
+=======
 
     def mostRecentMeetings(club_id)
         most_recent_club_info_id_array = ClubInfo.select(:id).where(club_id: club_id).order("date DESC")
@@ -33,4 +35,5 @@ class MeetingType < ApplicationRecord
         end
     end
 
+>>>>>>> 04d85356a0cb73bb030fd76d9c5948ab11d3829b
 end

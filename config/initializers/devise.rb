@@ -47,7 +47,6 @@ Devise.setup do |config|
   # or not authentication should be aborted when the value is not present.
   config.authentication_keys = [:email]
 
-
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
@@ -79,7 +78,7 @@ Devise.setup do |config|
   # enable this with :database unless you are using a custom strategy.
   # The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
-  # config.http_authenticatable = false
+  #config.http_authenticatable = false
 
   # If 401 status code should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
@@ -126,7 +125,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  config.pepper = 'a4eb70508365e77a1458226e43355f25519c22c7d0bb8afb49e9ffc23ce9cd8d299f7ca2ed482021978e5441a8d0e603dc21818e9835c882c6aa79fde4d10584'
+  # config.pepper = 'b9d28ca0daeef1cf49329270c00bf112310ad9d935e96575d299791f666690d70c0867b4efa19815970efc35588d63041190b0bc4466116f5fd4ee7aa47348c3'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false

@@ -48,6 +48,11 @@ class ApplicationController < ActionController::Base
     super(file, opts)
   end
 
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || event_feedbacks_path
+  end
+
+
   private
     def update_headers_to_disable_caching
       response.headers['Cache-Control'] = 'no-cache, no-cache="set-cookie", no-store, private, proxy-revalidate'
