@@ -1,28 +1,33 @@
 %h1 Listing prospective_donors
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Type
-      %th Contactnumber
-      %th Internalcontactlink
-      %th Email
-      %th
-      %th
-      %th
+- if @prospective_donors.length > 0
 
-  %tbody
-    - @prospective_donors.each do |prospective_donor|
+  %p There are #{@prospective_donorsos.size} events to search through.
+
+  %table
+    %thead
       %tr
-        %td= prospective_donor.name
-        %td= prospective_donor.type
-        %td= prospective_donor.contactnumber
-        %td= prospective_donor.internalcontactlink
-        %td= prospective_donor.email
-        %td= link_to 'Show', prospective_donor
-        %td= link_to 'Edit', edit_prospective_donor_path(prospective_donor)
-        %td= link_to 'Destroy', prospective_donor, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Type
+        %th Contactnumber
+        %th Internalcontactlink
+        %th Email
+
+    %tbody
+      - @prospective_donors.each do |prospective_donor|
+        %tr
+          %td= prospective_donor.name
+          %td= prospective_donor.type
+          %td= prospective_donor.contactnumber
+          %td= prospective_donor.internalcontactlink
+          %td= prospective_donor.email
+          %td= link_to 'Show', prospective_donor
+          %td= link_to 'Edit', edit_prospective_donor_path(prospective_donor)
+          %td= link_to 'Destroy', prospective_donor, method: :delete, data: { confirm: 'Are you sure?' }
+
+- else
+  .error-message
+    %h5 No prospective donors available
 
 %br
 

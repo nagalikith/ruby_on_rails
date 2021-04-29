@@ -79,3 +79,13 @@ td {
   color: white;
   background-color: #00c8f8;
 }
+
+.error-message {
+  color: red;
+}
+
+ul.nav.navbar-nav a:hover {
+  color: white;
+  transition: 0.5s;
+}
+

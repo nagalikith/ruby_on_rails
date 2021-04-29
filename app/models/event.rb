@@ -3,7 +3,6 @@
 # Table name: events
 #
 #  id         :bigint           not null, primary key
-#  clubname   :string
 #  comment    :text
 #  date       :date
 #  end_time   :datetime
@@ -22,13 +21,12 @@
 #  fk_rails_...  (club_id => clubs.id)
 #
 class Event < ApplicationRecord
-    has_one :event_feedback
+    has_many :event_feedback , dependent: :destroy
     belongs_to :club
     has_many :consent_form , dependent: :destroy
-    has_many :case_study
+    has_many :case_study , dependent: :destroy
     belongs_to :club
-    has_many :volunteers, through: :event_volunteers
-    has_many :event_volunteers
+    #belongs_to :event_calendars
     
 
     # attr_accessible :name, :date

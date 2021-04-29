@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_192621) do
+ActiveRecord::Schema.define(version: 2021_04_27_175346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "club_id", null: false
-    t.bigint "event_id", null: false
     t.index ["club_id"], name: "index_case_studies_on_club_id"
-    t.index ["event_id"], name: "index_case_studies_on_event_id"
   end
 
   create_table "club_infos", force: :cascade do |t|
@@ -72,7 +70,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
   create_table "clubs", force: :cascade do |t|
     t.string "name"
     t.string "postcode"
-    t.integer "contactnumber"
+    t.string "contactnumber"
     t.date "paymentduedate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -116,7 +114,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
   create_table "donors", force: :cascade do |t|
     t.string "name"
     t.text "type"
-    t.integer "contactnumber"
+    t.string "contactnumber"
     t.text "email"
     t.integer "totaldonation"
     t.datetime "created_at", precision: 6, null: false
@@ -180,7 +178,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
   create_table "prospective_donors", force: :cascade do |t|
     t.string "name"
     t.string "type"
-    t.integer "contactnumber"
+    t.string "contactnumber"
     t.string "internalcontactlink"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
@@ -210,6 +208,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "club_id", null: false
+    t.boolean "manager"
     t.datetime "start_time"
     t.datetime "end_time"
     t.boolean "manager"
@@ -220,11 +219,9 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
 
   create_table "volunteers", force: :cascade do |t|
     t.string "name"
-    t.integer "contactnumber"
-    t.string "addressone"
-    t.string "addresstwo"
+    t.string "contactnumber"
     t.string "email"
-    t.string "postcode"
+    t.boolean "youngPerson"
     t.float "hours"
     t.float "target"
     t.datetime "created_at", precision: 6, null: false
@@ -234,7 +231,6 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "case_studies", "clubs"
-  add_foreign_key "case_studies", "events"
   add_foreign_key "club_infos", "clubs"
   add_foreign_key "consent_forms", "events"
   add_foreign_key "donations", "donors"

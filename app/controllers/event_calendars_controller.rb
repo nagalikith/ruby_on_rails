@@ -3,8 +3,13 @@ class EventCalendarsController < ApplicationController
 
   # GET /event_calendars
   def index
-    @event_calendars = EventCalendar.all
-    @events = Event.all
+    if current_user.manager
+      @event_calendars = EventCalendar.all
+      @events = Event.all
+    else
+      @event_calendars = EventCalendar.all
+      @events = Event.where(club_id: current_user.club_id)
+    end
   end
 
   # GET /event_calendars/1

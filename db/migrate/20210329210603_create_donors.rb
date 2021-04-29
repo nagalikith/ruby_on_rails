@@ -3,7 +3,7 @@ class CreateDonors < ActiveRecord::Migration[6.0]
     create_table :donors do |t|
       t.string :name
       t.text :type
-      t.integer :contactnumber
+      t.string :contactnumber
       t.text :email
       t.integer :totaldonation
 

@@ -4,14 +4,15 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
+    = f.hidden_field :club_id, :value => Club.find(current_user[:club_id]).id
     = f.input :date, label: "Date:"
     = f.input :males, label: "Number of boys attending:"
     = f.input :females, label: "Number of girls attending:"
     = f.input :lowerage, label: "Number of children between the ages of 8 and 13:"
     = f.input :upperage, label: "Number of children between the ages of 13 and 18:"
     = f.input :disability, label: "Number of children with a disability:"
-    = f.input :ethnicity
-    = f.input :depravation
+    = f.input :ethnicity, label: "Number of children from an ethnic minority:"
+    = f.input :depravation, label: "Number of depraved children:"
     = f.input :drugsandabs, label: "Number of children involved with drugs and anti-social behaviour:"
     = f.input :mentalhealth, label: "Number of children with mental health difficulties:"
     = f.input :neets, label: "NEETS:"
@@ -19,7 +20,6 @@
     = f.input :volhours, label: "Total hours volunteered:"
     = f.input :volachievetraining, label: "Number of volunteers achieving training or employment:"
 
-  
 
   .form-actions
     = f.button :submit

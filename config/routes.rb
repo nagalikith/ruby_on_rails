@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :event_calendars
   resources :event_feedbacks
   resources :meeting_types do
-    post :search, on: :collection
+    get 'meeting_types/search'
   end
   resources :prospective_donors
   resources :event_volunteers
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get '/events/:event_individual', to: 'pages#event_id_page', as: :event_id_page
   get '/clubs/:club_individual', to: 'pages#club_id_page', as: :club_id_page
   match '/users',   to: 'users#index',   via: 'get'
-  root to: "clubs#index"
+  root to: "pages#home"
   
   #root to: "pages#home"
 

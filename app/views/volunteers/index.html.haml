@@ -1,35 +1,20 @@
-%h1 Listing volunteers
+%h1 Donors and Volunteers
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Contactnumber
-      %th Addressone
-      %th Addresstwo
-      %th Email
-      %th Postcode
-      %th Hours
-      %th Target
-      %th
-      %th
-      %th
 
-  %tbody
-    - @volunteers.each do |volunteer|
-      %tr
-        %td= volunteer.name
-        %td= volunteer.contactnumber
-        %td= volunteer.addressone
-        %td= volunteer.addresstwo
-        %td= volunteer.email
-        %td= volunteer.postcode
-        %td= volunteer.hours
-        %td= volunteer.target
-        %td= link_to 'Show', volunteer
-        %td= link_to 'Edit', edit_volunteer_path(volunteer)
-        %td= link_to 'Destroy', volunteer, method: :delete, data: { confirm: 'Are you sure?' }
+.btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+  %label.btn.btn-primary.active
+    %input{:type => "radio", :name => "options", :id => "option1", :autocomplete => "off", :checked => true}  Volunteers
+  %label.btn.btn-primary
+    %input{:type => "radio", :name => "options", :id => "option2", :autocomplete => "off"} Donors
+  %label.btn.btn-primary
+    %input{:type => "radio", :name => "options", :id => "option3", :autocomplete => "off"} Prostective Donors
 
 %br
+%br
 
-= link_to 'New Volunteer', new_volunteer_path
+
+= render 'volunteers_table'
+
+
+
+

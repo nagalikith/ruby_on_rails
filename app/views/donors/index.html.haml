@@ -1,28 +1,33 @@
 %h1 Listing donors
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Type
-      %th Contactnumber
-      %th Email
-      %th Totaldonation
-      %th
-      %th
-      %th
+- if @donors.length > 0
 
-  %tbody
-    - @donors.each do |donor|
+  %p There are #{@donors.size} events to search through.
+
+  %table
+    %thead
       %tr
-        %td= donor.name
-        %td= donor.type
-        %td= donor.contactnumber
-        %td= donor.email
-        %td= donor.totaldonation
-        %td= link_to 'Show', donor
-        %td= link_to 'Edit', edit_donor_path(donor)
-        %td= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Type
+        %th Contactnumber
+        %th Email
+        %th Totaldonation
+
+    %tbody
+      - @donors.each do |donor|
+        %tr
+          %td= donor.name
+          %td= donor.type
+          %td= donor.contactnumber
+          %td= donor.email
+          %td= donor.totaldonation
+          %td= link_to 'Show', donor
+          %td= link_to 'Edit', edit_donor_path(donor)
+          %td= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' }
+
+- else
+  .error-message
+    %h5 No donors available
 
 %br
 
