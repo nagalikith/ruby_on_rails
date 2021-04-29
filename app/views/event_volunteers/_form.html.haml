@@ -7,4 +7,5 @@
     = f.association :volunteer
     = f.association :event, collection: Event.where(id: @event.id)
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn btn-secondary'
+%br

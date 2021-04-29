@@ -24,12 +24,13 @@
     %h5 No consent forms exist
 
 %br
+= link_to 'New Consent form', new_event_consent_form_path(@event), class: 'btn btn-secondary'
 
-.button
-  = link_to 'Back', (@event)
 %br
-.button
-  = link_to 'New Consent form', new_event_consent_form_path(@event)
+%br
+= link_to 'Back', (@event), class: 'btn btn-secondary'
+
+
 
 -#  - if consent_form.image.attached?
 -#           - consent_form.image.each do |each_image|

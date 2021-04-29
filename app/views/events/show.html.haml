@@ -26,9 +26,8 @@
   = link_to event_event_volunteers_path(@event) do
     click here
 
+= link_to 'Edit', edit_event_path(@event), class: 'ajax-modal btn btn-secondary'
 
-.button
-  = link_to 'Edit', edit_event_path(@event), class: 'ajax-modal'
-<br>
-.button
-  = link_to 'Back', events_path
+<br><br>
+
+= link_to 'Back', events_path, class: 'btn btn-secondary'
