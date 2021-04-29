@@ -1,4 +1,4 @@
-- Club.all.each do |club|
+- Club.all.where.not(id: '1').each do |club|
   %tr
     %td= club.name
     %td= club.postcode
