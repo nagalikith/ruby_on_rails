@@ -89,3 +89,28 @@ ul.nav.navbar-nav a:hover {
   transition: 0.5s;
 }
 
+/* nav bar */
+.dropdown .dropbtn {
+  border: none;
+  color: white;
+  background-color: inherit;
+  font-family: inherit;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #555555;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  color: black;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

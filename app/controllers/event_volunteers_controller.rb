@@ -27,7 +27,7 @@ class EventVolunteersController < ApplicationController
     @event_volunteer = EventVolunteer.new(event_volunteer_params)
 
     if @event_volunteer.save
-      redirect_to @event_volunteer, notice: 'Event volunteer was successfully created.'
+      redirect_to event_volunteers_url, notice: 'Event volunteer was successfully created.'
     else
       render :new
     end
