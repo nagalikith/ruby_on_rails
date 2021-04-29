@@ -24,63 +24,25 @@
   
   .colthreequart
     %h2 Events Hosted
+    - if @events.length > 0
+      %input{:id => "eventInput", :onkeyup => "searchFunc('eventInput', 'eventTable')", :placeholder => "Enter event name..."}
+      %p
 
-    %input{:id => "eventInput", :onkeyup => "searchFunc('eventInput', 'eventTable')", :placeholder => "Enter event name..."}
-    %p
-
-    %table{:id => "eventTable"}
-      %thead
-        %tr
-          %th Event Hosted
-          %th Date of Event
-          %th 
-
-      %tbody
-        - @events.each do |event|
+      %table{:id => "eventTable"}
+        %thead
           %tr
-            %td= event.name
-            %td= event.date
-            %td= link_to 'View', event
-    <br>
-    %h2 Volunteers
+            %th Event Hosted
+            %th Date of Event
 
-    %input{:id => "volunteerInput", :onkeyup => "searchFunc('volunteerInput', 'volunteerTable')", :placeholder => "Enter volunteer name..."}
-    %p
-
-    %table{:id => "volunteerTable"}
-      %thead
-        %tr
-          %th Volunteer Name
-          %th Contact Info
-          %th Hours Worked
-          %th Target Hours
-          %th 
-
-      %tbody
-        - @volunteers.each do |volunteer|
-          %tr
-            %td= volunteer.name
-            %td= volunteer.contactnumber
-            %td= volunteer.hours
-            %td= volunteer.target
-            %td= link_to 'View', volunteer
-
-    <br>
-
-    %h2 Add Weekly Hours
-    %table
-      %thead
-        %tr
-          %th Volunteer Name
-          %th Hours Worked
-          %th Involved?
-      %tbody
-        - @volunteers.each do |volunteer| 
-          = simple_form_for(volunteer) do |f| 
+        %tbody
+          - @events.each do |event|
             %tr
-              %td= volunteer.name
-              %td= f.input :hours
-              %td= f.button :submit
+              %td= event.name
+              %td= event.date
+              %td= link_to 'View', event
+    - else
+      .error-message
+        %p No events for this club
 
 :javascript
   function searchFunc(searchId, searchTable) {
