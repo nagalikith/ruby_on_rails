@@ -12,7 +12,7 @@
     = f.input :upperage, label: "Number of children between the ages of 13 and 18:"
     = f.input :disability, label: "Number of children with a disability:"
     = f.input :ethnicity, label: "Number of children from an ethnic minority:"
-    = f.input :depravation, label: "Number of depraved children:"
+    = f.input :depravation, label: "Number of deprived children:"
     = f.input :drugsandabs, label: "Number of children involved with drugs and anti-social behaviour:"
     = f.input :mentalhealth, label: "Number of children with mental health difficulties:"
     = f.input :neets, label: "NEETS:"
@@ -22,6 +22,6 @@
 
 
   .form-actions
-    = f.button :submit
-
+    = f.button :submit, class: 'btn btn-secondary'
+%br
 

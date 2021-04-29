@@ -3,7 +3,11 @@ class CaseStudiesController < ApplicationController
 
   # GET /case_studies
   def index
-    @case_studies = CaseStudy.all
+    if current_user.manager
+      @case_studies = CaseStudy.all
+    else
+      @case_studies = CaseStudy.all.where(club_id: current_user.club_id)
+    end
   end
 
   # GET /case_studies/1
