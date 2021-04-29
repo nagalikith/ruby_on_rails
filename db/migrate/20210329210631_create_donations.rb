@@ -3,8 +3,7 @@ class CreateDonations < ActiveRecord::Migration[6.0]
     create_table :donations do |t|
       t.float :amount
       t.date :date
-      t.string :method
-      t.float :recurring
+      t.string :recurring
       t.string :restricted
 
       t.timestamps

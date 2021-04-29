@@ -102,8 +102,7 @@ ActiveRecord::Schema.define(version: 2021_04_27_192621) do
   create_table "donations", force: :cascade do |t|
     t.float "amount"
     t.date "date"
-    t.string "method"
-    t.float "recurring"
+    t.string "recurring"
     t.string "restricted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

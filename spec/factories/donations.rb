@@ -5,8 +5,7 @@
 #  id         :bigint           not null, primary key
 #  amount     :float
 #  date       :date
-#  method     :string
-#  recurring  :float
+#  recurring  :string
 #  restricted :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -22,18 +22,15 @@
     -# .button
     -#   = link_to 'Submit Weekly Hours', hours_clubs_path(@club), method: :post
 
-    <br>
+    %br
     - if can?(:read, rails_admin)
-      .button
-        = link_to 'Back', clubs_path
-    
-    - if !can?(:read, rails_admin)
-      .button 
-        = link_to 'Submit Affiliation Form', new_club_info_path
+      = link_to 'Back', clubs_path, class: "btn btn-secondary"
+    - else
+      = link_to 'Submit Affiliation Form', new_club_info_path, class: "btn btn-secondary"
 
-    <br>
-    .button
-      = link_to 'Edit', edit_club_path(@club), class: 'ajax-modal' 
+    %br
+    %br
+    = link_to 'Edit', edit_club_path(@club), class: 'ajax-modal btn btn-secondary' 
   
   .colthreequart
     %h2 Events Hosted
