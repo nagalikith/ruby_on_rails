@@ -1,19 +1,32 @@
-%h1 Donors and Volunteers
-
-
-.btn-group.btn-group-toggle{"data-toggle" => "buttons"}
-  %label.btn.btn-primary.active
-    %input{:type => "radio", :name => "options", :id => "option1", :autocomplete => "off", :checked => true}  Volunteers
-  %label.btn.btn-primary
-    %input{:type => "radio", :name => "options", :id => "option2", :autocomplete => "off"} Donors
-  %label.btn.btn-primary
-    %input{:type => "radio", :name => "options", :id => "option3", :autocomplete => "off"} Prostective Donors
+%h1 Volunteers
 
 %br
-%br
+
+%p= link_to "Add Volunteer", new_volunteer_path, class: 'ajax-modal btn btn-secondary'
+
+- if @volunteers.length > 0
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Contact Number
+        %th Young Person?
+        %th Email
+        %th Hours
+        %th Target
+        %th
+        %th
+
+    %tbody#volunteerTable
+      = render 'volunteers_table'
 
 
-= render 'volunteers_table'
+
+- else
+  .error-message
+    %h5 No volunteers available
+
 
 
 

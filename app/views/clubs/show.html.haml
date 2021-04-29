@@ -11,12 +11,25 @@
       %b Contact Info:
       = @club.contactnumber
 
+    %br
+
+    %b Weekly Meetings:
+    - MeetingType.new.mostRecentMeetings(@club.id).each do |meeting|
+      %p #{meeting.day} at #{meeting.time.to_s(:time)} | #{meeting.sessiontype}
+    
+    %br
+
     -# .button
     -#   = link_to 'Submit Weekly Hours', hours_clubs_path(@club), method: :post
 
     <br>
-    .button
-      = link_to 'Back', clubs_path
+    - if can?(:read, rails_admin)
+      .button
+        = link_to 'Back', clubs_path
+    
+    - if !can?(:read, rails_admin)
+      .button 
+        = link_to 'Submit Affiliation Form', new_club_info_path
 
     <br>
     .button

@@ -1,15 +1,14 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-
+MeetingType.delete_all
+ClubInfo.delete_all
 User.delete_all
 CaseStudy.delete_all
 EventFeedback.delete_all
 Event.delete_all
-Club.delete_all
 Volunteer.delete_all
-ClubInfo.delete_all
-MeetingType.delete_all
+Club.delete_all
 
 
 Club.where(name: 'admin').first_or_create(id:'1')
@@ -43,5 +42,10 @@ CaseStudy.where(id: "1").first_or_create(participant: "Molly", date: "2021/03/02
 CaseStudy.where(id: "2").first_or_create(participant: "Ben", date: "2021/01/20", comment: "Organised a game", club_id: "2")
 CaseStudy.where(id: "3").first_or_create(participant: "Chris", date: "2021/02/16", comment: "Tried very hard, put in 110%", club_id: "4")
 
+ClubInfo.where(id: "1").first_or_create(date: "2020/10/16", club_id: "2")
+
+MeetingType.where(id: "1").first_or_create(club_info_id: "1", day: "Monday", sessiontype: "Boys Only", time: "16:00")
+MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", sessiontype: "Over 13s only", time: "20:30")
+MeetingType.where(id: "3").first_or_create(club_info_id: "1", day: "Friday", sessiontype: "Girls Only", time: "17:00")
 
 

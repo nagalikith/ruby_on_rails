@@ -1,28 +1,25 @@
-%h1 Listing Case Studies
+%h1 Case Studies
 
 - if @case_studies.length > 0
 
-  %p There are #{@case_studies.size} events to search through.
+  %p There are #{@case_studies.size} case studies to search through.
 
   %table
     %thead
       %tr
         %th Date
         %th Participant
+        %th Club
+        %th Comment 
+        %th
+        %th
 
-    %tbody
-      - @case_studies.each do |case_study|
-        %tr
-          %td= case_study.date
-          %td= case_study.participant
-          %td= link_to 'Show', case_study
-          %td= link_to 'Edit', edit_case_study_path(case_study)
-          %td= link_to 'Destroy', case_study, method: :delete, data: { confirm: 'Are you sure?' }
+    %tbody#case-study-table
+      = render 'casestudy_table'
 
 - else
   .error-message
     %h5 No case studies exist
 
 %br
-.button
-  = link_to 'New Case study', new_case_study_path
+%p= link_to "Add Case Study", new_case_study_path, class: 'ajax-modal btn btn-secondary'

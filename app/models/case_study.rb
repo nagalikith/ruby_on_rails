@@ -20,5 +20,6 @@
 #
 class CaseStudy < ApplicationRecord
     belongs_to :club
-    #belongs_to :event
+    validates :date, :comment, presence: true
+
 end

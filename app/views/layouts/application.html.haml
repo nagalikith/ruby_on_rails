@@ -64,10 +64,6 @@
                       = icon 'fas', 'camera'
                       Case Studies
                     - if can?(:read, rails_admin)
-                      = navbar_link_to donations_path, title: "Go to donations", identifier: :donations do
-                        = icon 'fas', 'credit-card'
-                        Donations
-                    - if can?(:read, rails_admin)
                       = navbar_link_to rails_admin_path, title: "Go to Management Dash", identifier: :rails_admin do
                         = icon 'fas', 'edit'
                         User Management

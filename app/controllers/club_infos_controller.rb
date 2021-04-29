@@ -24,7 +24,9 @@ class ClubInfosController < ApplicationController
     @club_info = ClubInfo.new(club_info_params)
 
     if @club_info.save
-      redirect_to search_meeting_types_path(club_info_id: @club_info.id)
+      @meeting_types = MeetingType.where(club_infos_id: @club_info.id)
+      print(@meeting_types.length)
+      render 'meeting_types/index'
     else
       render :new
     end
