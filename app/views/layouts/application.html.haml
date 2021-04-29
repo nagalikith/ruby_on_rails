@@ -30,28 +30,62 @@
           .container
             .navbar-header
               = link_to :root, class: 'navbar-brand hidden-sm' do
-                Bgcsy
+                BGCSY
             %button.navbar-toggler{ aria: { controls: "navbar-content", expanded: false, label: "Toggle navigation" }, data: { target: "#navbar-content", toggle: "collapse" }, type: "button" }
               %span.navbar-toggler-icon
 
             .collapse.navbar-collapse#navbar-content
               %ul.nav.navbar-nav
-                = navbar_link_to :root, title: "Go to the home page", identifier: :home do
-                  = icon 'fas', 'home'
-                  Home
-                = navbar_link_to '#', title: "Go to an unavailable page", class: 'disabled', identifier: :unavailable_page do
-                  = icon 'fas', 'ban'
-                  Unavailable Page
-              -# - if user_signed_in?
-              -#   %ul.nav.navbar-nav.ml-auto
-              -#     %li.nav-item.dropdown
-              -#       = link_to '#', aria: { haspopup: true, expanded: false }, data: { toggle: :dropdown }, id: 'navbar-user-link', class: 'nav-link dropdown-toggle', role: 'button' do
-              -#         = icon 'fas', 'user', current_user.email
-              -#         %b.caret
-              -#       .dropdown-menu{ aria: { labelledby: '#navbar-user-link' } }
-              -#         = link_to destroy_user_session_path, class: 'dropdown-item', method: :delete, title: "Log out of the system" do
-              -#           = icon 'fas', 'sign-out-alt', 'Log out'
+                .dropdown
+                  %button.dropbtn
+                    Menu
+                    %i.fa.fa-caret-down
+                  .dropdown-content
+                    = navbar_link_to :root, title: "Go to the List Home Page", identifier: :home do
+                      = icon 'fas', 'home'
+                      Home
+                    - if can?(:read, rails_admin)
+                      = navbar_link_to clubs_path, title: "Go to the List all clubs page", identifier: :clubs do
+                        = icon 'fas', 'book'
+                        Clubs
+                    - if !can?(:read, rails_admin) and user_signed_in?
+                      = navbar_link_to club_path(id: current_user[:club_id]), title: "Go to club_infos", identifier: :clubdata do
+                        = icon 'fas', 'globe'
+                        My Club
+                    - if can?(:read, rails_admin)
+                      = navbar_link_to volunteers_path, title: "See volunteers", identifier: :volunteers do
+                        = icon 'fas', 'users'
+                        Volunteers
+                    - if can?(:read, rails_admin)
+                      = navbar_link_to donations_path, title: "See Donors and Donations", identifier: :donations do
+                        = icon 'fas', 'wallet'
+                        Donors and Donations
+                    = navbar_link_to case_studies_path, title: "Go to case_studies", identifier: :case_studies do
+                      = icon 'fas', 'camera'
+                      Case Studies
+                    - if can?(:read, rails_admin)
+                      = navbar_link_to rails_admin_path, title: "Go to Management Dash", identifier: :rails_admin do
+                        = icon 'fas', 'edit'
+                        User Management
+                    = navbar_link_to event_calendars_path, title: "Go to event_calandars", identifier: :event_calandars do
+                      = icon 'fas', 'calendar'
+                      Calendar
+                    = navbar_link_to events_path, title: "Go to events", identifier: :events do
+                      = icon 'fas', 'door-open'
+                      Events
+                
 
+              - if user_signed_in?
+                %ul.nav.navbar-nav.ml-auto
+                  %li.nav-item.dropdown
+                    = link_to '#', aria: { haspopup: true, expanded: false }, data: { toggle: :dropdown }, id: 'navbar-user-link', class: 'nav-link dropdown-toggle', role: 'button' do
+                      = icon 'fas', 'user', current_user.email
+                      %b.caret
+                    .dropdown-menu{ aria: { labelledby: '#navbar-user-link' } }
+                      = link_to destroy_user_session_path, class: 'dropdown-item', method: :delete, title: "Log out of the system" do
+                        = icon 'fas', 'sign-out-alt', 'Log out'
+                      = link_to edit_user_registration_path, class: 'dropdown-item', title: "Change Password" do
+                        = icon 'fas', 'cog', 'Change Password'
       %main
         #main-container.container
           = yield

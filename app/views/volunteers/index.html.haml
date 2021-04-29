@@ -1,35 +1,31 @@
-%h1 Listing volunteers
+%h1 Volunteers
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Contactnumber
-      %th Addressone
-      %th Addresstwo
-      %th Email
-      %th Postcode
-      %th Hours
-      %th Target
-      %th
-      %th
-      %th
+%p There are #{@volunteers.size} volunteers to search through.
 
-  %tbody
-    - @volunteers.each do |volunteer|
+%p= link_to "Add Volunteer", new_volunteer_path, class: 'ajax-modal btn btn-secondary'
+
+- if @volunteers.length > 0
+
+  %table
+    %thead
       %tr
-        %td= volunteer.name
-        %td= volunteer.contactnumber
-        %td= volunteer.addressone
-        %td= volunteer.addresstwo
-        %td= volunteer.email
-        %td= volunteer.postcode
-        %td= volunteer.hours
-        %td= volunteer.target
-        %td= link_to 'Show', volunteer
-        %td= link_to 'Edit', edit_volunteer_path(volunteer)
-        %td= link_to 'Destroy', volunteer, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Contact Number
+        %th Young Person?
+        %th Email
+        %th Hours
+        %th Target
 
-%br
+    %tbody#volunteerTable
+      = render 'volunteers_table'
 
-= link_to 'New Volunteer', new_volunteer_path
+
+
+- else
+  .error-message
+    %h5 No volunteers available
+
+
+
+
+

@@ -1,15 +1,34 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h1
   = @event.name
-%p
-  %b Date:
-  = @event.date
 %p
   %b Comment:
   = @event.comment
+%p
+  %b Start Date:
+  = @event.start_time
+%p
+  %b End Date:
+  = @event.end_time
+%p
+  %b Club Name:
+  = @event.club.name
+%p
+  %b Club ID:
+  = @event.club_id
+%p
+  %b Consent Forms:
+  = link_to event_consent_forms_path(@event) do
+    click here
+%p
+  %b Add Volunteer:
+  = link_to event_event_volunteers_path(@event) do
+    click here
 
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
+
+.button
+  = link_to 'Edit', edit_event_path(@event), class: 'ajax-modal'
+<br>
+.button
+  = link_to 'Back', events_path

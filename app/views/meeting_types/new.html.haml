@@ -1,5 +1,20 @@
-%h1 New meeting_type
+.modal-dialog
+  .modal-content
+    = simple_form_for MeetingType.new, remote: true do |f|
+      .modal-header
+        %h4.modal-title New Meeting
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :day, collection: ['Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday', 'Sunday']
+        = f.input :time
+        = f.input :sessiontype, collection: MeetingType.distinct.pluck(:sessiontype).push("Other"), id: "sessionTypesCombo"
+        = f.input :sessiontype, id: "sessionTypeTxt", input_html: { disabled: true }
+      %br
+      %br
 
-= render 'form'
-
-= link_to 'Back', meeting_types_path
+          
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

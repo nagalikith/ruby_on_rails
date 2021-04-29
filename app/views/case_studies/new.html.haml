@@ -1,5 +1,18 @@
-%h1 New case_study
+.modal-dialog
+  .modal-content
+    = simple_form_for CaseStudy.new, remote: true do |f|
+      .modal-header
+        %h4.modal-title New Meeting
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :date
+        = f.input :participant
+        = f.input :club_id, :collection => Club.all.collect {|c| [c.name, c.id]}
+        = f.input :comment
 
-= render 'form'
-
-= link_to 'Back', case_studies_path
+          
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

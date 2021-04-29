@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_103033) do
+ActiveRecord::Schema.define(version: 2021_04_27_192621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "case_studies", force: :cascade do |t|
     t.date "date"
@@ -22,9 +43,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "club_id", null: false
-    t.bigint "event_id", null: false
     t.index ["club_id"], name: "index_case_studies_on_club_id"
-    t.index ["event_id"], name: "index_case_studies_on_event_id"
   end
 
   create_table "club_infos", force: :cascade do |t|
@@ -51,7 +70,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
   create_table "clubs", force: :cascade do |t|
     t.string "name"
     t.string "postcode"
-    t.integer "contactnumber"
+    t.string "contactnumber"
     t.date "paymentduedate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -83,8 +102,7 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
   create_table "donations", force: :cascade do |t|
     t.float "amount"
     t.date "date"
-    t.string "method"
-    t.float "recurring"
+    t.string "recurring"
     t.string "restricted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -95,11 +113,18 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
   create_table "donors", force: :cascade do |t|
     t.string "name"
     t.text "type"
-    t.integer "contactnumber"
+    t.string "contactnumber"
     t.text "email"
     t.integer "totaldonation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "event_calendars", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_event_calendars_on_event_id"
   end
 
   create_table "event_feedbacks", force: :cascade do |t|
@@ -110,6 +135,15 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
     t.index ["event_id"], name: "index_event_feedbacks_on_event_id"
   end
 
+  create_table "event_volunteers", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "volunteer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_volunteers_on_event_id"
+    t.index ["volunteer_id"], name: "index_event_volunteers_on_volunteer_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.date "date"
@@ -117,23 +151,34 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "club_id", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.index ["club_id"], name: "index_events_on_club_id"
+  end
+
+  create_table "events_and_volunteers", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "volunteer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_events_and_volunteers_on_event_id"
+    t.index ["volunteer_id"], name: "index_events_and_volunteers_on_volunteer_id"
   end
 
   create_table "meeting_types", force: :cascade do |t|
     t.string "day"
-    t.integer "time"
+    t.time "time"
     t.string "sessiontype"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "club_infos_id", null: false
-    t.index ["club_infos_id"], name: "index_meeting_types_on_club_infos_id"
+    t.bigint "club_info_id", null: false
+    t.index ["club_info_id"], name: "index_meeting_types_on_club_info_id"
   end
 
   create_table "prospective_donors", force: :cascade do |t|
     t.string "name"
     t.string "type"
-    t.integer "contactnumber"
+    t.string "contactnumber"
     t.string "internalcontactlink"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
@@ -163,6 +208,9 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "club_id", null: false
+    t.boolean "manager"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.index ["club_id"], name: "index_users_on_club_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -170,24 +218,24 @@ ActiveRecord::Schema.define(version: 2021_04_05_103033) do
 
   create_table "volunteers", force: :cascade do |t|
     t.string "name"
-    t.integer "contactnumber"
-    t.string "addressone"
-    t.string "addresstwo"
+    t.string "contactnumber"
     t.string "email"
-    t.string "postcode"
+    t.boolean "youngPerson"
     t.float "hours"
     t.float "target"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "club_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "case_studies", "clubs"
-  add_foreign_key "case_studies", "events"
   add_foreign_key "club_infos", "clubs"
   add_foreign_key "consent_forms", "events"
   add_foreign_key "donations", "donors"
+  add_foreign_key "event_calendars", "events"
   add_foreign_key "event_feedbacks", "events"
   add_foreign_key "events", "clubs"
-  add_foreign_key "meeting_types", "club_infos", column: "club_infos_id"
+  add_foreign_key "meeting_types", "club_infos"
   add_foreign_key "users", "clubs"
 end

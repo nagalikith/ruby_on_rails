@@ -6,6 +6,12 @@
 %p
   %b Participant:
   = @case_study.participant
+%p
+  %b Club:
+  = Club.find(@case_study.club_id).name
+%p
+  %b Comment:
+  = @case_study.comment
 
 = link_to 'Edit', edit_case_study_path(@case_study)
 \|

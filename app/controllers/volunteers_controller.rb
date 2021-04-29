@@ -12,7 +12,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/new
   def new
-    @volunteer = Volunteer.new
+    render layout: false
   end
 
   # GET /volunteers/1/edit
@@ -24,17 +24,22 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.new(volunteer_params)
 
     if @volunteer.save
-      redirect_to @volunteer, notice: 'Volunteer was successfully created.'
+      #redirect_to @volunteer, notice: 'Volunteer was successfully created.'
+      @volunteers = Volunteer.all
+      render 'new_volunteer_success'
     else
-      render :new
+      render 'new_volunteer_failure'
+      #render :new
     end
   end
 
   # PATCH/PUT /volunteers/1
   def update
     if @volunteer.update(volunteer_params)
+      
       redirect_to @volunteer, notice: 'Volunteer was successfully updated.'
     else
+      
       render :edit
     end
   end
@@ -53,6 +58,6 @@ class VolunteersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def volunteer_params
-      params.require(:volunteer).permit(:name, :contactnumber, :addressone, :addresstwo, :email, :postcode, :hours, :target)
+      params.require(:volunteer).permit(:name, :contactnumber, :youngPerson, :email, :hours, :target, :club_id)
     end
 end

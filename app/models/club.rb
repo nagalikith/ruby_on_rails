@@ -3,7 +3,7 @@
 # Table name: clubs
 #
 #  id             :bigint           not null, primary key
-#  contactnumber  :integer
+#  contactnumber  :string
 #  name           :string
 #  paymentduedate :date
 #  postcode       :string
@@ -11,8 +11,8 @@
 #  updated_at     :datetime         not null
 #
 class Club < ApplicationRecord
-    has_many :user
+    has_many :users
     has_many :case_study
-    has_one :club_info
+    has_many :club_info
 
 end

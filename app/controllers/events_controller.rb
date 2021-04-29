@@ -3,7 +3,12 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.all
+    if current_user.manager
+      @events = Event.all
+    else
+      @events = Event.where(club_id: current_user.club_id)
+    end
+    @volunteers = Volunteer.all
   end
 
   # GET /events/1
@@ -13,10 +18,13 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    render layout: false
   end
 
   # GET /events/1/edit
   def edit
+    @club = Club.where(club_id: current_user.club_id)
+    render layout: false
   end
 
   # POST /events
@@ -45,6 +53,17 @@ class EventsController < ApplicationController
     redirect_to events_url, notice: 'Event was successfully destroyed.'
   end
 
+  # POST /events/search
+  def search
+    @events = Event.where(name: params[:search][:clubname])
+  render :index
+  end
+  
+  def add
+    @event_volunteers = EventVolunteer.new
+    @volunteers = Volunteer.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -53,6 +72,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:name, :date, :comment)
+      params.require(:event).permit(:name, :date, :comment, :club_id, :start_time, :end_time)
     end
 end

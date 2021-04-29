@@ -1,25 +1,59 @@
 %h1 Listing events
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Date
-      %th Comment
-      %th
-      %th
-      %th
+- if @events.length > 0
 
-  %tbody
-    - @events.each do |event|
+  %p There are #{@events.size} events to search through.
+
+  %input{:id => "eventInput", :onkeyup => "searchFunc('eventInput', 'eventTable')", :placeholder => "Enter event name..."}
+  %p
+
+  %br
+  %table{:id => "eventTable"}
+    %thead
       %tr
-        %td= event.name
-        %td= event.date
-        %td= event.comment
-        %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Name
+        %th Comment
+        %th Start Time
+        %th End Time
+        %th Club Name
+        %th Link to CLUB with ID
+
+    %tbody
+      - @events.each do |event|
+        %tr
+          %td= event.name
+          %td= event.comment
+          %td= event.start_time
+          %td= event.end_time
+          %td= event.club.name
+          %td= link_to event.club_id, club_id_page_path(club_individual: event.club_id)
+          %td= link_to 'Show', event
+          %td= link_to 'Edit', edit_event_path(event), class: 'ajax-modal'
+          %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+
+- else
+  .error-message
+    %h5 No events exist
 
 %br
 
-= link_to 'New Event', new_event_path
+.button
+  = link_to 'New Event', new_event_path, class: 'ajax-modal'
+
+:javascript
+  function searchFunc(searchId, searchTable) {
+    input = document.getElementById(searchId).value.toUpperCase();
+    table = document.getElementById(searchTable);
+    row = table.getElementsByTagName("tr");
+    for (i = 0; i < row.length; i++) {
+      clubName = row[i].getElementsByTagName("td")[0];
+      if (clubName) {
+        text = clubName.textContent || clubName.innerText;
+        if (text.toUpperCase().indexOf(input) > -1) {
+          row[i].style.display = "";
+        } else {
+          row[i].style.display = "none";
+        }
+      }
+    }
+  }

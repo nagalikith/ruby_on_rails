@@ -1,10 +1,12 @@
 -# frozen_string_literal: true
-= simple_form_for(@consent_form) do |f|
+= simple_form_for([@event, @consent_forms]) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
     = f.input :participantname
+    = f.association :event, collection: Event.where(id: @event.id)
+    = f.input :image
 
   .form-actions
     = f.button :submit

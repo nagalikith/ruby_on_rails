@@ -1,5 +1,5 @@
 class MeetingTypesController < ApplicationController
-  before_action :set_meeting_type, only: [:show, :edit, :update, :destroy]
+  before_action :set_meeting_type, only: [:show, :edit, :update, :destroy, :search]
 
   # GET /meeting_types
   def index
@@ -8,6 +8,16 @@ class MeetingTypesController < ApplicationController
 
   # GET /meeting_types/1
   def show
+  end
+
+  # GET /meeting_types/search
+  def search
+    @meeting_types = MeetingType.all
+    
+    alert 'yes'
+    @meeting_types = @meeting_types.where(club_infos_id: params[:club_infos_id]) if params[:club_infos_id].present?
+    render :index
+
   end
 
   # GET /meeting_types/new
@@ -19,16 +29,22 @@ class MeetingTypesController < ApplicationController
   def edit
   end
 
+  
+
   # POST /meeting_types
   def create
     @meeting_type = MeetingType.new(meeting_type_params)
 
     if @meeting_type.save
-      redirect_to @meeting_type, notice: 'Meeting type was successfully created.'
+      @meeting_types = MeetingType.all.where(club_infos_id: params[:search][:club_infos_id])
+      render 'new_meeting_success'
+      #redirect_to @meeting_type, notice: 'Meeting type was successfully created.'
     else
-      render :new
+      render 'new_meeting_failure'
+      #render :new
     end
   end
+
 
   # PATCH/PUT /meeting_types/1
   def update
@@ -53,6 +69,6 @@ class MeetingTypesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def meeting_type_params
-      params.require(:meeting_type).permit(:day, :time, :sessiontype)
+      params.require(:meeting_type).permit(:day, :time, :sessiontype, :club_infos_id)
     end
 end

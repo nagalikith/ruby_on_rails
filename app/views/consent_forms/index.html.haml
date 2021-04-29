@@ -1,21 +1,36 @@
-%h1 Listing consent_forms
+%h1 Listing Consent Forms
 
-%table
-  %thead
-    %tr
-      %th Participantname
-      %th
-      %th
-      %th
+- if @consent_forms.length > 0
 
-  %tbody
-    - @consent_forms.each do |consent_form|
+  %table
+    %thead
       %tr
-        %td= consent_form.participantname
-        %td= link_to 'Show', consent_form
-        %td= link_to 'Edit', edit_consent_form_path(consent_form)
-        %td= link_to 'Destroy', consent_form, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Participant Name
+        %th Consent Form Image
+
+    %tbody
+      - @consent_forms.each do |consent_form|
+        %tr
+          %td= consent_form.participantname
+          %td 
+            - if consent_form.image.attached?
+              = image_tag consent_form.image, width: 300, height:400
+          %td= link_to 'Show Event for Consent Form', [@event]
+          %td= link_to 'Edit Consent Form', edit_event_consent_form_path(@event,consent_form)
+          %td= link_to 'Destroy Consent Form', [@event, consent_form], method: :delete, data: { confirm: 'Are you sure?' }
+
+- else
+  .error-message
+    %h5 No consent forms exist
 
 %br
 
-= link_to 'New Consent form', new_consent_form_path
+.button
+  = link_to 'Back', (@event)
+%br
+.button
+  = link_to 'New Consent form', new_event_consent_form_path(@event)
+
+-#  - if consent_form.image.attached?
+-#           - consent_form.image.each do |each_image|
+-#           %td= image_tag each_consent_form.image.image_url

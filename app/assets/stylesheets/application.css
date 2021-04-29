@@ -8,4 +8,109 @@
   *= require warning_page
   *= require custom_flash
   *= require environment_notice
+  *= require event_calendar
 */
+body {
+  font: helvetica;
+  font-size: 16px;
+}
+
+h1 {
+  font: Be Vietnam;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+h2 {
+  font: Be Vietnam;
+  font-weight: bold;
+  font-size: 1.75em;
+}
+
+.colquart {
+  width: 25%;
+  padding: 10px;
+}
+
+.colthreequart {
+  width: 75%;
+  padding: 10px;
+}
+
+.col.quart {
+  width: 25%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+thead {
+  background-color: lightgray;
+}
+
+th {
+  border: black 1px solid;
+  padding: 5px 10px;
+}
+
+td {
+  border: black 1px solid;
+  padding: 5px 10px;
+}
+
+.button {
+  border: black 1px solid;
+  color: white;
+  background-color: black;
+  max-width: max-content;
+  text-align: center;
+  padding: 2.5px 15px;
+}
+
+.button a {
+  color: inherit;
+}
+
+.button:hover {
+  transition: 0.2s;
+  color: white;
+  background-color: gray;
+}
+
+.error-message {
+  color: red;
+}
+
+ul.nav.navbar-nav a:hover {
+  color: white;
+  transition: 0.5s;
+}
+
+/* nav bar */
+.dropdown .dropbtn {
+  border: none;
+  color: white;
+  background-color: inherit;
+  font-family: inherit;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #555555;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  color: black;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

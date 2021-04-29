@@ -1,0 +1,10 @@
+%h1 Event Calendar
+
+%table
+  %tbody
+    = month_calendar(events: @events) do |date, events|
+      = date.day
+      - events.each do |event|
+        = link_to event.name, event_id_page_path(event_individual: event.id)
+%br
+

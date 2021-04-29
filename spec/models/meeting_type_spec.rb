@@ -2,21 +2,21 @@
 #
 # Table name: meeting_types
 #
-#  id            :bigint           not null, primary key
-#  day           :string
-#  sessiontype   :string
-#  time          :integer
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  club_infos_id :bigint           not null
+#  id           :bigint           not null, primary key
+#  day          :string
+#  sessiontype  :string
+#  time         :time
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  club_info_id :bigint           not null
 #
 # Indexes
 #
-#  index_meeting_types_on_club_infos_id  (club_infos_id)
+#  index_meeting_types_on_club_info_id  (club_info_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (club_infos_id => club_infos.id)
+#  fk_rails_...  (club_info_id => club_infos.id)
 #
 require 'rails_helper'
 

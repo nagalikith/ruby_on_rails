@@ -12,8 +12,13 @@ gem 'activerecord-session_store'
 gem 'bootsnap'
 gem 'responders'
 gem 'puma'
-
+gem 'rails_admin', '~> 2.0'
 gem 'pg'
+gem 'devise-security'
+# gem 'easy_captcha'
+# gem 'rmagick'
+gem 'rails_email_validator'
+
 
 gem 'haml-rails'
 gem 'sassc-rails'
@@ -30,8 +35,8 @@ gem 'simple_form'
 gem 'draper'
 gem 'ransack'
 
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+# gem 'will_paginate'
+# gem 'bootstrap-will_paginate'
 
 gem 'devise'
 gem 'devise_ldap_authenticatable'
@@ -43,6 +48,9 @@ gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'delayed-plugins-airbrake'
 gem 'daemons', '1.1.9'
+
+gem "simple_calendar", "~> 2.0"
+gem 'icalendar'
 
 group :development, :test do
   gem 'rspec-rails'

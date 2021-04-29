@@ -12,7 +12,7 @@ class CaseStudiesController < ApplicationController
 
   # GET /case_studies/new
   def new
-    @case_study = CaseStudy.new
+    render layout: false
   end
 
   # GET /case_studies/1/edit
@@ -24,9 +24,10 @@ class CaseStudiesController < ApplicationController
     @case_study = CaseStudy.new(case_study_params)
 
     if @case_study.save
-      redirect_to @case_study, notice: 'Case study was successfully created.'
+      @case_study = CaseStudy.all
+      render 'new_case_success'
     else
-      render :new
+      render 'new_case_failure'
     end
   end
 
@@ -53,6 +54,6 @@ class CaseStudiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def case_study_params
-      params.require(:case_study).permit(:date, :participant)
+      params.require(:case_study).permit(:date, :participant, :club_id, :comment)
     end
 end

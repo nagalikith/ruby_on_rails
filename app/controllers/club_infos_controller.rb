@@ -24,7 +24,9 @@ class ClubInfosController < ApplicationController
     @club_info = ClubInfo.new(club_info_params)
 
     if @club_info.save
-      redirect_to @club_info, notice: 'Club info was successfully created.'
+      @meeting_types = MeetingType.where(club_infos_id: @club_info.id)
+      print(@meeting_types.length)
+      render 'meeting_types/index'
     else
       render :new
     end
@@ -53,6 +55,6 @@ class ClubInfosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def club_info_params
-      params.require(:club_info).permit(:date, :males, :females, :lowerage, :upperage, :disability, :ethnicity, :depravation, :drugsandabs, :neets, :volnum, :volhours, :volachievetraining)
+      params.require(:club_info).permit(:club_id, :date, :males, :females, :lowerage, :upperage, :disability, :ethnicity, :mentalhealth,  :depravation, :drugsandabs, :neets, :volnum, :volhours, :volachievetraining)
     end
 end

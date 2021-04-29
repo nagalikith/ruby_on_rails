@@ -1,18 +1,35 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { registrations: 'users/registrations' }
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, :conrollers => { registrations: 'users/registrations', sessions: 'users/sessions'}
+  resources :event_calendars
   resources :event_feedbacks
-  #resources :users
-  resources :meeting_types
+  resources :meeting_types do
+    get 'meeting_types/search'
+  end
   resources :prospective_donors
+  resources :event_volunteers
   resources :consent_forms
+  resources :devise
   resources :case_studies
-  resources :events
+  resources :events do
+    resources :event_volunteers
+    resources :consent_forms
+    post :search, on: :collection
+  end
   resources :volunteers
   resources :donations
   resources :donors
   resources :club_infos
   resources :clubs
+  resources :users
+
+  # devise_for :users, :skip => [:registrations]                                          
+  # as :user do
+  #   get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
+  #   put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  # end          
+  
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
@@ -20,8 +37,17 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
+<<<<<<< HEAD
 
   root to: "clubs#index"
+=======
+  get '/events/:event_individual', to: 'pages#event_id_page', as: :event_id_page
+  get '/clubs/:club_individual', to: 'pages#club_id_page', as: :club_id_page
+  match '/users',   to: 'users#index',   via: 'get'
+  root to: "pages#home"
+  
+  #root to: "pages#home"
+>>>>>>> 04d85356a0cb73bb030fd76d9c5948ab11d3829b
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
