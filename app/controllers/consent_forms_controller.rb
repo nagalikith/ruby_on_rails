@@ -3,7 +3,6 @@ class ConsentFormsController < ApplicationController
   before_action :set_consent_form, only: [:show, :edit, :update, :destroy]
   # GET /consent_forms
   def index
-    # @consent_forms = ConsentForm.all
     @consent_forms = @event.consent_form
   end
 

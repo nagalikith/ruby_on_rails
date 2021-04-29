@@ -3,6 +3,7 @@ class CaseStudiesController < ApplicationController
 
   # GET /case_studies
   def index
+    #changing content if the user is a manager
     if current_user.manager
       @case_studies = CaseStudy.all
     else

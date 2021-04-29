@@ -5,15 +5,18 @@ class ClubsController < ApplicationController
   # authorize_resource
 
   # GET /clubs
-  def index
+  def inde
+    #not showing the admin as a club 
     @clubs = Club.all.where.not(id: '1')
   end
 
   # GET /clubs/1
   def show
+    #loading the events associated with the 
     @events = Event.all.where(club_id: @club.id)
-    @volunteers = Volunteer.all.where(club_id: @club.id)
   end
+
+  #layout false for ajax modal
 
   # GET /clubs/new
   def new
