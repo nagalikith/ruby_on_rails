@@ -9,24 +9,13 @@ class Ability
       user ||= User.new # guest user (not logged in)
       if user.manager?
         can :manage, :all
-      #   can :manage, :club_infos
-      #   can :manage, :consent_forms
-      #   can :manage, :donors
-      #   can :manage, :event_feedbacks
         can :access, :rails_admin
         can :manage, :dashboard  
         can :manage, :events
-      #   can :manage, :meeting_types
-      #   can :manage, :prospective_donors
-      #   can :manage, :volunteers
-      #   can :manage, :case_studies
-
       else
-        can :manage, User
       #   can :show, :clubs
       #   can :manage, :club_infos
       #   can :manage, :consent_forms
-      #   can :show, :donors
       #   can :manage, :event_feedbacks
       #   can :manage, :events
       #   can :show, :meeting_types
