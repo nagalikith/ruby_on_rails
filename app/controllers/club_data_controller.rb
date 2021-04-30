@@ -1,0 +1,56 @@
+class ClubDataController < ApplicationController
+  before_action :set_club_datum, only: [:show, :edit, :update, :destroy]
+
+  # GET /club_data
+  def index
+    @club_data = Club.all
+    #@club_data.each do |club_datum|
+    #  unless club_datum.club_info.nil?
+    #    club_infos = club_infos + club_datum.club_info
+    #  end
+    #end
+    @club_infos = ClubInfo.all
+    @sum = sum
+  end
+
+  # GET /club_data/1
+  def show
+  end
+
+  # POST /club_data/search
+  def search
+#   {"search" => {"name" => "some entered name"} }
+    @club_data = Club.where(postcode: params[:search][:postcode])
+    render :index
+  end
+
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_club_datum
+      @club_datum = Club.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def club_datum_params
+      params.require(:club_datum).permit(:club_id)
+    end
+end
+
+def sum
+  total = [0,0,0,0,0,0,0,0,0]
+  @club_infos.each do |club_info|
+    total[0] += club_info.males
+    total[1] +=club_info.females
+    total[2] +=club_info.lowerage
+    total[3] +=club_info.upperage
+    total[4] +=club_info.disability
+    total[5] +=club_info.ethnicity
+    total[6] +=club_info.depravation
+    total[7] +=club_info.drugsandabs
+    total[8] +=club_info.neets
+  end
+  
+  return total
+
+end

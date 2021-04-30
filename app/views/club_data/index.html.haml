@@ -1,0 +1,65 @@
+%h1 Listing Club Data & Statistics
+
+= simple_form_for :search, url: search_club_data_path, method: :post do |f|
+  = f.input :postcode
+  = f.submit 'Search'
+  = link_to 'Reset', club_data_path
+
+%table
+  %thead
+    %tr
+      %th Club Name
+      %th Postcode
+      %th Males
+      %th Females
+      %th Lowerage
+      %th Upperage
+      %th Disability
+      %th Ethnicity
+      %th Depravation
+      %th Drugsandabs
+      %th Neets
+
+  %tbody
+    - @club_data.each do |club_datum|
+      - @club_infos.each do |club_info|
+        - if club_info.club_id == club_datum.id
+          %tr
+            %td= club_datum.name
+            %td= club_datum.postcode 
+            %td= club_info.males
+            %td= club_info.females
+            %td= club_info.lowerage
+            %td= club_info.upperage
+            %td= club_info.disability
+            %td= club_info.ethnicity
+            %td= club_info.depravation
+            %td= club_info.drugsandabs
+            %td= club_info.neets
+    %tr
+      %td= "Total Sum"
+      %td 
+      %td= @sum[0]
+      %td= @sum[1]
+      %td= @sum[2]
+      %td= @sum[3]
+      %td= @sum[4]
+      %td= @sum[5]
+      %td= @sum[6]
+      %td= @sum[7]
+      %td= @sum[8]
+    %tr
+      %td= "Average per club" 
+      %td
+      %td= @sum[0] / @club_infos.length
+      %td= @sum[1] / @club_infos.length
+      %td= @sum[2] / @club_infos.length
+      %td= @sum[3] / @club_infos.length
+      %td= @sum[4] / @club_infos.length
+      %td= @sum[5] / @club_infos.length
+      %td= @sum[6] / @club_infos.length
+      %td= @sum[7] / @club_infos.length
+      %td= @sum[8] / @club_infos.length
+
+%br
+

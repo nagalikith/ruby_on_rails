@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Club:
+  = @club_datum.club_id
+
+= link_to 'Edit', edit_club_datum_path(@club_datum)
+\|
+= link_to 'Back', club_data_path

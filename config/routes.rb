@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   resources :donations
   resources :donors
   resources :club_infos
+  resources :club_data do
+    post :search, on: :collection
+  end
   resources :clubs
   resources :users
 
