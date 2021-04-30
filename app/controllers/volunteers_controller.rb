@@ -24,7 +24,6 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.new(volunteer_params)
 
     if @volunteer.save
-      #redirect_to @volunteer, notice: 'Volunteer was successfully created.'
       @volunteers = Volunteer.all
       render 'new_volunteer_success'
     else

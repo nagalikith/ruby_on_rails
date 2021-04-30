@@ -24,12 +24,10 @@ class DonationsController < ApplicationController
     @donation = Donation.new(donation_params)
 
     if @donation.save
-      #redirect_to @volunteer, notice: 'Volunteer was successfully created.'
       @donations = Donation.all
       render 'new_donation_success'
     else
       render 'new_donation_failure'
-      #render :new
     end
   end
 

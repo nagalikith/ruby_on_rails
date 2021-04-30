@@ -44,14 +44,16 @@
                     = navbar_link_to :root, title: "Go to the List Home Page", identifier: :home do
                       = icon 'fas', 'home'
                       Home
-                    - if can?(:read, rails_admin)
+                    - if can?(:read, rails_admin) 
                       = navbar_link_to clubs_path, title: "Go to the List all clubs page", identifier: :clubs do
                         = icon 'fas', 'book'
                         Clubs
+                        -# Line 47 ensures that only the uers that can see the rails_admin (which is the admin) can access the lists of all clubs.
                     - if !can?(:read, rails_admin) and user_signed_in?
                       = navbar_link_to club_path(id: current_user[:club_id]), title: "Go to club_infos", identifier: :clubdata do
                         = icon 'fas', 'globe'
                         My Club
+                        -# Checks the user is signed in and ensures no un-logged in user could access sensitive club info
                     - if can?(:read, rails_admin)
                       = navbar_link_to volunteers_path, title: "See volunteers", identifier: :volunteers do
                         = icon 'fas', 'users'

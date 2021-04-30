@@ -8,6 +8,7 @@ class CaseStudiesController < ApplicationController
       @case_studies = CaseStudy.all
     else
       @case_studies = CaseStudy.all.where(club_id: current_user.club_id)
+      #Ensures only the case studies that are matching the current users Club ID is shown.
     end
   end
 

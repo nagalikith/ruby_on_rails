@@ -27,6 +27,7 @@
           %td= event.end_time
           %td= event.club.name
           %td= link_to event.club_id, club_id_page_path(club_individual: event.club_id)
+          -# Links to the Club that the event is involved with.
           %td= link_to 'Show', event
           %td= link_to 'Edit', edit_event_path(event), class: 'ajax-modal'
           %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }

@@ -7,14 +7,15 @@
           %span &times;
       .modal-body
         = f.input :name
-        -# = f.input :date
         = f.input :comment
         = f.input :start_time
         = f.input :end_time
         - if can?(:read, rails_admin)
           = f.association :club, collection: Club.where.not(id: current_user.club_id)
+          -# Ensures the admin can add all Clubs to an event.
         - else
           = f.association :club, collection: Club.where(id: current_user.club_id)
+          -# Ensures only the User logged in can edit the form to a club they are in charge of
       .modal-footer
         .pull-left
           = dismiss_modal_button
