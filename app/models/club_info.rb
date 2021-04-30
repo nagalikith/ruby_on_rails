@@ -32,4 +32,13 @@
 class ClubInfo < ApplicationRecord
     belongs_to :club
     has_many :meeting_type
+
+    ActiveRecord::Base.connection.tables.each do |club_infos|
+        ActiveRecord::Base.connection.reset_pk_sequence!(club_infos)
+    end
+
+    def getMostRecentId()
+        return ClubInfo.all.order("created_at DESC").first.id
+    end
+
 end

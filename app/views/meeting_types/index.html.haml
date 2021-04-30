@@ -1,7 +1,7 @@
 %h1 What types of meetings happen each week?
 
-%p= link_to "Add Meeting", new_meeting_type_path, class: 'ajax-modal btn btn-secondary', id: "new-meeting-btn"
-
+%p= link_to "Add Meeting", new_meeting_type_path, class: 'ajax-modal btn btn-secondary'
+- puts @meeting_types.length
 - if @meeting_types.length > 0
 
   %table
