@@ -3,6 +3,7 @@
     %td= club.name
     %td= club.postcode
     %td= club.contactnumber
+    %th= club.paymentduedate.strftime("%d/%m/%Y") 
     %td= link_to 'View details', club
     %td= link_to 'Edit', edit_club_path(club), class: 'ajax-modal'
     %td= link_to 'Delete', club, method: :delete, data: { confirm: 'Are you sure?' }

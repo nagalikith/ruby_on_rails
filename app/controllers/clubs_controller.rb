@@ -5,7 +5,7 @@ class ClubsController < ApplicationController
   # authorize_resource
 
   # GET /clubs
-  def inde
+  def index
     #not showing the admin as a club 
     @clubs = Club.all.where.not(id: '1')
   end

@@ -12,5 +12,6 @@
 #  updated_at    :datetime         not null
 #
 class Donor < ApplicationRecord
+    #Associations
     has_many :donations
 end

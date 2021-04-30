@@ -1,6 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
+
+#Clearing all the database tables so the seed starts from clean
 MeetingType.delete_all
 ClubInfo.delete_all
 User.delete_all
@@ -13,6 +15,7 @@ Donation.delete_all
 Donor.delete_all
 
 
+#Populating database
 Club.where(name: 'admin').first_or_create(id:'1')
 
 Club.where(name: '393 Club').first_or_create(id: '2', postcode: 'S6 2LJ', contactnumber: '07561827309', paymentduedate: '2021/10/12')
@@ -44,18 +47,7 @@ CaseStudy.where(id: "1").first_or_create(participant: "Molly", date: "2021/03/02
 CaseStudy.where(id: "2").first_or_create(participant: "Ben", date: "2021/01/20", comment: "Organised a game", club_id: "2")
 CaseStudy.where(id: "3").first_or_create(participant: "Chris", date: "2021/02/16", comment: "Tried very hard, put in 110%", club_id: "4")
 
-<<<<<<< Updated upstream
-ClubInfo.where(id: "1").first_or_create(date: "2020/10/16", club_id: "2")
-ClubInfo.where(id: "2").first_or_create(date: "2020/11/21", club_id: "3")
-ClubInfo.where(id: "3").first_or_create(date: "2020/05/01", club_id: "4")
-ClubInfo.where(id: "4").first_or_create(date: "2021/01/07", club_id: "5")
 
-MeetingType.where(id: "1").first_or_create(club_info_id: "1", day: "Monday", sessiontype: "Boys Only", time: "16:00")
-MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", sessiontype: "13 to 18 Years", time: "20:30")
-MeetingType.where(id: "3").first_or_create(club_info_id: "1", day: "Friday", sessiontype: "Girls Only", time: "17:00")
-
-<<<<<<< HEAD
-=======
 ClubInfo.where(id: "1").first_or_create(date: "2020/10/16", club_id: "2", males: "20", females: "15",
                                         upperage: "35", lowerage: "0", depravation: "0", drugsandabs: "0",
                                         ethnicity: "0", mentalhealth: "4", neets: "2", disability: "0",
@@ -73,9 +65,6 @@ ClubInfo.where(id: "3").first_or_create(date: "2020/05/01", club_id: "4", males:
 
 
                                          
-ClubInfo.where(id: "2").first_or_create(date: "2020/11/21", club_id: "3")
-ClubInfo.where(id: "3").first_or_create(date: "2020/05/01", club_id: "4")
-ClubInfo.where(id: "4").first_or_create(date: "2021/01/07", club_id: "5")
 
 MeetingType.where(id: "1").first_or_create(club_info_id: "1", day: "Monday", sessiontype: "Boys Only", time: "16:00")
 MeetingType.where(id: "2").first_or_create(club_info_id: "1", day: "Tuesday", sessiontype: "Girls Only", time: "20:30")
@@ -87,19 +76,10 @@ MeetingType.where(id: "5").first_or_create(club_info_id: "2", day: "Saturday", s
 MeetingType.where(id: "6").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "8 to 13 Years", time: "15:30")
 MeetingType.where(id: "7").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "Games", time: "18:00")
 
->>>>>>> Stashed changes
-=======
-MeetingType.where(id: "4").first_or_create(club_info_id: "2", day: "Wednesday", sessiontype: "Girls Only", time: "18:30")
-MeetingType.where(id: "5").first_or_create(club_info_id: "2", day: "Saturday", sessiontype: "8 to 13 Years", time: "18:30")
-
-MeetingType.where(id: "6").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "8 to 13 Years", time: "15:30")
-MeetingType.where(id: "7").first_or_create(club_info_id: "3", day: "Friday", sessiontype: "Girls Only", time: "18:00")
-
->>>>>>> 0cbc5fff0d2de36485f893825e06677ff8e7036a
 
 Donor.where(id: "1").first_or_create(contactnumber: "07437465782", email: "amy@gmail.com", name: "Amy", totaldonation: "0")
 Donor.where(id: "2").first_or_create(contactnumber: "07592084598", email: "joe@talktalk.net", name: "Joe", totaldonation: "0")
 Donor.where(id: "3").first_or_create(contactnumber: "07329322764", email: "amanda@googlemail.com", name: "Amanda", totaldonation: "0")
 
-Donation.new.submitDonation("1", 20, "Monthly", "", "2021/04/29")
-Donation.new.submitDonation("2", 10, "", "393 Club", "2021/04/29")
+Donation.new.submitDonation("1", 20, "Monthly", "None", "2021/04/29")
+Donation.new.submitDonation("2", 10, "One Off", "393 Club", "2021/04/29")

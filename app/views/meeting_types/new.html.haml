@@ -8,19 +8,8 @@
       .modal-body
         = f.input :day, collection: ['Monday','Tuesday','Wednesday','Thursday', 'Friday', 'Saturday', 'Sunday']
         = f.input :time
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-        = f.input :sessiontype, collection: MeetingType.distinct.pluck(:sessiontype).push("Other"), id: "sessionTypesCombo"
-        = f.input :sessiontype, id: "sessionTypeTxt", input_html: { disabled: true }
-=======
-        = f.input :sessiontype, collection: MeetingType.distinct.pluck(:sessiontype), id: "sessionTypesCombo"
-
->>>>>>> 0cbc5fff0d2de36485f893825e06677ff8e7036a
-      %br
-      %br
-=======
-        = f.input :sessiontype, collection: MeetingType.distinct.pluck(:sessiontype)
->>>>>>> Stashed changes
+        /Pulls all the different session types from the database and gives them as options
+        = f.input :sessiontype, collection: MeetingType.distinct.pluck(:sessiontype), label: "Session Type"
 
           
       .modal-footer

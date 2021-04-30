@@ -25,16 +25,16 @@ class MeetingTypesController < ApplicationController
   def create
     @meeting_type = MeetingType.new(meeting_type_params)
     
+    #Sets the foreign key to the form just filled out
     @meeting_type.club_info_id = ClubInfo.new.getMostRecentId()
 
     if @meeting_type.save
+      #Just retrieves all the meetings that relate to the current club_info
       @meeting_types = MeetingType.all.where(club_info_id: @meeting_type.club_info_id)
       
       render 'new_meeting_success'
-      #redirect_to @meeting_type, notice: 'Meeting type was successfully created.'
     else
       render 'new_meeting_failure'
-      #render :new
     end
   end
 

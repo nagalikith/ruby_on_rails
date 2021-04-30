@@ -24,6 +24,7 @@ class ClubInfosController < ApplicationController
     @club_info = ClubInfo.new(club_info_params)
 
     if @club_info.save
+      #Just retrieves all the meetings that relate to the current club_info
       @meeting_types = MeetingType.where(club_info_id: @club_info.id)
       
       render 'meeting_types/index'

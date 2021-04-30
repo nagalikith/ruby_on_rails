@@ -28,7 +28,6 @@ class VolunteersController < ApplicationController
       render 'new_volunteer_success'
     else
       render 'new_volunteer_failure'
-      #render :new
     end
   end
 

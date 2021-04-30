@@ -1,7 +1,8 @@
-- CaseStudy.all.each do |case_study|
+- @case_studies.each do |case_study|
     %tr
-        %td= case_study.date
+        %td= case_study.date.strftime("%d/%m/%Y") 
         %td= case_study.participant
+        /Looks up the name of the club it is associated to and fills the table with it
         %td= Club.find(case_study.club_id).name
         %td= case_study.comment
         %td= link_to 'Show', case_study

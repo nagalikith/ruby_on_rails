@@ -16,5 +16,6 @@
 #  fk_rails_...  (event_id => events.id)
 #
 class EventCalendar < ApplicationRecord
+    #Associations
     has_many :event
 end
