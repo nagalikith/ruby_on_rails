@@ -8,7 +8,7 @@
       .modal-body
         = f.input :name
         = f.input :comment
-        = f.input :start_time
+        = f.input :date
         = f.input :end_time
         - if can?(:read, rails_admin)
           = f.association :club, collection: Club.where.not(id: current_user.club_id)
