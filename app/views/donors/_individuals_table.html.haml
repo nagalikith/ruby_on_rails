@@ -1,0 +1,8 @@
+- @donors.each do |donor|
+  %tr
+    %td= donor.name
+    %td= donor.contactnumber
+    %td= donor.email
+    %td£#{donor.totaldonation}
+    %td= link_to 'Edit', edit_donor_path(donor)
+    %td= link_to 'Delete', donor, method: :delete, data: { confirm: 'Are you sure?' }

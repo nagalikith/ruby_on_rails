@@ -1,0 +1,10 @@
+- @trusts.each do |trust|
+  %tr
+    %td= Donor.find(trust.donor_id).name
+    %td= Donor.find(trust.donor_id).contactnumber
+    %td= Donor.find(trust.donor_id).email
+    %td= trust.datesubmitted
+    %td= trust.thankdate 
+    %td£#{Donor.find(trust.donor_id).totaldonation}
+    %td= link_to 'Edit', edit_donor_path(trust)
+    %td= link_to 'Delete', trust, method: :delete, data: { confirm: 'Are you sure?' }

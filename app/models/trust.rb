@@ -18,4 +18,5 @@
 #  fk_rails_...  (donor_id => donors.id)
 #
 class Trust < ApplicationRecord
+    belongs_to :donor
 end

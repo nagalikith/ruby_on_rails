@@ -4,6 +4,8 @@ class DonorsController < ApplicationController
   # GET /donors
   def index
     @donors = Donor.all
+    @commercials = Commercial.all
+    @trusts = Trust.all
   end
 
   # GET /donors/1
@@ -12,7 +14,7 @@ class DonorsController < ApplicationController
 
   # GET /donors/new
   def new
-    @donor = Donor.new
+    render layout: false
   end
 
   # GET /donors/1/edit
@@ -24,9 +26,12 @@ class DonorsController < ApplicationController
     @donor = Donor.new(donor_params)
 
     if @donor.save
-      redirect_to @donor, notice: 'Donor was successfully created.'
+      @donors = Donor.all
+      @commercials = Commercial.all
+      @trusts = Trust.all
+      render 'new_donor_success'
     else
-      render :new
+      render 'new_donor_failure'
     end
   end
 

@@ -4,7 +4,7 @@ class CreateDonors < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :type
       t.string :contactnumber
-      t.text :email
+      t.string :email
       t.integer :totaldonation
 
       t.timestamps

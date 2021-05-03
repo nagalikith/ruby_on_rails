@@ -1,0 +1,9 @@
+- @commercials.each do |commercial|
+  %tr
+    %td= Donor.find(commercial.donor_id).name
+    %td= Donor.find(commercial.donor_id).contactnumber
+    %td= Donor.find(commercial.donor_id).email
+    %td= commercial.dateawarded
+    %td£#{Donor.find(commercial.donor_id).totaldonation}
+    %td= link_to 'Edit', edit_donor_path(commercial)
+    %td= link_to 'Delete', commercial, method: :delete, data: { confirm: 'Are you sure?' }

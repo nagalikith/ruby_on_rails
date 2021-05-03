@@ -4,7 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  contactnumber :string
-#  email         :text
+#  email         :string
 #  name          :string
 #  totaldonation :integer
 #  type          :text
@@ -14,4 +14,5 @@
 class Donor < ApplicationRecord
     #Associations
     has_many :donations
+    validates :name, :contactnumber, :email, presence: true
 end

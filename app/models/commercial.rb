@@ -17,4 +17,5 @@
 #  fk_rails_...  (donor_id => donors.id)
 #
 class Commercial < ApplicationRecord
+    belongs_to :donor
 end

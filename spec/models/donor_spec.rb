@@ -4,7 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  contactnumber :string
-#  email         :text
+#  email         :string
 #  name          :string
 #  totaldonation :integer
 #  type          :text
