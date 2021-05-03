@@ -8,22 +8,19 @@
     %thead
       %tr
         %th Name
-        %th Type
-        %th Contactnumber
+        %th Contact Number
         %th Email
-        %th Totaldonation
+        %th Total Donations
 
     %tbody
       - @donors.each do |donor|
         %tr
           %td= donor.name
-          %td= donor.type
           %td= donor.contactnumber
           %td= donor.email
-          %td= donor.totaldonation
-          %td= link_to 'Show', donor
+          %td£#{donor.totaldonation}
           %td= link_to 'Edit', edit_donor_path(donor)
-          %td= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' }
+          %td= link_to 'Delete', donor, method: :delete, data: { confirm: 'Are you sure?' }
 
 - else
   .error-message
@@ -31,4 +28,4 @@
 
 %br
 
-= link_to 'New Donor', new_donor_path
+= link_to 'Add Donor', new_donor_path, class: "btn btn-secondary ajax-modal"

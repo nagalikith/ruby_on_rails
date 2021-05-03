@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_174748) do
+ActiveRecord::Schema.define(version: 2021_05_07_174752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,14 @@ ActiveRecord::Schema.define(version: 2021_05_07_174748) do
     t.date "paymentduedate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "commercials", force: :cascade do |t|
+    t.date "dateawarded"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "donor_id", null: false
+    t.index ["donor_id"], name: "index_commercials_on_donor_id"
   end
 
   create_table "consent_forms", force: :cascade do |t|
@@ -205,6 +213,15 @@ ActiveRecord::Schema.define(version: 2021_05_07_174748) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "trusts", force: :cascade do |t|
+    t.date "datesubmitted"
+    t.date "thankdate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "donor_id", null: false
+    t.index ["donor_id"], name: "index_trusts_on_donor_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -242,11 +259,13 @@ ActiveRecord::Schema.define(version: 2021_05_07_174748) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "case_studies", "clubs"
   add_foreign_key "club_infos", "clubs"
+  add_foreign_key "commercials", "donors"
   add_foreign_key "consent_forms", "events"
   add_foreign_key "donations", "donors"
   add_foreign_key "event_calendars", "events"
   add_foreign_key "event_feedbacks", "events"
   add_foreign_key "events", "clubs"
   add_foreign_key "meeting_types", "club_infos"
+  add_foreign_key "trusts", "donors"
   add_foreign_key "users", "clubs"
 end
