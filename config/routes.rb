@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :admin_events
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :conrollers => { registrations: 'users/registrations', sessions: 'users/sessions'}
   resources :event_calendars
@@ -13,7 +14,9 @@ Rails.application.routes.draw do
   resources :events do
     resources :event_volunteers
     resources :consent_forms
+    resources :admin_events
     post :search, on: :collection
+    get :spaces_left
   end
   resources :volunteers
   resources :donations

@@ -12,6 +12,8 @@
         = f.input :end_time
         - if can?(:read, rails_admin)
           = f.association :club, collection: Club.where.not(id: current_user.club_id)
+          = f.input :spaces_left
+          = f.input :all_groups
         - else
           = f.association :club, collection: Club.where(id: current_user.club_id)
       .modal-footer

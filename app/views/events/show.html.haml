@@ -23,6 +23,21 @@
     click here
     -# Links to the consent forms and passes 'event' as the instance variable
 %p
+  %b Join Event:
+  - if not AdminEvent.where(:club_id => current_user.club_id ).any?
+    - if @event.spaces_left > 0
+      = link_to event_admin_events_path(@event) do
+        click here
+    - else
+      .error-message
+        %h5 Event Full
+  - else
+    .error-message
+      %h5 You've Already Joined
+
+
+    -# method: get_spaces(@event)
+%p
   %b Add Volunteer:
   = link_to event_event_volunteers_path(@event) do
     click here

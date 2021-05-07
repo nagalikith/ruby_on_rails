@@ -2,15 +2,17 @@
 #
 # Table name: events
 #
-#  id         :bigint           not null, primary key
-#  comment    :text
-#  date       :date
-#  end_time   :datetime
-#  name       :string
-#  start_time :datetime
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  club_id    :bigint           not null
+#  id          :bigint           not null, primary key
+#  all_groups  :boolean
+#  comment     :text
+#  date        :date
+#  end_time    :datetime
+#  name        :string
+#  spaces_left :integer
+#  start_time  :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  club_id     :bigint           not null
 #
 # Indexes
 #
