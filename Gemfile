@@ -87,3 +87,6 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
 end
+
+gem 'prawn'
+gem 'prawn-table'

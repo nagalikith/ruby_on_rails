@@ -1,16 +1,18 @@
 class ClubDataController < ApplicationController
-  before_action :set_club_datum, only: [:show, :edit, :update, :destroy]
+  before_action :set_club_datum, only: [:show, :edit]
 
   # GET /club_data
   def index
     @club_data = Club.all
-    #@club_data.each do |club_datum|
-    #  unless club_datum.club_info.nil?
-    #    club_infos = club_infos + club_datum.club_info
-    #  end
-    #end
     @club_infos = ClubInfo.all
     @sum = sum
+    respond_to do |format|
+      format.html
+      format.pdf do 
+        pdf = DataPdf.new(@club_data)
+        send_data pdf.render , filename: "Club_Data.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 
   # GET /club_data/1
