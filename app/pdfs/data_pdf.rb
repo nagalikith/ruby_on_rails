@@ -2,7 +2,6 @@ class DataPdf < Prawn::Document
     def initialize(club)
         super(top_margin: 70)
         @club_data = club
-        @club_info = club[1]
         %i[center].each do |position|
             image "#{Rails.root}/app/assets/images/logo-small.png" , position: position
         end
@@ -13,15 +12,19 @@ class DataPdf < Prawn::Document
 
     def line_items
         move_down 20
-        table(line_item_rows)
+        table(line_item_rows) do
+            row(0).font_style = :bold
+            columns(1..3).align = :right
+            self.row_colors = ["DDDDDD","FFFFFF"]
+            self.header = true
+        end
     end
     
     def line_item_rows
-        [["Club Name","Post code","males", "females", "lowerage", "upperage", "disability", "ethnicity", "mentalhealth",  "depravation", "drugsandabs", "neets"]]+
+        [["Club Name","Post code","males", "females", "lowerage", "upperage", "disability", "ethnicity",  "depravation", "drugsandabs", "neets"]] +
         @club_data.map do |item|
-            [item.name,item.postcode]
+            item
         end
     end
-
 end
  

@@ -39,27 +39,13 @@
     %tr
       %td= "Total Sum"
       %td 
-      %td= @sum[0]
-      %td= @sum[1]
-      %td= @sum[2]
-      %td= @sum[3]
-      %td= @sum[4]
-      %td= @sum[5]
-      %td= @sum[6]
-      %td= @sum[7]
-      %td= @sum[8]
+      - @sum.each do |num|
+        %td= num
     %tr
       %td= "Average per club" 
       %td
-      %td= @sum[0] / @club_infos.length
-      %td= @sum[1] / @club_infos.length
-      %td= @sum[2] / @club_infos.length
-      %td= @sum[3] / @club_infos.length
-      %td= @sum[4] / @club_infos.length
-      %td= @sum[5] / @club_infos.length
-      %td= @sum[6] / @club_infos.length
-      %td= @sum[7] / @club_infos.length
-      %td= @sum[8] / @club_infos.length
+      - @average.each do |num|
+        %td= num
 
 %br
 

@@ -3,14 +3,17 @@ class ClubDataController < ApplicationController
 
   # GET /club_data
   def index
+    @club_data_array = []
     @club_data = Club.all
     @club_infos = ClubInfo.all
     @sum = sum
+    @average = average
+    club_data_array
     respond_to do |format|
       format.html
       format.pdf do 
-        pdf = DataPdf.new(@club_data)
-        send_data pdf.render , filename: "Club_Data.pdf", type: "application/pdf", disposition: "inline"
+        pdf = DataPdf.new(@club_data_array)
+        send_data pdf.render , filename: "Club_Data.pdf", type: "application/pdf"
       end
     end
   end
@@ -52,7 +55,35 @@ def sum
     total[7] +=club_info.drugsandabs
     total[8] +=club_info.neets
   end
-  
   return total
+end
 
+def average
+  avg = []
+  @sum.each do |num|
+    avg.push( num / (@club_infos.length))
+  end
+  return avg
+end
+
+def club_data_array
+    @club_data.each do |club_datum|
+      @club_infos.each do |club_info|
+        if club_info.club_id == club_datum.id then
+          @club_data_array.push([club_datum.name,
+          club_datum.postcode, 
+          club_info.males,
+          club_info.females,
+          club_info.lowerage,
+          club_info.upperage,
+          club_info.disability,
+          club_info.ethnicity,
+          club_info.depravation,
+          club_info.drugsandabs,
+          club_info.neets])
+        end
+      end
+    end
+  @club_data_array.push(["SUM"] + [" "] + @sum)
+  @club_data_array.push(["AVERAGE"] + [" "] + @average)         
 end
