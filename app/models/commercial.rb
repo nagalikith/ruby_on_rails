@@ -17,5 +17,6 @@
 #  fk_rails_...  (donor_id => donors.id)
 #
 class Commercial < ApplicationRecord
+    validates :dateawarded, presence: true
     belongs_to :donor
 end

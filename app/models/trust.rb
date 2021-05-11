@@ -19,4 +19,5 @@
 #
 class Trust < ApplicationRecord
     belongs_to :donor
+    validates :datesubmitted, presence: true
 end

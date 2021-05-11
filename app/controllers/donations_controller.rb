@@ -12,7 +12,7 @@ class DonationsController < ApplicationController
 
   # GET /donations/new
   def new
-    @donation = Donation.new
+    render layout: false
   end
 
   # GET /donations/1/edit
@@ -21,14 +21,15 @@ class DonationsController < ApplicationController
 
   # POST /donations
   def create
-    @donation = Donation.new(donation_params)
+    #@donation = Donation.new(donation_params)
 
-    if @donation.save
-      @donations = Donation.all
-      render 'new_donation_success'
-    else
-      render 'new_donation_failure'
-    end
+    date = donation_params["date(1i)"] + "/" + donation_params["date(2i)"] + "/" + donation_params["date(3i)"]
+
+    Donation.new.submitDonation(donation_params[:donor_id], donation_params[:amount], donation_params[:recurring], 
+                                donation_params[:restricted], date)
+    @donations = Donation.all
+    render 'new_donation_success'
+
   end
 
   # PATCH/PUT /donations/1
@@ -54,6 +55,6 @@ class DonationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def donation_params
-      params.require(:donation).permit(:amount, :date, :method, :recurring, :restricted)
+      params.require(:donation).permit(:donor_id, :amount, :date, :method, :recurring, :restricted)
     end
 end

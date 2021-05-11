@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_174752) do
     t.text "type"
     t.string "contactnumber"
     t.string "email"
-    t.integer "totaldonation"
+    t.float "totaldonation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

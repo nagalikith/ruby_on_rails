@@ -12,6 +12,7 @@
 #  updated_at          :datetime         not null
 #
 class ProspectiveDonor < ApplicationRecord
+    validates :name, :contactnumber, :email, :internalcontactlink, presence: true
 
     def makeReal(prospective_donor_id)
         prospective = ProspectiveDonor.find(prospective_donor_id)
