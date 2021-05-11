@@ -12,7 +12,7 @@ class ProspectiveDonorsController < ApplicationController
 
   # GET /prospective_donors/new
   def new
-    @prospective_donor = ProspectiveDonor.new
+    render layout: false
   end
 
   # GET /prospective_donors/1/edit
@@ -24,9 +24,13 @@ class ProspectiveDonorsController < ApplicationController
     @prospective_donor = ProspectiveDonor.new(prospective_donor_params)
 
     if @prospective_donor.save
-      redirect_to @prospective_donor, notice: 'Prospective donor was successfully created.'
+      @prospectives = ProspectiveDonor.all
+      @commercials = Commercial.all
+      @trusts = Trust.all
+      @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
+      render 'donors/new_donor_success'
     else
-      render :new
+      render 'donors/new_donor_failure'
     end
   end
 
@@ -42,7 +46,7 @@ class ProspectiveDonorsController < ApplicationController
   # DELETE /prospective_donors/1
   def destroy
     @prospective_donor.destroy
-    redirect_to prospective_donors_url, notice: 'Prospective donor was successfully destroyed.'
+    redirect_to donors_url, notice: 'Prospective donor was successfully destroyed.'
   end
 
   private

@@ -58,9 +58,13 @@
                         = icon 'fas', 'users'
                         Volunteers
                     - if can?(:read, rails_admin)
-                      = navbar_link_to donations_path, title: "See Donors and Donations", identifier: :donations do
+                      = navbar_link_to donations_path, title: "See Donations", identifier: :donations do
                         = icon 'fas', 'wallet'
-                        Donors and Donations
+                        Donations
+                    - if can?(:read, rails_admin)
+                      = navbar_link_to donors_path, title: "See Donors", identifier: :donations do
+                        = icon 'fas', 'hand-holding-usd'
+                        Donors
                     = navbar_link_to case_studies_path, title: "Go to case_studies", identifier: :case_studies do
                       = icon 'fas', 'camera'
                       Case Studies

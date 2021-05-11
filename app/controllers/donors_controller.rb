@@ -15,7 +15,6 @@ class DonorsController < ApplicationController
 
   # GET /donors/new
   def new
-    @type = "commercials"
     render layout: false
   end
 
