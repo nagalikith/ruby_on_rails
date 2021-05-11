@@ -16,6 +16,8 @@
           %td= prospective.internalcontactlink
           %td= link_to 'Edit', edit_prospective_donor_path(prospective), class: "ajax-modal"
           %td= link_to 'Delete', prospective, method: :delete, data: { confirm: 'Are you sure?' }
+          %td= button_to "Make real donor", prospective_donor_upgrade_donor_path(prospective), method: :post
+          /prospective_donor_upgrade_donor_path, 
 - else
   .error-message
     %h5 No Prospective donors found

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :event_calendars
   resources :event_feedbacks
   resources :meeting_types
-  resources :prospective_donors
+  resources :prospective_donors do
+    post :upgrade_donor
+  end
   resources :event_volunteers
   resources :consent_forms
   resources :devise

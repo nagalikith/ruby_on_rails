@@ -49,6 +49,13 @@ class ProspectiveDonorsController < ApplicationController
     redirect_to donors_url, notice: 'Prospective donor was successfully destroyed.'
   end
 
+  def upgrade_donor
+    puts "called"
+    puts params[:prospective_donor_id]
+    ProspectiveDonor.new.makeReal(params[:prospective_donor_id])
+    redirect_to donors_url, notice: 'Prospective donor was changed to full donor'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_prospective_donor

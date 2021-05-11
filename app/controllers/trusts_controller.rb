@@ -66,7 +66,7 @@ class TrustsController < ApplicationController
   # DELETE /trusts/1
   def destroy
     @trust.destroy
-    Donor.find(@commercial.donor_id).destroy
+    Donor.find(@trust.donor_id).destroy
     redirect_to donors_url, notice: 'Trust/Foundation donor was successfully destroyed.'
   end
 
