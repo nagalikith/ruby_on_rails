@@ -24,8 +24,8 @@
     -# Links to the consent forms and passes 'event' as the instance variable
 %p
   %b Join Event:
-  - if not AdminEvent.where(:club_id => current_user.club_id ).any?
-    - if @event.spaces_left > 0
+  - if not AdminEvent.where(:club_id => current_user.club_id, :event_id => @event.id).any?
+    - if @event.spaces_left > 0 
       = link_to event_admin_events_path(@event) do
         click here
     - else

@@ -10,4 +10,4 @@
       = f.association :club, collection: Club.where(id: current_user.club_id)
       = f.association :event, collection: Event.where(id: @event.id)
   .form-actions
-    = f.button :submit
+    = f.button :submit, :method=> get_spaces(@event)

@@ -1,6 +1,7 @@
 class AdminEventsController < ApplicationController
   before_action :set_admin_event, only: [:show, :edit, :update, :destroy]
   before_action :get_event
+  helper_method :get_spaces
   # GET /admin_events
   def index
       @admin_events = AdminEvent.all
@@ -55,11 +56,22 @@ class AdminEventsController < ApplicationController
       @event = Event.find(params[:event_id])
     end
 
+    def get_spaces(e)
+      @spaces_left_var = e.spaces_left
+      if @spaces_left_var == 0
+        e.update(spaces_left: 0)
+      else
+        after_subtraction = @spaces_left_var.to_i - 1
+        e.update(spaces_left: after_subtraction)
+      end
+    end
+  
+
 
 
     # Only allow a trusted parameter "white list" through.
     def admin_event_params
-      # params.fetch(:admin_event, {club_id,event_id})
-      params.require(:admin_event).permit(:club_id, :event_id)
+      # params.fetch(:admin_event, {:club_id,:event_id})
+      params.require(:admin_event).permit(:event_id, :club_id)
     end
 end
