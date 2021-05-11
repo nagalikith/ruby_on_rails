@@ -50,8 +50,14 @@ class TrustsController < ApplicationController
 
   # PATCH/PUT /trusts/1
   def update
-    if @trust.update(trust_params)
-      redirect_to @trust, notice: 'Trust donor was successfully updated.'
+    datesub = Date.new trust_params["datesubmitted(1i)"].to_i, trust_params["datesubmitted(2i)"].to_i,
+                        trust_params["datesubmitted(3i)"].to_i
+
+    datethank = Date.new trust_params["thankdate(1i)"].to_i, trust_params["thankdate(2i)"].to_i,
+                        trust_params["thankdate(3i)"].to_i
+
+    if @trust.update(datesubmitted: datesub, thankdate: datethank)
+      redirect_to donors_path, notice: 'Trust/Foundation donor was successfully updated.'
     else
       render :edit
     end
@@ -61,7 +67,7 @@ class TrustsController < ApplicationController
   def destroy
     @trust.destroy
     Donor.find(@commercial.donor_id).destroy
-    redirect_to donors_url, notice: 'Trust donor was successfully destroyed.'
+    redirect_to donors_url, notice: 'Trust/Foundation donor was successfully destroyed.'
   end
 
   private

@@ -37,7 +37,7 @@ class ProspectiveDonorsController < ApplicationController
   # PATCH/PUT /prospective_donors/1
   def update
     if @prospective_donor.update(prospective_donor_params)
-      redirect_to @prospective_donor, notice: 'Prospective donor was successfully updated.'
+      redirect_to donors_url, notice: 'Prospective donor was successfully updated.'
     else
       render :edit
     end

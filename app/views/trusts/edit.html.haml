@@ -1,15 +1,13 @@
 .modal-dialog
   .modal-content
-    = simple_form_for @donor, remote: true do |f|
+    = simple_form_for @trust, remote: true do |f|
       .modal-header
-        %h4.modal-title Edit Donor
+        %h4.modal-title Edit Trust/Foundation Donor
         %button.close{ type: :button, data: { dismiss: :modal } }
           %span &times;
       .modal-body
-        = f.hidden_field :totaldonation, :value => 0
-        = f.input :name
-        = f.input :contactnumber, label: "Contact Numeber"
-        = f.input :email    
+        = f.input :datesubmitted, label: "Date Submitted:"
+        = f.input :thankdate, label: "Date to next say thank you:"
           
       .modal-footer
         .pull-left

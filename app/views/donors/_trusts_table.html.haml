@@ -1,5 +1,5 @@
 - if @trusts.length > 0
-  %p There are #{@trusts.size} events to search through.
+  %p There are #{@trusts.size} donors to search through.
   %table
     %thead
       %tr
@@ -18,7 +18,7 @@
           %td= trust.datesubmitted.strftime("%d/%m/%Y") 
           %td= trust.thankdate.strftime("%d/%m/%Y") 
           %td£#{Donor.find(trust.donor_id).totaldonation}
-          %td= link_to 'Edit', edit_donor_path(trust)
+          %td= link_to 'Edit', edit_trust_path(trust), class: "ajax-modal"
           %td= link_to 'Delete', trust, method: :delete, data: { confirm: 'Are you sure?' }
 - else
   .error-message

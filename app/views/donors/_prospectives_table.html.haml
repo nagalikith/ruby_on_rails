@@ -1,5 +1,5 @@
 - if @prospectives.length > 0
-  %p There are #{@prospectives.size} events to search through.
+  %p There are #{@prospectives.size} donors to search through.
   %table
     %thead
       %tr
@@ -14,7 +14,7 @@
           %td= prospective.contactnumber
           %td= prospective.email
           %td= prospective.internalcontactlink
-          %td= link_to 'Edit', edit_prospective_donor_path(prospective)
+          %td= link_to 'Edit', edit_prospective_donor_path(prospective), class: "ajax-modal"
           %td= link_to 'Delete', prospective, method: :delete, data: { confirm: 'Are you sure?' }
 - else
   .error-message

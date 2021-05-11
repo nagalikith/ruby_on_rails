@@ -1,7 +1,17 @@
-%h1 Editing prospective_donor
-
-= render 'form'
-
-= link_to 'Show', @prospective_donor
-\|
-= link_to 'Back', prospective_donors_path
+.modal-dialog
+  .modal-content
+    = simple_form_for @prospective_donor, remote: true do |f|
+      .modal-header
+        %h4.modal-title Edit Prospective Donor
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :name
+        = f.input :contactnumber, label: "Contact Number:"
+        = f.input :email
+        = f.input :internalcontactlink. label: "Internal Contact:"
+          
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

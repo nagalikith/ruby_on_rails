@@ -48,8 +48,11 @@ class CommercialsController < ApplicationController
 
   # PATCH/PUT /commercials/1
   def update
-    if @commercial.update(commercial_params)
-      redirect_to @commercial, notice: 'Commercial donor was successfully updated.'
+    date = Date.new commercial_params["dateawarded(1i)"].to_i, commercial_params["dateawarded(2i)"].to_i,
+                    commercial_params["dateawarded(3i)"].to_i
+
+    if @commercial.update(dateawarded: date)
+      redirect_to donors_path, notice: 'Commercial/Contract donor was successfully updated.'
     else
       render :edit
     end
@@ -59,7 +62,7 @@ class CommercialsController < ApplicationController
   def destroy
     @commercial.destroy
     Donor.find(@commercial.donor_id).destroy
-    redirect_to donors_url, notice: 'Commercial donor was successfully destroyed.'
+    redirect_to donors_url, notice: 'Commercial/Contract donor was successfully destroyed.'
   end
 
   private

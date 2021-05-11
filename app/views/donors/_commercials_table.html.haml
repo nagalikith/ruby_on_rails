@@ -1,5 +1,5 @@
 - if @commercials.length > 0
-  %p There are #{@commercials.size} events to search through.
+  %p There are #{@commercials.size} donors to search through.
   %table
     %thead
       %tr
@@ -16,7 +16,7 @@
           %td= Donor.find(commercial.donor_id).email
           %td= commercial.dateawarded.strftime("%d/%m/%Y") 
           %td£#{Donor.find(commercial.donor_id).totaldonation}
-          %td= link_to 'Edit', edit_donor_path(commercial)
+          %td= link_to 'Edit', edit_commercial_path(commercial), class: "ajax-modal"
           %td= link_to 'Delete', commercial, method: :delete, data: { confirm: 'Are you sure?' }
 - else
   .error-message

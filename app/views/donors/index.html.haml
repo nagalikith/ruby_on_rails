@@ -10,6 +10,7 @@
 
 
 #individualsTable
+    %h3 Individual Donors  
     #individualBody
         = render "individuals_table"
 
@@ -17,6 +18,7 @@
     = link_to 'Add Donor', new_donor_path, class: "btn btn-secondary ajax-modal", id: " individualAdd"
 
 #trustsTable
+    %h3 Trust/Foundation Donors
     #trustBody
         = render "trusts_table"
 
@@ -25,12 +27,14 @@
 
 
 #commercialsTable
+    %h3 Commercial/Contract Donors
     #commercialBody
         = render "commercials_table"
     %br
     = link_to 'Add Donor', new_commercial_path, class: "btn btn-secondary ajax-modal"
 
 #prospectivesTable
+    %h3 Prospective Donors
     #prospectiveBody
         = render "prospectives_table"
     %br

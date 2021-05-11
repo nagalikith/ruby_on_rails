@@ -1,16 +1,13 @@
 .modal-dialog
   .modal-content
-    = simple_form_for @donor, remote: true do |f|
+    = simple_form_for @commercial, remote: true do |f|
       .modal-header
-        %h4.modal-title Edit Donor
+        %h4.modal-title Edit Commercial/Contract Donor
         %button.close{ type: :button, data: { dismiss: :modal } }
           %span &times;
       .modal-body
-        = f.hidden_field :totaldonation, :value => 0
-        = f.input :name
-        = f.input :contactnumber, label: "Contact Numeber"
-        = f.input :email    
-          
+        = f.input :dateawarded, label: "Date Awarded:"
+
       .modal-footer
         .pull-left
           = dismiss_modal_button
