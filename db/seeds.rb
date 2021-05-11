@@ -15,6 +15,7 @@ Donation.delete_all
 Trust.delete_all
 Commercial.delete_all
 Donor.delete_all
+ProspectiveDonor.delete_all
 
 
 #Populating database
@@ -82,6 +83,21 @@ MeetingType.where(id: "7").first_or_create(club_info_id: "3", day: "Friday", ses
 Donor.where(id: "1").first_or_create(contactnumber: "07437465782", email: "amy@gmail.com", name: "Amy", totaldonation: "0")
 Donor.where(id: "2").first_or_create(contactnumber: "07592084598", email: "joe@talktalk.net", name: "Joe", totaldonation: "0")
 Donor.where(id: "3").first_or_create(contactnumber: "07329322764", email: "amanda@googlemail.com", name: "Amanda", totaldonation: "0")
+Donor.where(id: "4").first_or_create(contactnumber: "07362745832", email: "big@company.com", name: "Big Company", totaldonation: "0")
+Donor.where(id: "5").first_or_create(contactnumber: "07231238874", email: "childreninneed@charity.org", name: "Children In Need", totaldonation: "0")
+Donor.where(id: "6").first_or_create(contactnumber: "07990373527", email: "sheffieldcity@council.com", name: "Sheffield Council", totaldonation: "0")
+Donor.where(id: "7").first_or_create(contactnumber: "07392023762", email: "church@burgesses", name: "Church Burgesses", totaldonation: "0")
+
+Commercial.where(donor_id: "4").first_or_create(dateawarded: "2018/03/22")
+Commercial.where(donor_id: "6").first_or_create(dateawarded: "2020/10/10")
+
+Trust.where(donor_id: "5").first_or_create(datesubmitted: "2020/12/04", thankdate: "2021/11/01")
+Trust.where(donor_id: "7").first_or_create(datesubmitted: "2021/04/28", thankdate: "2022/01/12")
+
+ProspectiveDonor.where(id: "1").first_or_create(name: "Adam", email: "adam123@gmail.com", contactnumber: "07738275195", internalcontactlink: "Una Moran")
+ProspectiveDonor.where(id: "2").first_or_create(name: "Sam", email: "sam@sam.co.uk", contactnumber: "07908628336", internalcontactlink: "Richard Hay")
+ProspectiveDonor.where(id: "3").first_or_create(name: "Ellie", email: "ellie.parker@talktalk.net", contactnumber: "07255638497", internalcontactlink: "Una Moran")
 
 Donation.new.submitDonation("1", 20, "Monthly", "None", "2021/04/29")
 Donation.new.submitDonation("2", 10, "One Off", "393 Club", "2021/04/29")
+
