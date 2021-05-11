@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :club_infos
   resources :clubs
   resources :users
+  resources :trusts
+  resources :commercials
 
   # devise_for :users, :skip => [:registrations]                                          
   # as :user do

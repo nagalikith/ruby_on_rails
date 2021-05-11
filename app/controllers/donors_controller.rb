@@ -3,9 +3,10 @@ class DonorsController < ApplicationController
 
   # GET /donors
   def index
-    @donors = Donor.all
+    @prospectives = ProspectiveDonor.all
     @commercials = Commercial.all
     @trusts = Trust.all
+    @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
   end
 
   # GET /donors/1
@@ -14,6 +15,7 @@ class DonorsController < ApplicationController
 
   # GET /donors/new
   def new
+    @type = "commercials"
     render layout: false
   end
 
@@ -26,9 +28,10 @@ class DonorsController < ApplicationController
     @donor = Donor.new(donor_params)
 
     if @donor.save
-      @donors = Donor.all
+      @prospectives = ProspectiveDonor.all
       @commercials = Commercial.all
       @trusts = Trust.all
+      @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
       render 'new_donor_success'
     else
       render 'new_donor_failure'

@@ -1,0 +1,27 @@
+.modal-dialog
+  .modal-content
+    = simple_form_for Commercial.new, remote: true do |f|
+      .modal-header
+        %h4.modal-title New Commercial/Contract Donor
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        /= f.association :donor, hidden_field :totaldonation, :value => 0
+        = f.input :dateawarded, label: "Date Awarded:"
+        = f.input :name, input_html: {value: ''}
+        = f.input :email, input_html: {value: ''}
+        = f.input :contactnumber, input_html: {value: ''}
+        = f.input :totaldonation, input_html: {value: 0}
+
+        
+        -# = simple_form_for :other, remote: true do |d|
+        -#   = d.input :name
+        -#   = d.input :contactnumber
+        -#   = d.input :email
+        -#   = d.hidden_field :totaldonation, :value => 0
+        
+          
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

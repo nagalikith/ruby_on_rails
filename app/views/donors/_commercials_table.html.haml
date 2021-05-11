@@ -1,9 +1,23 @@
-- @commercials.each do |commercial|
-  %tr
-    %td= Donor.find(commercial.donor_id).name
-    %td= Donor.find(commercial.donor_id).contactnumber
-    %td= Donor.find(commercial.donor_id).email
-    %td= commercial.dateawarded
-    %td£#{Donor.find(commercial.donor_id).totaldonation}
-    %td= link_to 'Edit', edit_donor_path(commercial)
-    %td= link_to 'Delete', commercial, method: :delete, data: { confirm: 'Are you sure?' }
+- if @commercials.length > 0
+  %p There are #{@commercials.size} events to search through.
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Contact Number
+        %th Email
+        %th Date Awarded
+        %th Total Donations
+    %tbody
+      - @commercials.each do |commercial|
+        %tr
+          %td= Donor.find(commercial.donor_id).name
+          %td= Donor.find(commercial.donor_id).contactnumber
+          %td= Donor.find(commercial.donor_id).email
+          %td= commercial.dateawarded.strftime("%d/%m/%Y") 
+          %td£#{Donor.find(commercial.donor_id).totaldonation}
+          %td= link_to 'Edit', edit_donor_path(commercial)
+          %td= link_to 'Delete', commercial, method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  .error-message
+    %h5 No Commercial/Contract donors found

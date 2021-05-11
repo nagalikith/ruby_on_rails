@@ -1,15 +1,15 @@
 .modal-dialog
   .modal-content
-    = simple_form_for Donor.new, remote: true do |f|
+    = simple_form_for @donor, remote: true do |f|
       .modal-header
-        %h4.modal-title New Donor
+        %h4.modal-title Edit Donor
         %button.close{ type: :button, data: { dismiss: :modal } }
           %span &times;
       .modal-body
         = f.hidden_field :totaldonation, :value => 0
         = f.input :name
-        = f.input :contactnumber, label: "Contact Number:"
-        = f.input :email
+        = f.input :contactnumber, label: "Contact Numeber"
+        = f.input :email    
           
       .modal-footer
         .pull-left

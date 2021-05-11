@@ -3,68 +3,35 @@
 %button.btn.btn-secondary#individual Individuals
 %button.btn.btn-secondary#trusts Trusts and Foundations
 %button.btn.btn-secondary#commercial Commerical and Contracts
+%button.btn.btn-secondary#prospective Prospective Donors
 
 %br
 %br
 
 
 #individualsTable
+    #individualBody
+        = render "individuals_table"
 
-    - if @donors.length > 0
-        %p There are #{@donors.size} events to search through.
-        %table
-            %thead
-                %tr
-                    %th Name
-                    %th Contact Number
-                    %th Email
-                    %th Total Donations
-            %tbody#individualBody
-                = render "individuals_table"
-    - else
-        .error-message
-            %h5 No Individual donors found
     %br
-    = link_to 'Add Donor', new_donor_path, class: "btn btn-secondary ajax-modal"
+    = link_to 'Add Donor', new_donor_path, class: "btn btn-secondary ajax-modal", id: " individualAdd"
 
 #trustsTable
+    #trustBody
+        = render "trusts_table"
 
-    - if @trusts.length > 0
-        %p There are #{@trusts.size} events to search through.
-        %table
-            %thead
-                %tr
-                    %th Name
-                    %th Contact Number
-                    %th Email
-                    %th Date Application Was Submitted
-                    %th Next Date To Say Thank You
-                    %th Total Donations
-            %tbody#trustBody
-                = render "trusts_table"
-    - else
-        .error-message
-            %h5 No Trust/Foundation donors found
     %br
-    = link_to 'Add Donor', new_donor_path, class: "btn btn-secondary ajax-modal"
+    = link_to 'Add Donor', new_trust_path, class: "btn btn-secondary ajax-modal"
 
 
 #commercialsTable
-
-    - if @commercials.length > 0
-        %p There are #{@commercials.size} events to search through.
-        %table
-            %thead
-                %tr
-                    %th Name
-                    %th Contact Number
-                    %th Email
-                    %th Date Awarded
-                    %th Total Donations
-            %tbody#commercialBody
-                = render "commercials_table"
-    - else
-        .error-message
-            %h5 No Commercial/Contract donors found
+    #commercialBody
+        = render "commercials_table"
     %br
-    = link_to 'Add Donor', new_donor_path, class: "btn btn-secondary ajax-modal"
+    = link_to 'Add Donor', new_commercial_path, class: "btn btn-secondary ajax-modal"
+
+#prospectivesTable
+    #prospectiveBody
+        = render "prospectives_table"
+    %br
+    = link_to 'Add Prospective Donor', new_prospective_donor_path, class: "btn btn-secondary ajax-modal"

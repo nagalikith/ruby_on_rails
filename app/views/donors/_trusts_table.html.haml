@@ -1,10 +1,25 @@
-- @trusts.each do |trust|
-  %tr
-    %td= Donor.find(trust.donor_id).name
-    %td= Donor.find(trust.donor_id).contactnumber
-    %td= Donor.find(trust.donor_id).email
-    %td= trust.datesubmitted
-    %td= trust.thankdate 
-    %td£#{Donor.find(trust.donor_id).totaldonation}
-    %td= link_to 'Edit', edit_donor_path(trust)
-    %td= link_to 'Delete', trust, method: :delete, data: { confirm: 'Are you sure?' }
+- if @trusts.length > 0
+  %p There are #{@trusts.size} events to search through.
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Contact Number
+        %th Email
+        %th Date Application Was Submitted
+        %th Next Date To Say Thank You
+        %th Total Donations
+    %tbody
+      - @trusts.each do |trust|
+        %tr
+          %td= Donor.find(trust.donor_id).name
+          %td= Donor.find(trust.donor_id).contactnumber
+          %td= Donor.find(trust.donor_id).email
+          %td= trust.datesubmitted.strftime("%d/%m/%Y") 
+          %td= trust.thankdate.strftime("%d/%m/%Y") 
+          %td£#{Donor.find(trust.donor_id).totaldonation}
+          %td= link_to 'Edit', edit_donor_path(trust)
+          %td= link_to 'Delete', trust, method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  .error-message
+    %h5 No Trust/Foundation donors found

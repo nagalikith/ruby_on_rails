@@ -1,0 +1,21 @@
+- if @prospectives.length > 0
+  %p There are #{@prospectives.size} events to search through.
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Contact Number
+        %th Email
+        %th Internal Link
+    %tbody
+      - @prospectives.each do |prospective|
+        %tr
+          %td= prospective.name
+          %td= prospective.contactnumber
+          %td= prospective.email
+          %td= prospective.internalcontactlink
+          %td= link_to 'Edit', edit_prospective_donor_path(prospective)
+          %td= link_to 'Delete', prospective, method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  .error-message
+    %h5 No Prospective donors found

@@ -7,18 +7,28 @@ $ ->
     $("#individualsTable").show()
     $("#trustsTable").hide()
     $("#commercialsTable").hide()
+    $("#prospectivesTable").hide()
 
     $('#individual').click ->
         $("#individualsTable").show()
         $("#trustsTable").hide()
         $("#commercialsTable").hide()
+        $("#prospectivesTable").hide()
         
     $('#trusts').click ->
         $("#individualsTable").hide()
         $("#trustsTable").show()
         $("#commercialsTable").hide()
+        $("#prospectivesTable").hide()
     
     $('#commercial').click ->
         $("#individualsTable").hide()
         $("#trustsTable").hide()
         $("#commercialsTable").show()
+        $("#prospectivesTable").hide()
+    
+    $('#prospective').click ->
+        $("#individualsTable").hide()
+        $("#trustsTable").hide()
+        $("#commercialsTable").hide()
+        $("#prospectivesTable").show()

@@ -14,5 +14,7 @@
 class Donor < ApplicationRecord
     #Associations
     has_many :donations
+    has_one :trust
+    has_one :commercial
     validates :name, :contactnumber, :email, presence: true
 end

@@ -12,6 +12,8 @@ Event.delete_all
 Volunteer.delete_all
 Club.delete_all
 Donation.delete_all
+Trust.delete_all
+Commercial.delete_all
 Donor.delete_all
 
 

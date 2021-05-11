@@ -1,8 +1,21 @@
-- @donors.each do |donor|
-  %tr
-    %td= donor.name
-    %td= donor.contactnumber
-    %td= donor.email
-    %td£#{donor.totaldonation}
-    %td= link_to 'Edit', edit_donor_path(donor)
-    %td= link_to 'Delete', donor, method: :delete, data: { confirm: 'Are you sure?' }
+- if @donors.length > 0
+  %p There are #{@donors.size} events to search through.
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Contact Number
+        %th Email
+        %th Total Donations
+    %tbody
+      - @donors.each do |donor|
+        %tr
+          %td= donor.name
+          %td= donor.contactnumber
+          %td= donor.email
+          %td£#{donor.totaldonation}
+          %td= link_to 'Edit', edit_donor_path(donor)
+          %td= link_to 'Delete', donor, method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  .error-message
+    %h5 No Individual donors found
