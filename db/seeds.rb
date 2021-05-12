@@ -38,13 +38,15 @@ Volunteer.where(name: "Josh").first_or_create(contactnumber: '07264893487', emai
 Volunteer.where(name: "Ellie").first_or_create(contactnumber: '07125648376', email: 'ellie@email.com', hours: '32', target: '20', youngPerson: false)
 Volunteer.where(name: "Adam").first_or_create(contactnumber: '07898562736', email: 'adam@email.com', hours: '0', target: '10', youngPerson: false)
 
-Event.where(name: "Bike Ride1").first_or_create(club_id: "5", date: DateTime.new(2021,4,12,8), end_time: DateTime.new(2021,4,14,8), comment: "Bring your own bike", spaces_left: '5')
-Event.where(name: "Walk").first_or_create(club_id: "3", date: DateTime.new(2021,3,12,8), end_time: DateTime.new(2021,3,14,8), comment: "A 4 mile walk", spaces_left: '7')
-Event.where(name: "Swimming Trip").first_or_create(club_id: "4", date: DateTime.new(2021,2,12,8), end_time: DateTime.new(2021,2,14,8), comment: "A trip to a local swimming pool", spaces_left: '8')
+Event.where(id: '1').first_or_create(name: "Bike Ride1", club_id: "5", date: DateTime.new(2021,4,12,8), end_time: DateTime.new(2021,4,14,8), comment: "Bring your own bike", spaces_left: '5')
+Event.where(id: '2').first_or_create(name: "Walk", club_id: "3", date: DateTime.new(2021,3,12,8), end_time: DateTime.new(2021,3,14,8), comment: "A 4 mile walk", spaces_left: '7')
+Event.where(id: '3').first_or_create(name: "Swimming Trip", club_id: "4", date: DateTime.new(2021,2,12,8), end_time: DateTime.new(2021,2,14,8), comment: "A trip to a local swimming pool", spaces_left: '8')
 
 
 EventFeedback.where(id: '1').first_or_create(comment: "Was an amazing event. Well organised", event_id: '1')
 EventFeedback.where(id: '2').first_or_create(comment: "Very fun", event_id: '1')
+EventFeedback.where(id: '3').first_or_create(comment: "Too many people there but fun", event_id: '2')
+EventFeedback.where(id: '4').first_or_create(comment: "Amazing", event_id: '3')
 
 CaseStudy.where(id: "1").first_or_create(participant: "Molly", date: "2021/03/02", comment: "Very well behaved", club_id: "2")
 CaseStudy.where(id: "2").first_or_create(participant: "Ben", date: "2021/01/20", comment: "Organised a game", club_id: "2")
@@ -100,4 +102,3 @@ ProspectiveDonor.where(id: "3").first_or_create(name: "Ellie", email: "ellie.par
 
 Donation.new.submitDonation("1", 20, "Monthly", "None", "2021/04/29")
 Donation.new.submitDonation("2", 10, "One Off", "393 Club", "2021/04/29")
-
