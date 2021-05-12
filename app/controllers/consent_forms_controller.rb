@@ -4,6 +4,7 @@ class ConsentFormsController < ApplicationController
 
   def index
     @consent_forms = @event.consent_form
+    @events = Event.all
   end
 
   # GET /consent_forms/1
@@ -12,7 +13,7 @@ class ConsentFormsController < ApplicationController
 
   # GET /consent_forms/new
   def new
-    @consent_forms = @event.consent_form.build
+    @consent_form = @event.consent_form.build
   end
 
   # GET /consent_forms/1/edit

@@ -36,7 +36,7 @@ class EventVolunteersController < ApplicationController
   # PATCH/PUT /event_volunteers/1
   def update
     if @event_volunteer.update(event_volunteer_params)
-      redirect_to @event_volunteer, notice: 'Event volunteer was successfully updated.'
+      redirect_to event_event_volunteers_path, notice: 'Event volunteer was successfully updated.'
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class EventVolunteersController < ApplicationController
   # DELETE /event_volunteers/1
   def destroy
     @event_volunteer.destroy
-    redirect_to event_volunteers_url, notice: 'Event volunteer was successfully destroyed.'
+    redirect_to event_event_volunteers_path, notice: 'Event volunteer was successfully destroyed.'
   end
 
   private
