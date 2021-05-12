@@ -3,7 +3,10 @@ class DonorsController < ApplicationController
 
   # GET /donors
   def index
-    @donors = Donor.all
+    @prospectives = ProspectiveDonor.all
+    @commercials = Commercial.all
+    @trusts = Trust.all
+    @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
   end
 
   # GET /donors/1
@@ -12,11 +15,12 @@ class DonorsController < ApplicationController
 
   # GET /donors/new
   def new
-    @donor = Donor.new
+    render layout: false
   end
 
   # GET /donors/1/edit
   def edit
+    render layout: false
   end
 
   # POST /donors
@@ -24,18 +28,28 @@ class DonorsController < ApplicationController
     @donor = Donor.new(donor_params)
 
     if @donor.save
-      redirect_to @donor, notice: 'Donor was successfully created.'
+      @prospectives = ProspectiveDonor.all
+      @commercials = Commercial.all
+      @trusts = Trust.all
+      @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
+      render 'new_donor_success'
     else
-      render :new
+      render 'new_donor_failure'
     end
   end
 
   # PATCH/PUT /donors/1
   def update
+    @prospectives = ProspectiveDonor.all
+    @commercials = Commercial.all
+    @trusts = Trust.all
     if @donor.update(donor_params)
-      redirect_to @donor, notice: 'Donor was successfully updated.'
+
+      @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
+      render 'new_donor_success'
     else
-      render :edit
+      @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
+      render 'new_donor_failure'
     end
   end
 

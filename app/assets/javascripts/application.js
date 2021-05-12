@@ -11,3 +11,4 @@
 //= require select2_init
 //= require meeting_types
 //= require club_infos
+//= require donors

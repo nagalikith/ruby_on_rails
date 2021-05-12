@@ -1,4 +1,15 @@
-%h1 Case Studies
+%h1 Stories
+
+
+%ul.nav.nav-tabs
+  %li.nav-item
+    = link_to "Case Studies", case_studies_path, class: "nav-link active"
+  %li.nav-item
+    = link_to "Event Feedback", event_feedbacks_path, class: "nav-link"
+
+%br
+
+%h3 Case Studies
 
 - if @case_studies.length > 0
 
@@ -8,7 +19,7 @@
     %thead
       %tr
         %th Date
-        %th Participant
+        %th Participant(s)
         %th Club
         %th Comment 
 

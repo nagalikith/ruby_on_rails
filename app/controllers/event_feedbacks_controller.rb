@@ -3,7 +3,11 @@ class EventFeedbacksController < ApplicationController
 
   # GET /event_feedbacks
   def index
-    @event_feedbacks = EventFeedback.all
+    if current_user.manager
+      @event_feedbacks = EventFeedback.all
+    else
+      @event_feedbacks = EventFeedback.all.where(club_id: current_user.club_id)
+    end
   end
 
   # GET /event_feedbacks/1
@@ -12,11 +16,12 @@ class EventFeedbacksController < ApplicationController
 
   # GET /event_feedbacks/new
   def new
-    @event_feedback = EventFeedback.new
+    render layout: false
   end
 
   # GET /event_feedbacks/1/edit
   def edit
+    render layout: false
   end
 
   # POST /event_feedbacks
@@ -24,9 +29,14 @@ class EventFeedbacksController < ApplicationController
     @event_feedback = EventFeedback.new(event_feedback_params)
 
     if @event_feedback.save
-      redirect_to @event_feedback, notice: 'Event feedback was successfully created.'
+      if current_user.manager
+        @event_feedbacks = EventFeedback.all
+      else
+        @event_feedbacks = EventFeedback.all.where(club_id: current_user.club_id)
+      end
+      render 'new_feedback_success'
     else
-      render :new
+      render 'new_feedback_failure'
     end
   end
 
@@ -53,6 +63,6 @@ class EventFeedbacksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_feedback_params
-      params.require(:event_feedback).permit(:comment)
+      params.require(:event_feedback).permit(:comment, :event_id)
     end
 end

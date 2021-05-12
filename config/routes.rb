@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :event_calendars
   resources :event_feedbacks
   resources :meeting_types
-  resources :prospective_donors
+  resources :prospective_donors do
+    post :upgrade_donor
+  end
   resources :event_volunteers
   resources :consent_forms
   resources :devise
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
   resources :club_infos
   resources :clubs
   resources :users
+  resources :trusts
+  resources :commercials
 
   # devise_for :users, :skip => [:registrations]                                          
   # as :user do

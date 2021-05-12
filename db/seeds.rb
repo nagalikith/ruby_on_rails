@@ -12,7 +12,11 @@ Event.delete_all
 Volunteer.delete_all
 Club.delete_all
 Donation.delete_all
+Trust.delete_all
+Commercial.delete_all
 Donor.delete_all
+
+ProspectiveDonor.delete_all
 AdminEvent.delete_all
 
 
@@ -36,13 +40,17 @@ Volunteer.where(name: "Josh").first_or_create(contactnumber: '07264893487', emai
 Volunteer.where(name: "Ellie").first_or_create(contactnumber: '07125648376', email: 'ellie@email.com', hours: '32', target: '20', youngPerson: false)
 Volunteer.where(name: "Adam").first_or_create(contactnumber: '07898562736', email: 'adam@email.com', hours: '0', target: '10', youngPerson: false)
 
-Event.where(name: "Bike Ride1").first_or_create(club_id: "5", date: DateTime.new(2021,4,12,8), end_time: DateTime.new(2021,4,14,8), comment: "Bring your own bike")
-Event.where(name: "Walk").first_or_create(club_id: "3", date: DateTime.new(2021,3,12,8), end_time: DateTime.new(2021,3,14,8), comment: "A 4 mile walk")
-Event.where(name: "Swimming Trip").first_or_create(club_id: "4", date: DateTime.new(2021,2,12,8), end_time: DateTime.new(2021,2,14,8), comment: "A trip to a local swimming pool")
-Event.where(name: "Event 7").first_or_create(club_id: "1", date: DateTime.new(2021,2,12,8), end_time: DateTime.new(2021,2,16,8), comment: "Event 7 Comment", spaces_left: '8', all_groups: true)
+
+Event.where(id: '1').first_or_create(name: "Bike Ride1", club_id: "5", date: DateTime.new(2021,4,12,8), end_time: DateTime.new(2021,4,14,8), comment: "Bring your own bike", spaces_left: '5')
+Event.where(id: '2').first_or_create(name: "Walk", club_id: "3", date: DateTime.new(2021,3,12,8), end_time: DateTime.new(2021,3,14,8), comment: "A 4 mile walk", spaces_left: '7')
+Event.where(id: '3').first_or_create(name: "Swimming Trip", club_id: "4", date: DateTime.new(2021,2,12,8), end_time: DateTime.new(2021,2,14,8), comment: "A trip to a local swimming pool", spaces_left: '8')
+Event.where(id: "4")..first_or_create(name: "Event 7", club_id: "1", date: DateTime.new(2021,2,12,8), end_time: DateTime.new(2021,2,16,8), comment: "Event 7 Comment", spaces_left: '8', all_groups: true)
+
 
 EventFeedback.where(id: '1').first_or_create(comment: "Was an amazing event. Well organised", event_id: '1')
 EventFeedback.where(id: '2').first_or_create(comment: "Very fun", event_id: '1')
+EventFeedback.where(id: '3').first_or_create(comment: "Too many people there but fun", event_id: '2')
+EventFeedback.where(id: '4').first_or_create(comment: "Amazing", event_id: '3')
 
 CaseStudy.where(id: "1").first_or_create(participant: "Molly", date: "2021/03/02", comment: "Very well behaved", club_id: "2")
 CaseStudy.where(id: "2").first_or_create(participant: "Ben", date: "2021/01/20", comment: "Organised a game", club_id: "2")
@@ -81,6 +89,20 @@ MeetingType.where(id: "7").first_or_create(club_info_id: "3", day: "Friday", ses
 Donor.where(id: "1").first_or_create(contactnumber: "07437465782", email: "amy@gmail.com", name: "Amy", totaldonation: "0")
 Donor.where(id: "2").first_or_create(contactnumber: "07592084598", email: "joe@talktalk.net", name: "Joe", totaldonation: "0")
 Donor.where(id: "3").first_or_create(contactnumber: "07329322764", email: "amanda@googlemail.com", name: "Amanda", totaldonation: "0")
+Donor.where(id: "4").first_or_create(contactnumber: "07362745832", email: "big@company.com", name: "Big Company", totaldonation: "0")
+Donor.where(id: "5").first_or_create(contactnumber: "07231238874", email: "childreninneed@charity.org", name: "Children In Need", totaldonation: "0")
+Donor.where(id: "6").first_or_create(contactnumber: "07990373527", email: "sheffieldcity@council.com", name: "Sheffield Council", totaldonation: "0")
+Donor.where(id: "7").first_or_create(contactnumber: "07392023762", email: "church@burgesses", name: "Church Burgesses", totaldonation: "0")
+
+Commercial.where(donor_id: "4").first_or_create(dateawarded: "2018/03/22")
+Commercial.where(donor_id: "6").first_or_create(dateawarded: "2020/10/10")
+
+Trust.where(donor_id: "5").first_or_create(datesubmitted: "2020/12/04", thankdate: "2021/11/01")
+Trust.where(donor_id: "7").first_or_create(datesubmitted: "2021/04/28", thankdate: "2022/01/12")
+
+ProspectiveDonor.where(id: "1").first_or_create(name: "Adam", email: "adam123@gmail.com", contactnumber: "07738275195", internalcontactlink: "Una Moran")
+ProspectiveDonor.where(id: "2").first_or_create(name: "Sam", email: "sam@sam.co.uk", contactnumber: "07908628336", internalcontactlink: "Richard Hay")
+ProspectiveDonor.where(id: "3").first_or_create(name: "Ellie", email: "ellie.parker@talktalk.net", contactnumber: "07255638497", internalcontactlink: "Una Moran")
 
 Donation.new.submitDonation("1", 20, "Monthly", "None", "2021/04/29")
 Donation.new.submitDonation("2", 10, "One Off", "393 Club", "2021/04/29")

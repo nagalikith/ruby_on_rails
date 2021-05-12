@@ -1,0 +1,23 @@
+- if @prospectives.length > 0
+  %p There are #{@prospectives.size} prospective donors to search through.
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Contact Number
+        %th Email
+        %th Internal Link
+    %tbody
+      - @prospectives.each do |prospective|
+        %tr
+          %td= prospective.name
+          %td= prospective.contactnumber
+          %td= prospective.email
+          %td= prospective.internalcontactlink
+          %td= link_to 'Edit', edit_prospective_donor_path(prospective), class: "ajax-modal"
+          %td= link_to 'Delete', prospective, method: :delete, data: { confirm: 'Are you sure?' }
+          %td= button_to "Make real donor", prospective_donor_upgrade_donor_path(prospective), method: :post, class: "btn btn-link", data: { confirm: 'Are you sure?' }
+
+- else
+  .error-message
+    %h5 No Prospective donors found

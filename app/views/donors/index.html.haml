@@ -1,34 +1,45 @@
-%h1 Listing donors
+%h1 Donors
 
-- if @donors.length > 0
-
-  %p There are #{@donors.size} events to search through.
-
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Type
-        %th Contactnumber
-        %th Email
-        %th Totaldonation
-
-    %tbody
-      - @donors.each do |donor|
-        %tr
-          %td= donor.name
-          %td= donor.type
-          %td= donor.contactnumber
-          %td= donor.email
-          %td= donor.totaldonation
-          %td= link_to 'Show', donor
-          %td= link_to 'Edit', edit_donor_path(donor)
-          %td= link_to 'Destroy', donor, method: :delete, data: { confirm: 'Are you sure?' }
-
-- else
-  .error-message
-    %h5 No donors available
-
+%ul.nav.nav-tabs
+    %li.nav-item
+        %button.nav-link.active#individual Individuals
+    %li.nav-item
+        %button.nav-link#trusts Trusts and Foundations
+    %li.nav-item
+        %button.nav-link#commercial Commerical and Contracts
+    %li.nav-item    
+        %button.nav-link#prospective Prospective Donors
+%br
 %br
 
-= link_to 'New Donor', new_donor_path
+
+#individualsTable
+    %h3 Individual Donors  
+    #individualBody
+        = render "individuals_table"
+
+    %br
+    = link_to 'Add Individual Donor', new_donor_path, class: "btn btn-secondary ajax-modal", id: " individualAdd"
+
+#trustsTable
+    %h3 Trust/Foundation Donors
+    #trustBody
+        = render "trusts_table"
+
+    %br
+    = link_to 'Add Trust/Foundation Donor', new_trust_path, class: "btn btn-secondary ajax-modal"
+
+
+#commercialsTable
+    %h3 Commercial/Contract Donors
+    #commercialBody
+        = render "commercials_table"
+    %br
+    = link_to 'Add Commercial/Contract Donor', new_commercial_path, class: "btn btn-secondary ajax-modal"
+
+#prospectivesTable
+    %h3 Prospective Donors
+    #prospectiveBody
+        = render "prospectives_table"
+    %br
+    = link_to 'Add Prospective Donor', new_prospective_donor_path, class: "btn btn-secondary ajax-modal"

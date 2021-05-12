@@ -1,14 +1,13 @@
 .modal-dialog
   .modal-content
-    = simple_form_for @event_feedback, remote: true do |f|
+    = simple_form_for @commercial, remote: true do |f|
       .modal-header
-        %h4.modal-title Edit Event Feeback
+        %h4.modal-title Edit Commercial/Contract Donor
         %button.close{ type: :button, data: { dismiss: :modal } }
           %span &times;
       .modal-body
-        = f.input :event_id, :collection => Event.all.collect {|c| [c.name, c.id]}
-        = f.input :comment
-          
+        = f.input :dateawarded, label: "Date Awarded:"
+
       .modal-footer
         .pull-left
           = dismiss_modal_button

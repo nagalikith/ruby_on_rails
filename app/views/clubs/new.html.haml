@@ -8,8 +8,8 @@
       .modal-body
         = f.input :name
         = f.input :postcode
-        = f.input :contactnumber
-        = f.input :paymentduedate
+        = f.input :contactnumber, label: "Contact Number:"
+        = f.input :paymentduedate, label: "Date for next payment due:"
       .modal-footer
         .pull-left
           = dismiss_modal_button
