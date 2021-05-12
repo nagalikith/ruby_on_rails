@@ -17,7 +17,7 @@ AdminEvent.delete_all
 
 
 #Populating database
-Club.where(name: 'admin').first_or_create(id:'1')
+Club.where(name: 'BGCSY').first_or_create(id:'1')
 
 Club.where(name: '393 Club').first_or_create(id: '2', postcode: 'S6 2LJ', contactnumber: '07561827309', paymentduedate: '2021/10/12')
 Club.where(name: 'Affinity Youth Club').first_or_create(id: '3', postcode: 'S6 4EG', contactnumber: '07928395786', paymentduedate: '2021/05/09')

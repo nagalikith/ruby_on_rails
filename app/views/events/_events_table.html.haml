@@ -18,7 +18,7 @@
             %td= link_to 'Edit', edit_event_path(event), class: 'ajax-modal' 
             %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
         - elsif event.all_groups == true
-            %td= 'Group Event cannot be Editted'
+            %td= 'Group Event cannot be Edited'
             %td= 'Group Event cannot be Destroy'
         - else 
             %td= link_to 'Edit', edit_event_path(event), class: 'ajax-modal' 
