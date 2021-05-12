@@ -5,16 +5,15 @@
     %tr
       %th Club ID
       %th Event ID
-      %th
 
   %tbody
     - @admin_events.each do |admin_event|
       %tr
-        %td= admin_event.club.id
-        %td= admin_event.event.id
-        %td= link_to 'Show', admin_event
-        %td= link_to 'Edit', edit_admin_event_path(admin_event)
-        %td= link_to 'Destroy', admin_event, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= admin_event.club_id
+        %td= admin_event.event_id
+        -# %td= link_to 'Show', admin_event
+        -# %td= link_to 'Edit', edit_admin_event_path(admin_event)
+        -# %td= link_to 'Destroy', admin_event, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

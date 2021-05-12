@@ -6,9 +6,9 @@
    
 %p
   %b Name:
-  = @event_feedback.volunteer_name
+  = @event_volunteer.volunteer.name
 
 
-= link_to 'Edit', edit_event_volunteer_path(@event_volunteer)
+= link_to 'Edit', edit_event_event_volunteer_path(@event,@event_volunteer)
 \|
-= link_to 'Back', event_volunteers_path
+= link_to 'Back', event_event_volunteers_path(@event)

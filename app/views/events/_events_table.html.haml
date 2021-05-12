@@ -13,7 +13,13 @@
 
         -# Links to the Club that the event is involved with.
         %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event), class: 'ajax-modal' 
-        
-        -# %td= link_to 'Join event', method: get_spaces(event) 
-        %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+
+        - if current_user.manager and event.all_groups == true
+            %td= link_to 'Edit', edit_event_path(event), class: 'ajax-modal' 
+            %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+        - elsif event.all_groups == true
+            %td= 'Group Event cannot be Edited'
+            %td= 'Group Event cannot be Destroy'
+        - else 
+            %td= link_to 'Edit', edit_event_path(event), class: 'ajax-modal' 
+            %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }

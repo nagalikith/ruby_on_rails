@@ -12,9 +12,9 @@
         %tr
           %td= event_volunteer.volunteer_id
           %td= get_volunteer(event_volunteer).name
-          %td= link_to 'Show', event_volunteer
-          %td= link_to 'Edit', edit_event_volunteer_path(event_volunteer)
-          %td= link_to 'Destroy', event_volunteer, method: :delete, data: { confirm: 'Are you sure?' }
+          %td= link_to 'Show', event_event_volunteer_path(@event,event_volunteer)
+          %td= link_to 'Edit', edit_event_event_volunteer_path(@event,event_volunteer)
+          %td= link_to 'Destroy', event_event_volunteer_path(@event,event_volunteer), method: :delete, data: { confirm: 'Are you sure?' }
 - else
   .error-message
     %h5 No events exist

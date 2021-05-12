@@ -6,10 +6,13 @@
   %b Consent form for Participant:
   - if @consent_form.image.attached?
     = image_tag(url_for(@consent_form.image), width: 900)
+  - else
+    .error-message
+      %h5 No consent forms attached
 
-= link_to 'Edit', edit_consent_form_path(@consent_form)
+= link_to 'Edit', event_edit_consent_form_path(@consent_form)
 \|
-= link_to 'Back', consent_forms_path
+= link_to 'Back', event_consent_forms_path
 
 
 

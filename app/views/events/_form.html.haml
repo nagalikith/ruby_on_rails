@@ -8,7 +8,10 @@
     = f.input :comment
     = f.input :date
     = f.input :end_time
-    = f.association :club, collection: Club.where(id: current_user.club_id)
+    - if can?(:read, rails_admin)
+      = f.association :club
+    - else
+      = f.association :club, collection: Club.where(id: current_user.club_id)
     -# Ensures that they can only select their own Club when creating events
     - if can?(:read, rails_admin)
       = f.input :spaces_left
