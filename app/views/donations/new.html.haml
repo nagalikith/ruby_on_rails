@@ -11,7 +11,7 @@
         = f.input :donor_id, :collection => Donor.all.collect {|c| [c.name, c.id]}
         = f.input :amount
         = f.input :recurring, collection: ['Yearly','Quarterly','Monthly','Weekly', 'One Off']
-        = f.input :restricted
+        = f.input :restricted, label: "Enter where to donation is restricted to (leave blank for none):"
         
 
           

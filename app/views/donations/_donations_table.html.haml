@@ -3,6 +3,7 @@
         %td= donation.date.strftime("%d/%m/%Y") 
         /Get the name of the donor using the foreign key
         %td= Donor.find(donation.donor_id).name
-        %td= donation.amount
+        %td£#{donation.amount}
         %td= donation.recurring
         %td= donation.restricted
+        %td= link_to 'Delete', donation, method: :delete, data: { confirm: 'Are you sure?' }

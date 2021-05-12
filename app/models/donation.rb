@@ -30,4 +30,13 @@ class Donation < ApplicationRecord
         Donor.find_by(id: donor_id).update(totaldonation: (current_total+amount.to_f))
     end
 
+    def deleteDonation(donation_id)
+        donation = Donation.find_by(id: donation_id)
+        amount = donation.amount
+        donation.destroy
+        id_of_donor = donation.donor_id
+        current_total = Donor.find_by(id: id_of_donor).totaldonation
+        Donor.find_by(id: id_of_donor).update(totaldonation: (current_total-amount.to_f))
+    end
+
 end

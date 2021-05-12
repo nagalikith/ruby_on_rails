@@ -24,9 +24,12 @@ class DonationsController < ApplicationController
     #@donation = Donation.new(donation_params)
 
     date = donation_params["date(1i)"] + "/" + donation_params["date(2i)"] + "/" + donation_params["date(3i)"]
-
+    restrict = donation_params[:restricted]
+    if restrict == ""
+      restrict = "None"
+    end
     Donation.new.submitDonation(donation_params[:donor_id], donation_params[:amount], donation_params[:recurring], 
-                                donation_params[:restricted], date)
+                                restrict, date)
     @donations = Donation.all
     render 'new_donation_success'
 
@@ -43,7 +46,7 @@ class DonationsController < ApplicationController
 
   # DELETE /donations/1
   def destroy
-    @donation.destroy
+    Donation.new.deleteDonation(@donation.id)
     redirect_to donations_url, notice: 'Donation was successfully destroyed.'
   end
 
