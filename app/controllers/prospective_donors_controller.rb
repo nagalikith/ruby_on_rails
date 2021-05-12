@@ -17,6 +17,7 @@ class ProspectiveDonorsController < ApplicationController
 
   # GET /prospective_donors/1/edit
   def edit
+    render layout: false
   end
 
   # POST /prospective_donors
@@ -36,10 +37,16 @@ class ProspectiveDonorsController < ApplicationController
 
   # PATCH/PUT /prospective_donors/1
   def update
+    @prospectives = ProspectiveDonor.all
+    @commercials = Commercial.all
+    @trusts = Trust.all
+    @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
+
     if @prospective_donor.update(prospective_donor_params)
-      redirect_to donors_url, notice: 'Prospective donor was successfully updated.'
+      @prospectives = ProspectiveDonor.all
+      render 'donors/new_donor_success'
     else
-      render :edit
+      render 'donors/new_donor_failure'
     end
   end
 

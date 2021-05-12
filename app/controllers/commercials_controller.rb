@@ -17,6 +17,7 @@ class CommercialsController < ApplicationController
 
   # GET /commercials/1/edit
   def edit
+    render layout: false
   end
 
   # POST /commercials
@@ -50,11 +51,16 @@ class CommercialsController < ApplicationController
   def update
     date = Date.new commercial_params["dateawarded(1i)"].to_i, commercial_params["dateawarded(2i)"].to_i,
                     commercial_params["dateawarded(3i)"].to_i
+    @prospectives = ProspectiveDonor.all
+    @commercials = Commercial.all
+    @trusts = Trust.all
+    @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
 
     if @commercial.update(dateawarded: date)
-      redirect_to donors_path, notice: 'Commercial/Contract donor was successfully updated.'
+      @commercials = Commercial.all
+      render 'donors/new_donor_success'
     else
-      render :edit
+      render 'donors/new_donor_failure'
     end
   end
 

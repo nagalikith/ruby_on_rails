@@ -17,6 +17,7 @@ class TrustsController < ApplicationController
 
   # GET /trusts/1/edit
   def edit
+    render layout: false
   end
 
   # POST /trusts
@@ -36,8 +37,7 @@ class TrustsController < ApplicationController
         @commercials = Commercial.all
         @trusts = Trust.all
         @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
-        
-
+      
         render 'donors/new_donor_success'
       else
         render 'donors/new_donor_failure'
@@ -55,11 +55,16 @@ class TrustsController < ApplicationController
 
     datethank = Date.new trust_params["thankdate(1i)"].to_i, trust_params["thankdate(2i)"].to_i,
                         trust_params["thankdate(3i)"].to_i
+    @prospectives = ProspectiveDonor.all
+    @commercials = Commercial.all
+    @trusts = Trust.all
+    @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
 
     if @trust.update(datesubmitted: datesub, thankdate: datethank)
-      redirect_to donors_path, notice: 'Trust/Foundation donor was successfully updated.'
+      @trusts = Trust.all
+      render 'donors/new_donor_success'
     else
-      render :edit
+      render 'donors/new_donor_failure'
     end
   end
 

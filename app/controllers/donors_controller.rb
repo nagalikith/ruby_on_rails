@@ -20,6 +20,7 @@ class DonorsController < ApplicationController
 
   # GET /donors/1/edit
   def edit
+    render layout: false
   end
 
   # POST /donors

@@ -11,7 +11,7 @@
         = f.input :name, input_html: {value: ''}
         = f.input :email, input_html: {value: ''}
         = f.input :contactnumber, input_html: {value: ''}
-        = f.input :totaldonation, input_html: {value: 0}
+        = f.input :totaldonation, :as => :hidden, input_html: {value: 0}
           
       .modal-footer
         .pull-left
