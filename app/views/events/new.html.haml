@@ -19,4 +19,4 @@
       .modal-footer
         .pull-left
           = dismiss_modal_button
-        = f.button :submit, class: 'btn btn-outline-dark'
+        = f.submit 'Save', class: 'btn btn-outline-dark', data: { confirm: 'Reminder: Please send an email to remind donors to donate!' }

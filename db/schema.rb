@@ -129,9 +129,10 @@ ActiveRecord::Schema.define(version: 2021_05_07_174752) do
 
   create_table "donors", force: :cascade do |t|
     t.string "name"
+    t.text "type"
     t.string "contactnumber"
-    t.string "email"
-    t.float "totaldonation"
+    t.text "email"
+    t.integer "totaldonation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
