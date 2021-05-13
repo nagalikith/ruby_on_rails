@@ -8,13 +8,16 @@
     %thead
       %tr
         %th Date
+        %th Club name
         %th Participant
-
+        %th Comment
     %tbody
       - @case_studies.each do |case_study|
         %tr
           %td= case_study.date
-          %td= case_study.participant
+          %td= get_club(case_study).name
+          %th= case_study.participant
+          %th= case_study.comment
           %td= link_to 'Show', case_study
           %td= link_to 'Edit', edit_case_study_path(case_study)
           %td= link_to 'Destroy', case_study, method: :delete, data: { confirm: 'Are you sure?' }

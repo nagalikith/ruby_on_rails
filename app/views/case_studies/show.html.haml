@@ -4,8 +4,12 @@
   %b Date:
   = @case_study.date
 %p
-  %b Participant:
+  %b Participants:
   = @case_study.participant
+
+%p
+  %b Comment:
+  = @case_study.comment
 
 = link_to 'Edit', edit_case_study_path(@case_study)
 \|

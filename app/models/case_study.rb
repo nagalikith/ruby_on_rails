@@ -5,6 +5,7 @@
 #  id          :bigint           not null, primary key
 #  comment     :text
 #  date        :date
+#  event       :string
 #  participant :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
