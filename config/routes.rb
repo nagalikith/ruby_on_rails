@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :admin_events
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :conrollers => { registrations: 'users/registrations', sessions: 'users/sessions'}
   resources :event_calendars
   resources :event_feedbacks
-  resources :meeting_types do
-    get 'meeting_types/search'
+  resources :meeting_types
+  resources :prospective_donors do
+    post :upgrade_donor
   end
-  resources :prospective_donors
   resources :event_volunteers
   resources :consent_forms
   resources :devise
@@ -15,7 +16,9 @@ Rails.application.routes.draw do
   resources :events do
     resources :event_volunteers
     resources :consent_forms
+    resources :admin_events
     post :search, on: :collection
+    get :spaces_left
   end
   resources :volunteers
   resources :donations
@@ -26,6 +29,8 @@ Rails.application.routes.draw do
   end
   resources :clubs
   resources :users
+  resources :trusts
+  resources :commercials
 
   # devise_for :users, :skip => [:registrations]                                          
   # as :user do

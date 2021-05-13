@@ -5,12 +5,17 @@
 
   .form-inputs
     = f.input :name
-    -# = f.input :date
     = f.input :comment
-    = f.input :start_time
+    = f.input :date
     = f.input :end_time
-    = f.association :club
-
+    - if can?(:read, rails_admin)
+      = f.association :club
+    - else
+      = f.association :club, collection: Club.where(id: current_user.club_id)
+    -# Ensures that they can only select their own Club when creating events
+    - if can?(:read, rails_admin)
+      = f.input :spaces_left
+      = f.input :all_groups
   .form-actions
     = f.button :submit
 

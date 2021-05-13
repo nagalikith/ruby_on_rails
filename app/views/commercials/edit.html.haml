@@ -1,0 +1,14 @@
+.modal-dialog
+  .modal-content
+    = simple_form_for @commercial, remote: true do |f|
+      .modal-header
+        %h4.modal-title Edit Commercial/Contract Donor
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :dateawarded, label: "Date Awarded:"
+
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

@@ -1,8 +1,9 @@
-- Club.all.each do |club|
+- Club.all.where.not(id: '1').each do |club|
   %tr
     %td= club.name
     %td= club.postcode
     %td= club.contactnumber
-    %td= link_to 'Show', club
+    %th= club.paymentduedate.strftime("%d/%m/%Y") 
+    %td= link_to 'View details', club
     %td= link_to 'Edit', edit_club_path(club), class: 'ajax-modal'
-    %td= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' }
+    %td= link_to 'Delete', club, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,19 +1,32 @@
-%h1 Listing event_feedbacks
+%h1 Stories
 
-%table
-  %thead
-    %tr
-      %th Comment
-
-
-  %tbody
-    - @event_feedbacks.each do |event_feedback|
-      %tr
-        %td= event_feedback.comment
-        %td= link_to 'Show', event_feedback
-        %td= link_to 'Edit', edit_event_feedback_path(event_feedback)
-        %td= link_to 'Destroy', event_feedback, method: :delete, data: { confirm: 'Are you sure?' }
+%ul.nav.nav-tabs
+  %li.nav-item
+    = link_to "Case Studies", case_studies_path, class: "nav-link"
+  %li.nav-item
+    = link_to "Event Feedback", event_feedbacks_path, class: "nav-link active"
 
 %br
 
-= link_to 'New Event feedback', new_event_feedback_path
+%h3 Event Feedback
+
+- if @event_feedbacks.length > 0
+
+  %p There are #{@event_feedbacks.size} pieces of feedback to search through.
+
+  %table
+    %thead
+      %tr
+        %th Date
+        %th Event Name
+        %th Comment
+
+    %tbody#feedbackBody
+      = render "feedback_table"
+- else
+  .error-message
+    %h5 No feedback exist
+
+%br
+
+= link_to 'New Event feedback', new_event_feedback_path, class: "btn btn-secondary ajax-modal"

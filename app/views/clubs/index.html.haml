@@ -1,18 +1,21 @@
-%h1 Listing clubs
+%h1 Clubs
 
 - if @clubs.length > 0
 
-  %p There are #{@clubs.size} events to search through.
+  %p There are currently #{@clubs.size} clubs registered.
 
   %input{:id => "searchInput", :onkeyup => "searchFunc()", :placeholder => "Enter club name..."}
+  
   %p
-
+  
+  <!--Table to display the current clubs -->
   %table{:id => "clubTable"}
     %thead
       %tr
         %th Name
         %th Postcode
-        %th Contactnumber
+        %th Contact Number
+        %th Date For Next Payment
 
     %tbody#clubs-table
     = render 'clubs_table'
@@ -41,5 +44,4 @@
 
 %br
 
-.button
-  = link_to 'New Club', new_club_path, class: 'ajax-modal'
+= link_to 'New Club', new_club_path, class: 'ajax-modal btn btn-secondary'

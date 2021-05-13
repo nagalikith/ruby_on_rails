@@ -1,7 +1,25 @@
-%h1 Editing event
-
-= render 'form'
-
-= link_to 'Show', @event
-\|
-= link_to 'Back', events_path
+.modal-dialog
+  .modal-content
+    = simple_form_for @event, remote: true do |f|
+      .modal-header
+        %h4.modal-title Editing Event
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :name
+        = f.input :comment
+        = f.input :date
+        = f.input :end_time
+        - if can?(:read, rails_admin)
+          = f.input :spaces_left
+          = f.input :all_groups
+        - if can?(:read, rails_admin)
+          = f.association :club, collection: Club.where.not(id: current_user.club_id)
+          -# Ensures the admin can add all Clubs to an event.
+        - else
+          = f.association :club, collection: Club.where(id: current_user.club_id)
+          -# Ensures only the User logged in can edit the form to a club they are in charge of
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

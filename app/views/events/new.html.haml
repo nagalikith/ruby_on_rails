@@ -1,5 +1,22 @@
-%h1 New event
-
-= render 'form'
-
-= link_to 'Back', events_path
+.modal-dialog
+  .modal-content
+    = simple_form_for @event, remote: true do |f|
+      .modal-header
+        %h4.modal-title New event
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :name
+        = f.input :comment
+        = f.input :date
+        = f.input :end_time
+        - if can?(:read, rails_admin)
+          = f.association :club
+          = f.input :spaces_left
+          = f.input :all_groups
+        - else
+          = f.association :club, collection: Club.where(id: current_user.club_id)
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.submit 'Save', class: 'btn btn-outline-dark', data: { confirm: 'Reminder: Please send an email to remind donors to donate!' }

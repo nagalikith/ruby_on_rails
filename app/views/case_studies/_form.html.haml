@@ -6,8 +6,8 @@
   .form-inputs
     = f.input :date
     = f.input :participant
+    = f.input :club_id, :collection => Club.all.collect {|c| [c.name, c.id]}
     = f.input :comment
-    = f.collection_select :event, Event.where(club_id: current_user.club_id), :id, :name, include_blank: true 
 
   .form-actions
     = f.button :submit

@@ -1,0 +1,20 @@
+%h1 Listing admin_events
+
+%table
+  %thead
+    %tr
+      %th Club ID
+      %th Event ID
+
+  %tbody
+    - @admin_events.each do |admin_event|
+      %tr
+        %td= admin_event.club_id
+        %td= admin_event.event_id
+        -# %td= link_to 'Show', admin_event
+        -# %td= link_to 'Edit', edit_admin_event_path(admin_event)
+        -# %td= link_to 'Destroy', admin_event, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Admin event', new_event_admin_event_path(@event)

@@ -1,31 +1,34 @@
-%h1 Listing Case Studies
+%h1 Stories
+
+
+%ul.nav.nav-tabs
+  %li.nav-item
+    = link_to "Case Studies", case_studies_path, class: "nav-link active"
+  %li.nav-item
+    = link_to "Event Feedback", event_feedbacks_path, class: "nav-link"
+
+%br
+
+%h3 Case Studies
 
 - if @case_studies.length > 0
 
-  %p There are #{@case_studies.size} events to search through.
+  %p There are #{@case_studies.size} case studies to search through.
 
   %table
     %thead
       %tr
         %th Date
-        %th Club name
-        %th Participant
-        %th Comment
-    %tbody
-      - @case_studies.each do |case_study|
-        %tr
-          %td= case_study.date
-          %td= get_club(case_study).name
-          %th= case_study.participant
-          %th= case_study.comment
-          %td= link_to 'Show', case_study
-          %td= link_to 'Edit', edit_case_study_path(case_study)
-          %td= link_to 'Destroy', case_study, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Participant(s)
+        %th Club
+        %th Comment 
+
+    %tbody#case-study-table
+      = render 'casestudy_table'
 
 - else
   .error-message
     %h5 No case studies exist
 
 %br
-.button
-  = link_to 'New Case study', new_case_study_path
+%p= link_to "Add Case Study", new_case_study_path, class: 'ajax-modal btn btn-secondary'

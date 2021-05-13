@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_111026) do
+ActiveRecord::Schema.define(version: 2021_05_07_174752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 2021_05_13_111026) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "admin_events", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "club_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["club_id"], name: "index_admin_events_on_club_id"
+    t.index ["event_id"], name: "index_admin_events_on_event_id"
   end
 
   create_table "case_studies", force: :cascade do |t|
@@ -83,6 +92,14 @@ ActiveRecord::Schema.define(version: 2021_05_13_111026) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "commercials", force: :cascade do |t|
+    t.date "dateawarded"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "donor_id", null: false
+    t.index ["donor_id"], name: "index_commercials_on_donor_id"
+  end
+
   create_table "consent_forms", force: :cascade do |t|
     t.string "participantname"
     t.datetime "created_at", precision: 6, null: false
@@ -109,8 +126,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_111026) do
   create_table "donations", force: :cascade do |t|
     t.float "amount"
     t.date "date"
-    t.string "method"
-    t.float "recurring"
+    t.string "recurring"
     t.string "restricted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -120,10 +136,9 @@ ActiveRecord::Schema.define(version: 2021_05_13_111026) do
 
   create_table "donors", force: :cascade do |t|
     t.string "name"
-    t.text "type"
     t.string "contactnumber"
-    t.text "email"
-    t.integer "totaldonation"
+    t.string "email"
+    t.float "totaldonation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -161,6 +176,8 @@ ActiveRecord::Schema.define(version: 2021_05_13_111026) do
     t.bigint "club_id", null: false
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer "spaces_left"
+    t.boolean "all_groups"
     t.index ["club_id"], name: "index_events_on_club_id"
   end
 
@@ -175,12 +192,12 @@ ActiveRecord::Schema.define(version: 2021_05_13_111026) do
 
   create_table "meeting_types", force: :cascade do |t|
     t.string "day"
-    t.integer "time"
+    t.time "time"
     t.string "sessiontype"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "club_infos_id", null: false
-    t.index ["club_infos_id"], name: "index_meeting_types_on_club_infos_id"
+    t.bigint "club_info_id", null: false
+    t.index ["club_info_id"], name: "index_meeting_types_on_club_info_id"
   end
 
   create_table "prospective_donors", force: :cascade do |t|
@@ -200,6 +217,15 @@ ActiveRecord::Schema.define(version: 2021_05_13_111026) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "trusts", force: :cascade do |t|
+    t.date "datesubmitted"
+    t.date "thankdate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "donor_id", null: false
+    t.index ["donor_id"], name: "index_trusts_on_donor_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -239,11 +265,13 @@ ActiveRecord::Schema.define(version: 2021_05_13_111026) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "case_studies", "clubs"
   add_foreign_key "club_infos", "clubs"
+  add_foreign_key "commercials", "donors"
   add_foreign_key "consent_forms", "events"
   add_foreign_key "donations", "donors"
   add_foreign_key "event_calendars", "events"
   add_foreign_key "event_feedbacks", "events"
   add_foreign_key "events", "clubs"
-  add_foreign_key "meeting_types", "club_infos", column: "club_infos_id"
+  add_foreign_key "meeting_types", "club_infos"
+  add_foreign_key "trusts", "donors"
   add_foreign_key "users", "clubs"
 end

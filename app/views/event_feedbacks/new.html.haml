@@ -1,5 +1,15 @@
-%h1 New event_feedback
-
-= render 'form'
-
-= link_to 'Back', event_feedbacks_path
+.modal-dialog
+  .modal-content
+    = simple_form_for EventFeedback.new, remote: true do |f|
+      .modal-header
+        %h4.modal-title New Event Feeback
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :event_id, :collection => Event.all.collect {|c| [c.name, c.id]}
+        = f.input :comment
+          
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

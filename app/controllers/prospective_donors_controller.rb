@@ -12,11 +12,12 @@ class ProspectiveDonorsController < ApplicationController
 
   # GET /prospective_donors/new
   def new
-    @prospective_donor = ProspectiveDonor.new
+    render layout: false
   end
 
   # GET /prospective_donors/1/edit
   def edit
+    render layout: false
   end
 
   # POST /prospective_donors
@@ -24,25 +25,42 @@ class ProspectiveDonorsController < ApplicationController
     @prospective_donor = ProspectiveDonor.new(prospective_donor_params)
 
     if @prospective_donor.save
-      redirect_to @prospective_donor, notice: 'Prospective donor was successfully created.'
+      @prospectives = ProspectiveDonor.all
+      @commercials = Commercial.all
+      @trusts = Trust.all
+      @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
+      render 'donors/new_donor_success'
     else
-      render :new
+      render 'donors/new_donor_failure'
     end
   end
 
   # PATCH/PUT /prospective_donors/1
   def update
+    @prospectives = ProspectiveDonor.all
+    @commercials = Commercial.all
+    @trusts = Trust.all
+    @donors = Donor.where("id NOT IN (SELECT DISTINCT(donor_id) FROM commercials) AND id NOT IN (SELECT DISTINCT(donor_id) FROM trusts)")
+
     if @prospective_donor.update(prospective_donor_params)
-      redirect_to @prospective_donor, notice: 'Prospective donor was successfully updated.'
+      @prospectives = ProspectiveDonor.all
+      render 'donors/new_donor_success'
     else
-      render :edit
+      render 'donors/new_donor_failure'
     end
   end
 
   # DELETE /prospective_donors/1
   def destroy
     @prospective_donor.destroy
-    redirect_to prospective_donors_url, notice: 'Prospective donor was successfully destroyed.'
+    redirect_to donors_url, notice: 'Prospective donor was successfully destroyed.'
+  end
+
+  def upgrade_donor
+    puts "called"
+    puts params[:prospective_donor_id]
+    ProspectiveDonor.new.makeReal(params[:prospective_donor_id])
+    redirect_to donors_url, notice: 'Prospective donor was changed to full donor'
   end
 
   private

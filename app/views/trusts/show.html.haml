@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @donor.name
+%p
+  %b Type:
+  = @donor.type
+%p
+  %b Contactnumber:
+  = @donor.contactnumber
+%p
+  %b Email:
+  = @donor.email
+%p
+  %b Totaldonation:
+  = @donor.totaldonation
+
+= link_to 'Edit', edit_donor_path(@donor)
+\|
+= link_to 'Back', donors_path

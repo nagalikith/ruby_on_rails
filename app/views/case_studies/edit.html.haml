@@ -1,7 +1,20 @@
-%h1 Editing case_study
-
-= render 'form'
-
-= link_to 'Show', @case_study
-\|
-= link_to 'Back', case_studies_path
+.modal-dialog
+  .modal-content
+    = simple_form_for @case_study, remote: true do |f|
+      .modal-header
+        %h4.modal-title New Case Study
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :date
+        = f.input :participant
+        - if can?(:read, rails_admin)
+          = f.association :club, collection: Club.where.not(id: current_user.club_id)
+        - else
+          = f.association :club, collection: Club.where(id: current_user.club_id)
+        = f.input :comment
+          
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

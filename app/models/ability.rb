@@ -12,6 +12,8 @@ class Ability
         can :access, :rails_admin
         can :manage, :dashboard  
         can :manage, :events
+        #A manager can see everything, whereas a normal user can access everything, but they will only ever be shown their own club hence
+        #They should have all permissions
       else
       #   can :show, :clubs
       #   can :manage, :club_infos

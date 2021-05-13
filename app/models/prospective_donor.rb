@@ -12,4 +12,12 @@
 #  updated_at          :datetime         not null
 #
 class ProspectiveDonor < ApplicationRecord
+    validates :name, :contactnumber, :email, :internalcontactlink, presence: true
+
+    def makeReal(prospective_donor_id)
+        prospective = ProspectiveDonor.find(prospective_donor_id)
+        Donor.new(name: prospective.name, contactnumber: prospective.contactnumber, email: prospective.email, totaldonation: 0).save
+        prospective.destroy
+        
+    end
 end

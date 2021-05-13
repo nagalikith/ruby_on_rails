@@ -5,12 +5,13 @@ class CaseStudiesController < ApplicationController
 
   # GET /case_studies
   def index
+    #changing content if the user is a manager
     if current_user.manager
       @case_studies = CaseStudy.all
     else
-      @case_studies = CaseStudy.where(club_id: current_user.club_id)
+      @case_studies = CaseStudy.all.where(club_id: current_user.club_id)
+      #Ensures only the case studies that are matching the current users Club ID is shown.
     end
-  
   end
 
   # GET /case_studies/1
@@ -20,7 +21,7 @@ class CaseStudiesController < ApplicationController
 
   # GET /case_studies/new
   def new
-    @case_study = CaseStudy.new
+    render layout: false
   end
 
   # GET /case_studies/1/edit
@@ -32,9 +33,15 @@ class CaseStudiesController < ApplicationController
     @case_study = CaseStudy.new(case_study_params)
 
     if @case_study.save
-      redirect_to @case_study, notice: 'Case study was successfully created.'
+      if current_user.manager
+        @case_studies = CaseStudy.all
+      else
+        @case_studies = CaseStudy.all.where(club_id: current_user.club_id)
+        #Ensures only the case studies that are matching the current users Club ID is shown.
+      end
+      render 'new_case_success'
     else
-      render :new
+      render 'new_case_failure'
     end
   end
 
@@ -61,7 +68,7 @@ class CaseStudiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def case_study_params
-      params.require(:case_study).permit(:comment, :date, :participant, :event)
+      params.require(:case_study).permit(:date, :participant, :club_id, :comment)
     end
 
     def get_club(case_study)

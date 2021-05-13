@@ -17,6 +17,7 @@
 #  fk_rails_...  (event_id => events.id)
 #
 class ConsentForm < ApplicationRecord
+    #Associations
     has_one_attached :image
     belongs_to :event
 

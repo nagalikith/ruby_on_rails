@@ -17,5 +17,6 @@
 #  fk_rails_...  (event_id => events.id)
 #
 class EventFeedback < ApplicationRecord
+    #Associations
     belongs_to :event
 end

@@ -1,25 +1,29 @@
-%h1 event volunteers
-%h1= @event.name
-%h1= @volunteer
+%h1 Event volunteers for #{@event.name}
 
-%table
-  %thead
-    %tr
-      %th Volunteer ID
-      %th Name
-      
-
-  %tbody
-    - @event_volunteers.each do |event_volunteer|
+- if @event_volunteers.length > 0
+  %table
+    %thead
       %tr
-        %td= event_volunteer.volunteer_id
-        %td= get_volunteer(event_volunteer).name
-        %td= link_to 'Show', event_volunteer
-        %td= link_to 'Edit', edit_event_volunteer_path(event_volunteer)
-        %td= link_to 'Destroy', event_volunteer, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Volunteer ID
+        %th Name
+      
+    %tbody
+      - @event_volunteers.each do |event_volunteer|
+        %tr
+          %td= event_volunteer.volunteer_id
+          %td= get_volunteer(event_volunteer).name
+          %td= link_to 'Show', event_event_volunteer_path(@event,event_volunteer)
+          %td= link_to 'Edit', edit_event_event_volunteer_path(@event,event_volunteer)
+          %td= link_to 'Destroy', event_event_volunteer_path(@event,event_volunteer), method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  .error-message
+    %h5 No events exist
 
 %br
 
-= link_to 'New Event volunteer', new_event_event_volunteer_path(@event)
+= link_to 'New Event volunteer', new_event_event_volunteer_path(@event), class: 'btn btn-secondary'
+
 %br
-= link_to 'Back', @event
+%br
+
+= link_to 'Back', @event, class: 'btn btn-secondary'

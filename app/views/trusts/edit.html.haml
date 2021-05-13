@@ -1,0 +1,15 @@
+.modal-dialog
+  .modal-content
+    = simple_form_for @trust, remote: true do |f|
+      .modal-header
+        %h4.modal-title Edit Trust/Foundation Donor
+        %button.close{ type: :button, data: { dismiss: :modal } }
+          %span &times;
+      .modal-body
+        = f.input :datesubmitted, label: "Date Submitted:"
+        = f.input :thankdate, label: "Date to next say thank you:"
+          
+      .modal-footer
+        .pull-left
+          = dismiss_modal_button
+        = f.button :submit, class: 'btn btn-outline-dark'

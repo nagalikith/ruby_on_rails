@@ -1,0 +1,23 @@
+- if @commercials.length > 0
+  %p There are #{@commercials.size} donors to search through.
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Contact Number
+        %th Email
+        %th Date Awarded
+        %th Total Donations
+    %tbody
+      - @commercials.each do |commercial|
+        %tr
+          %td= Donor.find(commercial.donor_id).name
+          %td= Donor.find(commercial.donor_id).contactnumber
+          %td= Donor.find(commercial.donor_id).email
+          %td= commercial.dateawarded.strftime("%d/%m/%Y") 
+          %td£#{Donor.find(commercial.donor_id).totaldonation}
+          %td= link_to 'Edit', edit_commercial_path(commercial), class: "ajax-modal"
+          %td= link_to 'Delete', commercial, method: :delete, data: { confirm: 'Are you sure?' }
+- else
+  .error-message
+    %h5 No Commercial/Contract donors found
