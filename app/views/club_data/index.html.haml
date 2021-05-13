@@ -1,11 +1,10 @@
 %h1 Listing Club Data & Statistics
 
-= simple_form_for :search, url: search_club_data_path, method: :post do |f|
-  = f.input :postcode
-  = f.submit 'Search'
-  = link_to 'Reset', club_data_path
+%input{:id => "searchInput", :onkeyup => "searchFunc()", :placeholder => "Enter club name..."}
+%br
+%br
 
-%table
+%table{:id => "clubTable"}
   %thead
     %tr
       %th Club Name
@@ -51,3 +50,21 @@
 
 .button 
   = link_to 'PDF Download', club_data_path(@club_data, format: "pdf" )
+
+:javascript
+    function searchFunc() {
+      input = document.getElementById("searchInput").value.toUpperCase();
+      table = document.getElementById("clubTable");
+      row = table.getElementsByTagName("tr");
+      for (i = 0; i < row.length; i++) {
+        clubName = row[i].getElementsByTagName("td")[0];
+        if (clubName) {
+          text = clubName.textContent || clubName.innerText;
+          if (text.toUpperCase().indexOf(input) > -1) {
+            row[i].style.display = "";
+          } else {
+            row[i].style.display = "none";
+          }
+        }
+      }
+    }
