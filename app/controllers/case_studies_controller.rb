@@ -1,6 +1,8 @@
 class CaseStudiesController < ApplicationController
   before_action :set_case_study, only: [:show, :edit, :update, :destroy]
 
+  helper_method :get_club
+
   # GET /case_studies
   def index
     #changing content if the user is a manager
@@ -14,6 +16,7 @@ class CaseStudiesController < ApplicationController
 
   # GET /case_studies/1
   def show
+    @events = Event.all.where(club_id: get_club(@case_study).id)
   end
 
   # GET /case_studies/new
@@ -67,4 +70,9 @@ class CaseStudiesController < ApplicationController
     def case_study_params
       params.require(:case_study).permit(:date, :participant, :club_id, :comment)
     end
+
+    def get_club(case_study)
+      @club = Club.find(case_study.club_id)
+    end
+
 end

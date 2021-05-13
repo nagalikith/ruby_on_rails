@@ -52,7 +52,14 @@ ActiveRecord::Schema.define(version: 2021_05_07_174752) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "club_id", null: false
+    t.string "event"
     t.index ["club_id"], name: "index_case_studies_on_club_id"
+  end
+
+  create_table "club_data", force: :cascade do |t|
+    t.bigint "club_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "club_infos", force: :cascade do |t|
