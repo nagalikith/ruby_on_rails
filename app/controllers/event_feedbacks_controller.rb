@@ -1,6 +1,6 @@
 class EventFeedbacksController < ApplicationController
   before_action :set_event_feedback, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token
   # GET /event_feedbacks
   def index
     if current_user.manager
@@ -34,7 +34,7 @@ class EventFeedbacksController < ApplicationController
       else
         @event_feedbacks = EventFeedback.all.where(club_id: current_user.club_id)
       end
-      render 'new_feedback_success'
+      render :index
     else
       render 'new_feedback_failure'
     end
@@ -63,6 +63,6 @@ class EventFeedbacksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_feedback_params
-      params.require(:event_feedback).permit(:comment, :event_id)
+      params.require(:event_feedback).permit(:comment, :event_id, :pdf)
     end
 end

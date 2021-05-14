@@ -5,5 +5,11 @@
         /Looks up the name of the club it is associated to and fills the table with it
         %td= Club.find(case_study.club_id).name
         %td= case_study.comment
+        %td
+            - if case_study.pdf.attached?
+                %h5 Click show to find pdf
+            - else
+                .error-message
+                    %h5 No case study PDF attached
         %td= link_to 'Show', case_study
         %td= link_to 'Delete', case_study, method: :delete, data: { confirm: 'Are you sure?' }

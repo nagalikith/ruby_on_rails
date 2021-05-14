@@ -4,6 +4,16 @@
   %b Comment:
   = @event_feedback.comment
 
+
+%p
+  %b Case Study PDF:
+  - if @event_feedback.pdf.attached?
+    = link_to 'Event Feedback PDF Download', rails_blob_path(@event_feedback.pdf, target: :_blank )
+  - else
+    .error-message
+      %h5 No case study PDF attached
+
+
 = link_to 'Edit', edit_event_feedback_path(@event_feedback)
 \|
 = link_to 'Back', event_feedbacks_path

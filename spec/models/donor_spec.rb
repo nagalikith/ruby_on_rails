@@ -4,9 +4,10 @@
 #
 #  id            :bigint           not null, primary key
 #  contactnumber :string
-#  email         :string
+#  email         :text
 #  name          :string
-#  totaldonation :float
+#  totaldonation :integer
+#  type          :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #

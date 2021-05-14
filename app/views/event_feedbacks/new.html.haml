@@ -8,6 +8,7 @@
       .modal-body
         = f.input :event_id, :collection => Event.all.collect {|c| [c.name, c.id]}
         = f.input :comment
+        = f.file_field :pdf
           
       .modal-footer
         .pull-left
