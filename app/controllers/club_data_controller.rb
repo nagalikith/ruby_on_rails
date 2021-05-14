@@ -13,27 +13,27 @@ class ClubDataController < ApplicationController
         send_data pdf.render , filename: "Club_Data.pdf", type: "application/pdf"
       end
     end
+    $parameter = ""
   end
 
   # GET /club_data/1
   def show
-    respond_to do |format|
-      format.html
-      format.pdf do 
-        pdf = DataPdf.new(club_data_array())
-        send_data pdf.render , filename: "Club_Data.pdf", type: "application/pdf"
-      end
-    end
   end
 
   # POST /club_data/search
   def search
 #   {"search" => {"name" => "some entered name"} }
     $parameter = params[:search][:postcode]
+    date_from = Date.new params[:search][:date_from]
+    date_to = Date.new params[:search][:date_to]
+    #$date_from = Date.new date_1["date(1i)"].to_i, date_1["date(2i)"].to_i, date_1["date(3i)"].to_i
     @club_data = Club.all.where("postcode LIKE :search", search: "%#{$parameter}%")
     @club_infos = ClubInfo.all
+    @club_infos = ClubInfo.all.where("created_at BETWEEN ? AND ?", date_from, date_to)
     club_data_array
     puts("Search Data #{@club_data_array}")
+    puts("Date To #{$date_to}")
+    puts("Date From #{$date_to}")
     render :index
   end
 

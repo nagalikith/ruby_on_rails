@@ -2,9 +2,13 @@
 
 = simple_form_for :search, url: search_club_data_path, method: :post do |f|
   = f.input :postcode
+  = f.label :date_from, "Date From:"
+  = f.date_select :date_from
+  = f.label :date_to, "Date To:"
+  = f.date_select :date_to
+  %p
   = f.submit 'Search'
   = link_to 'Reset', club_data_path
-
 
 %table
   %thead
@@ -20,6 +24,7 @@
       %th Depravation
       %th Drugsandabs
       %th Neets
+      %th Date
 
   %tbody
     - @club_data.each do |club_datum|
@@ -38,6 +43,7 @@
               %td= club_info.depravation
               %td= club_info.drugsandabs
               %td= club_info.neets
+              %td= club_info.created_at.strftime("%m/%d/%Y")
   %tr
     %td= "Total Sum"
     %td 
