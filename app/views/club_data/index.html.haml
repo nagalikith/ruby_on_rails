@@ -1,10 +1,12 @@
 %h1 Listing Club Data & Statistics
 
-%input{:id => "searchInput", :onkeyup => "searchFunc()", :placeholder => "Enter club name..."}
-%br
-%br
+= simple_form_for :search, url: search_club_data_path, method: :post do |f|
+  = f.input :postcode
+  = f.submit 'Search'
+  = link_to 'Reset', club_data_path
 
-%table{:id => "clubTable"}
+
+%table
   %thead
     %tr
       %th Club Name
@@ -21,37 +23,36 @@
 
   %tbody
     - @club_data.each do |club_datum|
-      - @club_infos.each do |club_info|
-        - if club_info.club_id == club_datum.id
-          %tr
-            %td= club_datum.name
-            %td= club_datum.postcode 
-            %td= club_info.males
-            %td= club_info.females
-            %td= club_info.lowerage
-            %td= club_info.upperage
-            %td= club_info.disability
-            %td= club_info.ethnicity
-            %td= club_info.depravation
-            %td= club_info.drugsandabs
-            %td= club_info.neets
-
-%table  
+      - if @club_infos.length > 0    
+        - @club_infos.each do |club_info|
+          - if club_info.club_id == club_datum.id
+            %tr
+              %td= club_datum.name
+              %td= club_datum.postcode 
+              %td= club_info.males
+              %td= club_info.females
+              %td= club_info.lowerage
+              %td= club_info.upperage
+              %td= club_info.disability
+              %td= club_info.ethnicity
+              %td= club_info.depravation
+              %td= club_info.drugsandabs
+              %td= club_info.neets
   %tr
     %td= "Total Sum"
     %td 
     - @sum.each do |num|
       %td= num
-  %tr
-    %td= "Average per club" 
-    %td
-    - @average.each do |num|
-      %td= num
+    %tr
+      %td= "Average per club" 
+      %td
+      - @average.each do |num|
+        %td= num
 
 %br
 
 .button 
-  = link_to 'PDF Download', club_data_path(@club_data, format: "pdf" )
+  = link_to 'PDF Download', club_data_path(@club_data_array, format: "pdf" )
 
 :javascript
     function searchFunc() {
