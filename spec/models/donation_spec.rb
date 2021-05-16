@@ -25,11 +25,21 @@ RSpec.describe Donation, type: :model do
 
   describe "#donation_added" do
     it 'adds a new donation to a donor to increment their totaldonation' do
-      donor = Donor.new(id: 10, name: "Test", email: "test@donor.com", contactnumber: "07567324322", totaldonation: 0.0)
+      donor = Donor.create(id: 10, name: "Test", email: "test@donor.com", contactnumber: "07567324322", totaldonation: 0.0)
       Donation.new.submitDonation(10, 100.10, "One Off", "None", "15/05/2021")
-      expect(donor.totaldonation).to eq 100.1
+      donor = Donor.find_by(id: 10)
+      expect(donor.totaldonation).to eq(100.1)
     end
   end
 
+  describe "#donation_removed" do
+    it "removes an existing donation to reduce the totaldonation of the donor" do
+      donor = Donor.create(id: 10, name: "Test", email: "test@donor.com", contactnumber: "07567324322", totaldonation: 10.0)
+      Donation.create(id: 1, amount: 10.0, date: "17/05/2021", recurring: "One Off", restricted: "None", donor_id: 10)
+      Donation.new.deleteDonation(1)
+      donor = Donor.find_by(id: 10)
+      expect(donor.totaldonation).to eq 0.0
+    end
+  end
 
 end
