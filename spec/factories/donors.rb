@@ -13,9 +13,9 @@
 FactoryBot.define do
   factory :donor do
     name { "MyString" }
-    type { "MyText" }
+    #type { "MyText" }
     contactnumber { 1 }
     email { "MyText" }
-    totaldonation { 1 }
+    totaldonation { 1.0 }
   end
 end

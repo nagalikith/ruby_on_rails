@@ -18,6 +18,5 @@ class ProspectiveDonor < ApplicationRecord
         prospective = ProspectiveDonor.find(prospective_donor_id)
         Donor.new(name: prospective.name, contactnumber: prospective.contactnumber, email: prospective.email, totaldonation: 0).save
         prospective.destroy
-        
     end
 end

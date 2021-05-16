@@ -22,5 +22,14 @@
 require 'rails_helper'
 
 RSpec.describe Donation, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "#donation_added" do
+    it 'adds a new donation to a donor to increment their totaldonation' do
+      donor = Donor.new(id: 10, name: "Test", email: "test@donor.com", contactnumber: "07567324322", totaldonation: 0.0)
+      Donation.new.submitDonation(10, 100.10, "One Off", "None", "15/05/2021")
+      expect(donor.totaldonation).to eq 100.1
+    end
+  end
+
+
 end
