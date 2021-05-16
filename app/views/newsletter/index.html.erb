@@ -1,0 +1,22 @@
+<h1>Send Newsletter</h1>
+<%= form_tag("/newsletter", :method=>'post', :multipart => true) do %>
+<p>
+    Add attachment: <br>
+    <%= file_field_tag "attachment" %>
+</p>
+<p>
+    <%= check_box_tag "clubs" %>
+    Clubs
+</p>
+<p>
+    <%= check_box_tag "volunteers" %>
+    Volunteers
+</p>
+<p>
+    <%= check_box_tag "donors" %>
+    Donors
+</p>
+<p>
+    <%= submit_tag 'Submit', :class => 'btn btn-outline-dark' %>
+</p>
+<% end %>
