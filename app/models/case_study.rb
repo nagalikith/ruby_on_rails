@@ -21,6 +21,7 @@
 #
 class CaseStudy < ApplicationRecord
     #Associations
+    has_one_attached :pdf
     belongs_to :club
     validates :date, :comment, presence: true
 

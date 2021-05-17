@@ -1,6 +1,6 @@
 class CaseStudiesController < ApplicationController
   before_action :set_case_study, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token
   helper_method :get_club
 
   # GET /case_studies
@@ -39,7 +39,8 @@ class CaseStudiesController < ApplicationController
         @case_studies = CaseStudy.all.where(club_id: current_user.club_id)
         #Ensures only the case studies that are matching the current users Club ID is shown.
       end
-      render 'new_case_success'
+      render :index
+      # render 'new_case_success'
     else
       render 'new_case_failure'
     end
@@ -68,7 +69,7 @@ class CaseStudiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def case_study_params
-      params.require(:case_study).permit(:date, :participant, :club_id, :comment)
+      params.require(:case_study).permit(:date, :participant, :club_id, :comment, :pdf)
     end
 
     def get_club(case_study)

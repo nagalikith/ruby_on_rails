@@ -18,5 +18,6 @@
 #
 class EventFeedback < ApplicationRecord
     #Associations
+    has_one_attached :pdf
     belongs_to :event
 end

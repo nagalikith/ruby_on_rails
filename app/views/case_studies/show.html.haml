@@ -1,0 +1,16 @@
+%p#notice= notice
+
+%p
+  %b Case Study PDF:
+  - if @case_study.pdf.attached?
+    = link_to 'PDF Download', rails_blob_path(@case_study.pdf, target: :_blank )
+  - else
+    .error-message
+      %h5 No case study PDF attached
+
+
+= link_to 'Back', case_studies_path
+
+
+    
+

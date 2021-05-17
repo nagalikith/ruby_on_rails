@@ -13,6 +13,7 @@
         - else
           = f.association :club, collection: Club.where(id: current_user.club_id)
         = f.input :comment
+        = f.file_field :pdf
           
       .modal-footer
         .pull-left

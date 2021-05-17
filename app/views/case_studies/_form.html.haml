@@ -8,6 +8,7 @@
     = f.input :participant
     = f.input :club_id, :collection => Club.all.collect {|c| [c.name, c.id]}
     = f.input :comment
+    = f.file_field :pdf
 
   .form-actions
     = f.button :submit

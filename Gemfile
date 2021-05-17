@@ -18,6 +18,9 @@ gem 'devise-security'
 # gem 'easy_captcha'
 # gem 'rmagick'
 gem 'rails_email_validator'
+gem 'poppler'
+# gem 'poppler-utils'
+gem 'ffmpeg'
 
 
 gem 'haml-rails'
