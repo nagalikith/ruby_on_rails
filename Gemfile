@@ -21,6 +21,8 @@ gem 'rails_email_validator'
 gem 'poppler'
 # gem 'poppler-utils'
 gem 'ffmpeg'
+gem 'gobject-introspection'
+gem 'gio2'
 
 
 gem 'haml-rails'
