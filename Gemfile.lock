@@ -501,6 +501,7 @@ DEPENDENCIES
   launchy
   letter_opener
   listen
+  mail
   pg
   poppler
   prawn

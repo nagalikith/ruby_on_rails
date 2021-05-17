@@ -55,6 +55,8 @@ gem 'daemons', '1.1.9'
 gem "simple_calendar", "~> 2.0"
 gem 'icalendar'
 
+gem 'mail'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'byebug'

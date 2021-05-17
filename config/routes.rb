@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :users
   resources :trusts
   resources :commercials
+  resources :newsletter
 
   # devise_for :users, :skip => [:registrations]                                          
   # as :user do
