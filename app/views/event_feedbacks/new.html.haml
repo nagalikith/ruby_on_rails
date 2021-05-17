@@ -6,7 +6,7 @@
         %button.close{ type: :button, data: { dismiss: :modal } }
           %span &times;
       .modal-body
-        = f.input :event_id, :collection => Event.all.collect {|c| [c.name, c.id]}
+        = f.association :event, collection: Event.where(club_id: current_user.club_id)
         = f.input :comment
         = f.file_field :pdf
           

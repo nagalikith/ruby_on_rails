@@ -6,8 +6,8 @@
   .form-inputs
     = f.input :name
     = f.input :comment
-    = f.input :date
-    = f.input :end_time
+    = f.input :date, html5: true
+    = f.input :end_time, as: :date, html5: true
     - if can?(:read, rails_admin)
       = f.association :club
     - else

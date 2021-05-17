@@ -6,7 +6,14 @@ class EventFeedbacksController < ApplicationController
     if current_user.manager
       @event_feedbacks = EventFeedback.all
     else
-      @event_feedbacks = EventFeedback.all.where(club_id: current_user.club_id)
+      # @event_feedbacks = EventFeedback.all.where(club_id: current_user.club_id)
+      @event_f = EventFeedback.all
+      @event_feedbacks = []
+      @event_f.each do |event_f|
+        if get_clubID(event_f) == current_user.club_id 
+          @event_feedbacks.push(event_f)
+        end
+      end
     end
   end
 
@@ -32,7 +39,14 @@ class EventFeedbacksController < ApplicationController
       if current_user.manager
         @event_feedbacks = EventFeedback.all
       else
-        @event_feedbacks = EventFeedback.all.where(club_id: current_user.club_id)
+        # @event_feedbacks = EventFeedback.all.where(club_id: current_user.club_id)
+        @event_f = EventFeedback.all
+        @event_feedbacks = []
+        @event_f.each do |event_f|
+          if get_clubID(event_f) == current_user.club_id 
+            @event_feedbacks.push(event_f)
+          end
+        end
       end
       render :index
     else
@@ -64,5 +78,10 @@ class EventFeedbacksController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def event_feedback_params
       params.require(:event_feedback).permit(:comment, :event_id, :pdf)
+    end
+
+    def get_clubID(event_feedback)
+      @event = Event.find(event_feedback.event_id)
+      @clubID = @event.club_id
     end
 end
