@@ -14,6 +14,8 @@ class ClubDataController < ApplicationController
       end
     end
     $parameter = ""
+    $date_from = ""
+    $date_to = ""
   end
 
   # GET /club_data/1
@@ -24,12 +26,15 @@ class ClubDataController < ApplicationController
   def search
 #   {"search" => {"name" => "some entered name"} }
     $parameter = params[:search][:postcode]
-    date_from = Date.new params[:search][:date_from]
-    date_to = Date.new params[:search][:date_to]
+    puts{"#{params}"}
+    $date_from = Date.parse params[:search]["date_from(3i)"] + "/" + params[:search]["date_from(2i)"] + "/" + params[:search]["date_from(1i)"]
+    #date_from =  params[:search][:date_from]
+    #date_to = params[:search][:date_to]
+    $date_to = Date.parse params[:search]["date_to(3i)"] + "/" + params[:search]["date_to(2i)"] + "/" + params[:search]["date_to(1i)"]
     #$date_from = Date.new date_1["date(1i)"].to_i, date_1["date(2i)"].to_i, date_1["date(3i)"].to_i
     @club_data = Club.all.where("postcode LIKE :search", search: "%#{$parameter}%")
     @club_infos = ClubInfo.all
-    @club_infos = ClubInfo.all.where("created_at BETWEEN ? AND ?", date_from, date_to)
+    @club_infos = ClubInfo.all.where("created_at BETWEEN ? AND ?", $date_from, $date_to)
     club_data_array
     puts("Search Data #{@club_data_array}")
     puts("Date To #{$date_to}")
@@ -82,7 +87,10 @@ end
 
 def club_data_array
   @club_data_array = []
-  count = 0  
+  count = 0
+  if $date_to != "" then
+    @club_infos = ClubInfo.all.where("created_at BETWEEN ? AND ?", $date_from, $date_to)
+  end
   @club_data = Club.all.where("postcode LIKE :search", search: "%#{$parameter}%")
   @club_data.each do |club_datum|
     @club_infos.each do |club_info|

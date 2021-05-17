@@ -23,7 +23,7 @@ class DonationsController < ApplicationController
   def create
     #@donation = Donation.new(donation_params)
 
-    date = donation_params["date(1i)"] + "/" + donation_params["date(2i)"] + "/" + donation_params["date(3i)"]
+    date = donation_params["date_from(3i)"] + "/" + donation_params["date_from(2i)"] + "/" + donation_params["date_from(1i)"]
     restrict = donation_params[:restricted]
     if restrict == ""
       restrict = "None"
